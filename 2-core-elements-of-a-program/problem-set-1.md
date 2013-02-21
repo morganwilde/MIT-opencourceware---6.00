@@ -75,59 +75,59 @@ balance.
 
 **Test Case 1**
 
-> Enter the outstanding balance on your credit card: 4800 
-> Enter the annual credit card interest rate as a decimal: .2 
-> Enter the minimum monthly payment rate as a decimal: .02 
-> Month: 1 
-> Minimum monthly payment: $96.0 
-> Principle paid: $16.0 
-> Remaining balance: $4784.0 
-> Month: 2 
-> Minimum monthly payment: $95.68 
-> Principle paid: $15.95 
-> Remaining balance: $4768.05 
-> Month: 3 
-> Minimum monthly payment: $95.36 
-> Principle paid: $15.89 
-> Remaining balance: $4752.16 Month: 4 
-> Minimum monthly payment: $95.04 
-> Principle paid: $15.84 
-> Remaining balance: $4736.32 
-> Month: 5 
-> Minimum monthly payment: $94.73 
-> Principle paid: $15.79 
-> Remaining balance: $4720.53 
-> Month: 6 
-> Minimum monthly payment: $94.41 
-> Principle paid: $15.73 
-> Remaining balance: $4704.8 
-> Month: 7 
-> Minimum monthly payment: $94.1 
-> Principle paid: $15.69 
-> Remaining balance: $4689.11 
-> Month: 8 
-> Minimum monthly payment: $93.78 
-> Principle paid: $15.63 
-> Remaining balance: $4673.48 
-> Month: 9 
-> Minimum monthly payment: $93.47 
-> Principle paid: $15.58 
-> Remaining balance: $4657.9 
-> Month: 10 
-> Minimum monthly payment: $93.16 
-> Principle paid: $15.53 
-> Remaining balance: $4642.37 
-> Month: 11 
-> Minimum monthly payment: $92.85 
-> Principle paid: $15.48 
-> Remaining balance: $4626.89 
-> Month: 12 
-> Minimum monthly payment: $92.54 
-> Principle paid: $15.43 
-> Remaining balance: $4611.46 
-> RESULT 
-> Total amount paid: $1131.12 
-> Remaining balance: $4611.46 
+> Enter the outstanding balance on your credit card: 4800  
+> Enter the annual credit card interest rate as a decimal: .2  
+> Enter the minimum monthly payment rate as a decimal: .02  
+> Month: 1  
+> Minimum monthly payment: $96.0  
+> Principle paid: $16.0  
+> Remaining balance: $4784.0  
+> Month: 2  
+> Minimum monthly payment: $95.68  
+> Principle paid: $15.95  
+> Remaining balance: $4768.05  
+> Month: 3  
+> Minimum monthly payment: $95.36  
+> Principle paid: $15.89  
+> Remaining balance: $4752.16 Month: 4  
+> Minimum monthly payment: $95.04  
+> Principle paid: $15.84  
+> Remaining balance: $4736.32  
+> Month: 5  
+> Minimum monthly payment: $94.73  
+> Principle paid: $15.79  
+> Remaining balance: $4720.53  
+> Month: 6  
+> Minimum monthly payment: $94.41  
+> Principle paid: $15.73  
+> Remaining balance: $4704.8  
+> Month: 7  
+> Minimum monthly payment: $94.1  
+> Principle paid: $15.69  
+> Remaining balance: $4689.11  
+> Month: 8  
+> Minimum monthly payment: $93.78  
+> Principle paid: $15.63  
+> Remaining balance: $4673.48  
+> Month: 9  
+> Minimum monthly payment: $93.47  
+> Principle paid: $15.58  
+> Remaining balance: $4657.9  
+> Month: 10  
+> Minimum monthly payment: $93.16  
+> Principle paid: $15.53  
+> Remaining balance: $4642.37  
+> Month: 11  
+> Minimum monthly payment: $92.85  
+> Principle paid: $15.48  
+> Remaining balance: $4626.89  
+> Month: 12  
+> Minimum monthly payment: $92.54  
+> Principle paid: $15.43  
+> Remaining balance: $4611.46  
+> RESULT  
+> Total amount paid: $1131.12  
+> Remaining balance: $4611.46  
 
  
 **Test Case 2**
@@ -136,59 +136,59 @@ In recent years, many credit card corporations tightened restrictions by raising
 monthly payment rate to 4%. As illustrated in the second test case below, people will be able to 
 pay less interest over the years and get out of debt faster.
 
-> Enter the outstanding balance on your credit card: 4800 
-> Enter the annual credit card interest rate as a decimal: .2 
-> Enter the minimum monthly payment rate as a decimal: .04 
-> Month: 1 
-> Minimum monthly payment: $192.0 
-> Principle paid: $112.0 
-> Remaining balance: $4688.0 
-> Month: 2 
-> Minimum monthly payment: $187.52 
-> Principle paid: $109.39 
-> Remaining balance: $4578.61 
-> Month: 3 
-> Minimum monthly payment: $183.14 
-> Principle paid: $106.83 
-> Remaining balance: $4471.78 
-> Month: 4 
-> Minimum monthly payment: $178.87 
-> Principle paid: $104.34 
-> Remaining balance: $4367.44 
-> Month: 5 
-> Minimum monthly payment: $174.7 
-> Principle paid: $101.91 
-> Remaining balance: $4265.53 
-> Month: 6 
-> Minimum monthly payment: $170.62 
-> Principle paid: $99.53 
-> Remaining balance: $4166.0 
-> Month: 7 
-> Minimum monthly payment: $166.64 
-> Principle paid: $97.21 
-> Remaining balance: $4068.79 
-> Month: 8 
-> Minimum monthly payment: $162.75 
-> Principle paid: $94.94 
-> Remaining balance: $3973.85 
-> Month: 9 
-> Minimum monthly payment: $158.95 
-> Principle paid: $92.72 
-> Remaining balance: $3881.13 
-> Month: 10 
-> Minimum monthly payment: $155.25 
-> Principle paid: $90.56 
-> Remaining balance: $3790.57 
-> Month: 11 
-> Minimum monthly payment: $151.62 Principle paid: $88.44 
-> Remaining balance: $3702.13 
-> Month: 12 
-> Minimum monthly payment: $148.09 
-> Principle paid: $86.39 
-> Remaining balance: $3615.74 
-> RESULT 
-> Total amount paid: $2030.15 
-> Remaining balance: $3615.74 
+> Enter the outstanding balance on your credit card: 4800  
+> Enter the annual credit card interest rate as a decimal: .2  
+> Enter the minimum monthly payment rate as a decimal: .04  
+> Month: 1  
+> Minimum monthly payment: $192.0  
+> Principle paid: $112.0  
+> Remaining balance: $4688.0  
+> Month: 2  
+> Minimum monthly payment: $187.52  
+> Principle paid: $109.39  
+> Remaining balance: $4578.61  
+> Month: 3  
+> Minimum monthly payment: $183.14  
+> Principle paid: $106.83  
+> Remaining balance: $4471.78  
+> Month: 4  
+> Minimum monthly payment: $178.87  
+> Principle paid: $104.34  
+> Remaining balance: $4367.44  
+> Month: 5  
+> Minimum monthly payment: $174.7  
+> Principle paid: $101.91  
+> Remaining balance: $4265.53  
+> Month: 6  
+> Minimum monthly payment: $170.62  
+> Principle paid: $99.53  
+> Remaining balance: $4166.0  
+> Month: 7  
+> Minimum monthly payment: $166.64  
+> Principle paid: $97.21  
+> Remaining balance: $4068.79  
+> Month: 8  
+> Minimum monthly payment: $162.75  
+> Principle paid: $94.94  
+> Remaining balance: $3973.85  
+> Month: 9  
+> Minimum monthly payment: $158.95  
+> Principle paid: $92.72  
+> Remaining balance: $3881.13  
+> Month: 10  
+> Minimum monthly payment: $155.25  
+> Principle paid: $90.56  
+> Remaining balance: $3790.57  
+> Month: 11  
+> Minimum monthly payment: $151.62 Principle paid: $88.44  
+> Remaining balance: $3702.13  
+> Month: 12  
+> Minimum monthly payment: $148.09  
+> Principle paid: $86.39  
+> Remaining balance: $3615.74  
+> RESULT  
+> Total amount paid: $2030.15  
+> Remaining balance: $3615.74  
 
 **Hints**
 
@@ -198,7 +198,7 @@ writing your code:
 * Retrieve user input. 
 * Initialize some state variables. Remember to find the monthly interest rate from the 
 annual interest rate taken in as input. 
-* For each month:  
+* For each month: 
     - Compute the new balance. This requires computing the minimum monthly 
 payment and figuring out how much will be paid to interest and how much will be 
 paid to the principal. 
@@ -234,21 +234,21 @@ monthly payment
 
 **Test Case 1**
 
-> Enter the outstanding balance on your credit card: 1200 
-> Enter the annual credit card interest rate as a decimal: .18 
-> RESULT 
-> Monthly payment to pay off debt in 1 year: 120 
-> Number of months needed: 11 
-> Balance: -10.05 
+> Enter the outstanding balance on your credit card: 1200  
+> Enter the annual credit card interest rate as a decimal: .18  
+> RESULT  
+> Monthly payment to pay off debt in 1 year: 120  
+> Number of months needed: 11  
+> Balance: -10.05  
 
 **Test Case 2**
 
-> Enter the outstanding balance on your credit card: 32000 
-> Enter the annual credit card interest rate as a decimal: .2 
-> RESULT 
-> Monthly payment to pay off debt in 1 year: 2970 
-> Number of months needed: 12 
-> Balance: -74.98 
+> Enter the outstanding balance on your credit card: 32000  
+> Enter the annual credit card interest rate as a decimal: .2  
+> RESULT  
+> Monthly payment to pay off debt in 1 year: 2970  
+> Number of months needed: 12  
+> Balance: -74.98  
 
 **Hints**
 
@@ -293,20 +293,20 @@ fast it is. Produce the output in the same format as you did in problem 2.
 
 **Test Case 1**
 
-> Enter the outstanding balance on your credit card: 320000 
-> Enter the annual credit card interest rate as a decimal: .2 
-> RESULT 
-> Monthly payment to pay off debt in 1 year: 29643.05 
-> Number of months needed: 12 
-> Balance: -0.1 
+> Enter the outstanding balance on your credit card: 320000  
+> Enter the annual credit card interest rate as a decimal: .2  
+> RESULT  
+> Monthly payment to pay off debt in 1 year: 29643.05  
+> Number of months needed: 12  
+> Balance: -0.1  
 
 **Test Case 2**
 
-> Enter the outstanding balance on your credit card: 999999 
-> Enter the annual credit card interest rate as a decimal: .18 
-> RESULT Monthly payment to pay off debt in 1 year: 91679.91 
-> Number of months needed: 12 
-> Balance: -0.12 
+> Enter the outstanding balance on your credit card: 999999  
+> Enter the annual credit card interest rate as a decimal: .18  
+> RESULT Monthly payment to pay off debt in 1 year: 91679.91  
+> Number of months needed: 12  
+> Balance: -0.12  
  
 **Hand-In Procedure**
 
@@ -317,12 +317,13 @@ not ignore this step or save your files with a different name.
 At the start of each file, in a comment, write down the number of hours (roughly) you spent on 
 the problems in that part, and the names of the people you collaborated with.
 
-For example: 
-# Problem Set 1 
+For example:
+```Python
+# Problem Set 1
 # Name: Jane Lee 
 # Collaborators: John Doe 
 # Time Spent: 3:30 
-# 
+```
 … your code goes here … MIT OpenCourseWare 
 http://ocw.mit.edu 
 6.00SC Introduction to Computer Science and Programming
