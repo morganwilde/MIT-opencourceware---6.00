@@ -93,12 +93,14 @@ Everything is an object, that have types. There are different operations that ca
 
 **If statements**
 
-- if <condition>:
+```Python
+if <condition>:
 	_execute_
-- elif <condition>:
+elif <condition>:
 	_execute_
-- else:
+else:
 	_execute_
+```
 
 Flow control.
 
