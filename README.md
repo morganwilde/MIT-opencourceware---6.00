@@ -15,6 +15,7 @@ How is this repository organised?
 
 1. Each individual part of all the units will have a separate folder. The folder will be named taking the parts name and converting it from "Introduction to 6.00" to "1-introduction-to-600".
 2. Inside the parts folder, there will be
+
 > 1. "notes-1.md" - all the notes taken while watching the lecture
 	2.2. "lecture-code-1.py" - all the code written
 	2.3. "handout-1.py" - the lectures handout (if any)
