@@ -25,8 +25,13 @@ What we now have today are **stored program computer**. It's basic idea is that 
 
 There are 6 primitive instructions operating with 1 bit of information. A programing language provides a set of instructions and a flow of control and how do you combine them (the main distinguishing factor of languages). The computer will always do what you tell it to do.
 
-Python
-------
+Languages
+---------
+
+1. Interpreted - source code > checker > interpreter > output
+2. Compiled - source code > checker/compiler > object code > interpreter > output
+
+Language is:
 
 1. Syntax
     - Which sequences of characters and symbols constitute a well-formed string (x = 3 + 4)
