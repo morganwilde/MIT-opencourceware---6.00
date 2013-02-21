@@ -62,3 +62,53 @@ Branching programs are not proportional to the amount of input.
 **Looping construct - iteration**
 
 These three enable the programming language to be Turing complete. This allows executing statements more than once.
+
+Recitation
+==========
+
+So programming languages are themselves abstractions of binary code. This is done for the same reason as is the case with higher and higher level programming languages, I.e. they abstract more and more of data/instructions into higher level concepts.
+
+Python
+______
+
+Interpreted language that is used in many places. Programs in Python are sequences of expressions composed of operands and operators.
+
+```Python
+mywar 	 =         'a string'
+#operand #operator #operand
+```
+Everything is an object, that have types. There are different operations that can be done with different objects:
+
+1. int (7, 0, -1, 2) - _+, -, *, /, **, %_
+2. float (1.2, 0.0, -1.2) - _+, -, *, /, **_
+    - int & float - _<, >, <=, >=, !=, ==_
+3. string ('a string', "a string", "a string 'quoted'" - _+ (concatenation)_
+4. bool (True, False) - _and, or, not_
+    - and, or take two operands
+    - not takes one
+5. None (None) -
+6. list
+7. tuples
+8. dictionaries
+
+**If statements**
+
+if <condition>:
+	_execute_
+elif <condition>:
+	_execute_
+else:
+	_execute_
+
+Flow control.
+
+**Loops**
+
+1. for loop - when you want to iterate over a finite set of elements
+    - for i in range(1, 10):
+	_execute_
+2. while loop - executes as long as the condition is true
+    - while <condition>:
+	_execute_
+
+
