@@ -17,7 +17,7 @@ How is this repository organised?
 2. Inside the parts folder, there will be:
     - **notes-1.md** - all the notes taken while watching the lecture
     - **lecture-code-1.py** - all the code written
-    - **problem-set-0.pdf** - the assigned problem set with its ID corresponding to the one provided
+    - **problem-set-0.html** - the assigned problem set with its ID corresponding to the one provided
     - **problem-set-0.py** - the solution(-s) to said problem set
-    - (maybe)
+    - *(maybe)*
     - handout-1.py - the lectures handout (if any)
