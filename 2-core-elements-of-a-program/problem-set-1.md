@@ -19,15 +19,11 @@ Say you’ve made a $5,000 purchase on a credit card with 18% annual interest ra
 minimum monthly payment rate. After a year, how much is the remaining balance? Use the 
 following equations. 
 
-Minimum monthly payment = Minimum monthly payment rate x Balance
-
-(Minimum monthly payment gets split into interest paid and principal paid)
-
-Interest Paid = Annual interest rate / 12 months x Balance
-
-Principal paid = Minimum monthly payment – Interest paid
-
-Remaining balance = Balance – Principal paid
+Minimum monthly payment = Minimum monthly payment rate x Balance  
+(Minimum monthly payment gets split into interest paid and principal paid)  
+Interest Paid = Annual interest rate / 12 months x Balance  
+Principal paid = Minimum monthly payment – Interest paid  
+Remaining balance = Balance – Principal paid  
 
 For month 1, we can compute the minimum monthly payment by taking 2% of the balance:
 
@@ -38,8 +34,7 @@ $100 monthly payment, compute how much will go to paying off interest and how mu
 to paying off the principal. Remember that it’s the annual interest rate that is given, so we need 
 to divide it by 12 to get the monthly interest rate.
 
-Interest paid = .18/12.0 x $5000.0 = $75.0
-
+Interest paid = .18/12.0 x $5000.0 = $75.0  
 Principal paid = $100.0 – $75.0 = $25
 
 The remaining balance at the end of the first month will be the principal paid this month 
