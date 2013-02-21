@@ -20,6 +20,7 @@ Machines
 
 The first computers were **fixed program computers**. Designed to do very specific things and that's it.
 What we now have today are **stored program computer**. It's basic idea is that instructions are the same as data. So now a pc is like an interpreter - executing any set of legal instructions you give it.
+
 ![A model pc](http://dl.dropbox.com/u/31042440/what-is-a-computer.jpg)
 
 There are 6 primitive instructions operating with 1 bit of information. A programing language provides a set of instructions and a flow of control and how do you combine them (the main distinguishing factor of languages). The computer will always do what you tell it to do.
