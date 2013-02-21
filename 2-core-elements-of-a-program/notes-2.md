@@ -1,0 +1,51 @@
+Core elements of a program
+==========================
+
+IDE
+___
+Integrated Development Environment (IDE and in pythons case it's IDLE). It includes a
+1. Text editor, that help typing programs
+2. Shell, an environment that interprets the text (added bonus highlighting)
+3. Debugger
+
+Objects
+_______
+
+Everything in Python is an object. Python code is an object. Each object has a **type**, that tells what kind of an object it is and what we can do with it.
+
+There *type()* function to tell what type is the object (int, float, bool, etc.).
+
+Two fundamental types
+1. scalar - indivisable (atoms of a programming language)
+2. non-scalar
+
+For every type there is a literal.
+
+Expression
+__________
+
+It is a sequence of operands (objects) and operators. In Python 2.x, *int* division provides a floor function and returns an int.
+
+The operator **+** is overloaded. Overloaded operators have a meaning, that depends upon the type of the operands.
+
+Type errors are a good thing. The language does type checking in order to reduce the probability of a programmers writing a program that will surprise its author.
+
+Program
+_______
+
+Program = script. A program is a sequence of commands.
+
+Variable. In Python it's a name for the object (a way to name the object). The assignment statement binds a name to an object, I.e. *x = 3*.
+
+*raw_input()* always interprets the input as a string, *input()* interprets it as a Python program.
+
+**Straight line programs**
+
+It is a sequence of commands you execute one after the other, you execute all of them exactly once. It's like a recipe without tests (aka no taste if it's salty enough).
+
+**Conditional statements**
+
+The statements:
+1. if
+2. elif
+3. else

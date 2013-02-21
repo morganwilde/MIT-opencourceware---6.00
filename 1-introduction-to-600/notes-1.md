@@ -1,3 +1,6 @@
+Introduction to 6.00
+====================
+
 Computational problem solving
 -----------------------------
 
