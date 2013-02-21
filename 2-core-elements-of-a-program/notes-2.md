@@ -43,9 +43,22 @@ Variable. In Python it's a name for the object (a way to name the object). The a
 
 It is a sequence of commands you execute one after the other, you execute all of them exactly once. It's like a recipe without tests (aka no taste if it's salty enough).
 
-**Conditional statements**
+**Conditional statements allow for branching programs**
 
 The statements:
+
 1. if
 2. elif
 3. else
+
+For comparisons we use **==** to test for equality. **%** is a mod operator. Indentation affects the meaning of a program.
+
+Programs are intended to be read, not just executed, because the only way to debug a program is to read it. Thus people using indentation in languages that don't require it.
+
+We can do a lot with branching programs. How long does it a straight line program to run? It relies on the number of commands issued, I.e. it has nothing to do with its input. A branching program takes *at most* the number of commands issued. Most programms should rely on the amount of data with regards to how long it will run.
+
+Branching programs are not proportional to the amount of input.
+
+**Looping construct - iteration**
+
+These three enable the programming language to be Turing complete. This allows executing statements more than once.
