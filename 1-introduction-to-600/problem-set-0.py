@@ -2,8 +2,8 @@
 
 #input
 dateOfBirth = raw_input('Enter your date of birth (dd/mm/yy): ')
-lastName = raw_input('Enter your last name: ')
+lastName    = raw_input('Enter your last name: ')
 
 # output
-print '%s' % (dateOfBirth)
+print '%s' % dateOfBirth
 print '%s' % lastName
