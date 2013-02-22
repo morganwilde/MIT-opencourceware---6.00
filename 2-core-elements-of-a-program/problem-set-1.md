@@ -9,7 +9,7 @@ This problem set will introduce you to using control flow in Python and formulat
 computational solution to a problem. You will design and write three simple Python programs, 
 test them, and hand them in. Be sure to read this problem set thoroughly.
 
-**Paying Off Credit Card Debt**
+**Paying Off Credit Card Debt**  
 Each month, a credit card statement will come with the option for you to pay a minimum amount 
 of your charge, usually 2% of the balance due. However, the credit card company earns money 
 by charging interest on the balance that you don’t pay. So even if you pay credit card payments 
@@ -216,7 +216,9 @@ payment rate.
 Take as raw_input() the following floating point numbers:
 
 1. the outstanding balance on the credit card 
-2. annual interest rate as a decimal Print out the fixed minimum monthly payment, number of months (at most 12 and possibly less than 12) it takes to pay off the debt, and the balance (likely to be a negative number).
+2. annual interest rate as a decimal
+
+Print out the fixed minimum monthly payment, number of months (at most 12 and possibly less than 12) it takes to pay off the debt, and the balance (likely to be a negative number).
 
 Assume that the interest is compounded monthly according to the balance at the start of the 
 month (before the payment for that month is made). The monthly payment must be a multiple of 
@@ -299,7 +301,8 @@ fast it is. Produce the output in the same format as you did in problem 2.
 
 > Enter the outstanding balance on your credit card: 999999  
 > Enter the annual credit card interest rate as a decimal: .18  
-> RESULT Monthly payment to pay off debt in 1 year: 91679.91  
+> RESULT  
+> Monthly payment to pay off debt in 1 year: 91679.91  
 > Number of months needed: 12  
 > Balance: -0.12  
  
