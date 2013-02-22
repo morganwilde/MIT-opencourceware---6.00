@@ -86,32 +86,40 @@ def guessCheck(balance, rate, payment):
     monthNow = 1
     for monthNow in range(1, 13):
         if balance > 0:
-            interestPaid        = balance * (rate / 12.0)
-            principalPaid       = payment - interestPaid
+            interestPaid = balance * (rate / 12.0)
+            principalPaid = payment - interestPaid
             balance -= principalPaid
 
             if balance <= 0:
                 break
     return dict({'balance': balance, 'months': monthNow})
 
-# loop to see c happening
-for i in range(1,100):
-    # take a guess
-    guess = (minMonthPayLower + minMonthPayUpper) / 2.0
+epsilon = 0.01
+guess   = (minMonthPayLower + minMonthPayUpper) / 2.0
+iterations = 0
+
+# run this while the balance remains above or equal to epsilon (0.01 this case)
+while abs(guessCheck(outstandingBalance, annualRate, guess)['balance']) >= epsilon and iterations < 10**6:
+    # safety net
+    iterations += 1
     
-    if guessCheck(outstandingBalance, annualRate, guess)['balance'] <= 0 and \
-       guessCheck(outstandingBalance, annualRate, guess)['balance'] >= -0.01:
-        # the guess is acceptable
-        print 'RESULT'
-        print 'Monthly payment to pay off debt in 1 year:', money(guess)
-        print 'Number of months needed:', guessCheck(outstandingBalance, annualRate, guess)['months']
-        print 'Balance:', money(guessCheck(outstandingBalance, annualRate, guess)['balance'])
+    # find the section that contains the answer
+    guessChecked = guessCheck(outstandingBalance, annualRate, guess)['balance']
+    if guessChecked < 0:
+        # if guessChecked is less than 0, that means outstanding balance has been paid by then, \
+        # thus this becomes the upper bound for the next guess
+        minMonthPayUpper = guess
+    elif guessChecked == 0:
+        # a good enough guess
         break
     else:
-        # take another guess
-        if guessCheck(outstandingBalance, annualRate, minMonthPayLower)['balance'] > 0 and \
-           guessCheck(outstandingBalance, annualRate, guess)['balance'] < 0:
-            minMonthPayUpper = guess
-        else:
-            minMonthPayLower = guess
+        # if it more than 0, the answer remains between this point and the upper bound
+        minMonthPayLower = guess
+    # make a new guess within that section
+    guess = (minMonthPayLower + minMonthPayUpper) / 2.0
 
+findings = guessCheck(outstandingBalance, annualRate, guess)
+print 'RESULT (in ' + str(iterations) + ' iterations)'
+print 'Monthly payment to pay off debt in 1 year:', money(guess)
+print 'Number of months needed:', findings['months']
+print 'Balance:', money(findings['balance'])
