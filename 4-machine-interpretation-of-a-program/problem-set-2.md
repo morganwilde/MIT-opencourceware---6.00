@@ -55,8 +55,8 @@ def evaluate_poly(poly, x):
 
 As stated before, we will need to find `f'(xn)`, where `f'(x)` is the derivative of `f(x)`. Recall that the derivative of a polynomial `f(x) = ax**b` is `f'(x) = abx**(b - 1)`, unless `b=0`, in which case `f'(x) = 0`. To compute the derivative of a polynomial function with many terms, you just do the same thing to every term individually. For example, if `f(x) = x**4 + 3x**3 + 17.5x**2 - 13.39`, then `f'(x) = 4x**3 + 9x**2 + 35x`.
  
-###Problem #2###
-________________
+###Problem #2
+_____________
 
 Implement the `compute_deriv` function. This function computes the derivative of a polynomial 
 function. It takes in a tuple of numbers poly and returns the derivative, which is also a 
@@ -91,8 +91,8 @@ For simplicity, we will only be using polynomial functions in this problem set.
 
 ###Implementing Newton’s Method###
 
-###Problem #3### 
-________________
+###Problem #3 
+_____________
 
 Implement the compute_root function. This function applies Newton’s method of successive 
 approximation as described above to find a root of the polynomial function. It takes in a tuple of numbers poly, an initial guess `x_0`, and an error bound epsilon. It returns a tuple. The first element is the root of the polynomial represented by poly; the second element is the number of iterations it took to get to that root.
@@ -124,8 +124,8 @@ def compute_root(poly, x_0, epsilon):
 
 For this problem, you will implement a variation of the classic wordgame Hangman. For those of you who are unfamiliar with the rules, you may read all about it [here](http://en.wikipedia.org/wiki/Hangman_(game)). In this problem, the second player will always be the computer, who will be picking a word at random.
 
-###Problem #4###
-________________
+###Problem #4
+_____________
 
 Implement a function, hangman(), that will start up and carry out an interactive Hangman game 
 between a player and the computer.
