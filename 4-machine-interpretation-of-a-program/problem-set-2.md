@@ -150,11 +150,12 @@ Here are the requirements for your game:
  
 The output of an example game may look like this: 
 
-> Welcome to the game, Hangman!  
-> I am thinking of a word that is 4 letters long.  
-> ------------  
-> You have 8 guesses left.  
-> Available letters: abcdefghijklmnopqrstuvwxyz  
+```Python
+>>> Welcome to the game, Hangman!  
+>>> I am thinking of a word that is 4 letters long.  
+>>> ------------  
+>>> You have 8 guesses left.  
+>>> Available letters: abcdefghijklmnopqrstuvwxyz  
 > Please guess a letter: a  
 > Good guess: _a _ _  
 > ------------  
@@ -184,6 +185,7 @@ The output of an example game may look like this:
 > Good guess: tact  
 > ------------  
 > Congratulations, you won!
+```
 
 Do not be intimidated by this problem! It’s actually easier than it looks. Make sure you break down the problem into logical subtasks. What functions will you need to have in order for this game to work? 
 
