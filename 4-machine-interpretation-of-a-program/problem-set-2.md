@@ -201,13 +201,13 @@ one.
 Handin Procedure
 ________________
 
-1. Save 
+* Save 
     - Save your solutions as they were provided: ps2_newton.py and ps2_hangman.py. 
     - Do not ignore this step or save your file(s) with a different name! 
-2. Time and collaboration info
+* Time and collaboration info
     - At the start of the file, in a comment, write down the number of hours (roughly) you spent on this problem set, and the names of whomever you collaborated with. For example: 
-    - ```Python
-# Problem Set 2 
+```Python
+# Problem Set 2
 # Name: Jane Lee 
 # Collaborators (Discussion): John Doe
 # Collaborators (Identical Solution): Jane Smith
@@ -216,5 +216,5 @@ ________________
 #.... your code goes here ...
 ```
 
-3. Submit 
+* Submit 
 Anything uploaded after the deadline time will be counted towards your late days, if you have any remaining. If you have no remaining late days, you will receive no credit for a late submission. 
