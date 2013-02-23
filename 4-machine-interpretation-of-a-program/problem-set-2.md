@@ -30,69 +30,46 @@ For this problem set, we will be representing polynomials as tuples. The index o
 Problem #1 
 __________
 
-Implement the evaluate_poly function. This function evaluates a polynomial function for the 
+Implement the `evaluate_poly` function. This function evaluates a polynomial function for the 
 given x value. It takes in a tuple of numbers poly and a number x. By number, we mean 
-that x and each element of poly is a float. evaluate_poly takes the polynomial represented 
+that x and each element of poly is a float. `evaluate_poly` takes the polynomial represented 
 by poly and computes its value at x. It returns this value as a float. 
-def evaluate_poly(poly, x): """ 
-Computes the polynomial function for a given value x. Returns that value.
-Example:
->>> poly = (0.0, 0.0, 5.0, 9.3, 7.0)  # f(x) = 7.0x
-4
- + 9.3x
-3
- + 5.0x
-2 
->>> x = -13 
->>> print evaluate_poly(poly, x)  # f(-13) = 7.0(-13)
-4
- + 9.3(-13)
-3
- + 5.0(-13)
-2 
-180339.9 
-poly: tuple of numbers, length > 0
-x: number 
-returns: float 
-""" 
-# TO DO ... 
-Derivatives 
-As stated before, we will need to find f'(xn), where f'(x) is the derivative of f(x). Recall that 
-the derivative of a polynomial f(x) = ax
-b
- is f'(x) = abx
-b - 1
-, unless b=0, in which case f'(x)
-= 0. To compute the derivative of a polynomial function with many terms, you just do the same 
-thing to every term individually. For example, if f(x) = x
-4
- + 3x
-3
- + 17.5x
-2
- - 13.39, then 
-f'(x) = 4x
-3
- + 9x
-2
- + 35x. 
+
+```Python
+def evaluate_poly(poly, x):
+	""" 
+	Computes the polynomial function for a given value x. Returns that value.
+	Example:
+	>>> poly = (0.0, 0.0, 5.0, 9.3, 7.0)  # f(x) = 7.0x**4 + 9.3x**3 + 5.0x**2 
+	>>> x = -13 
+	>>> print evaluate_poly(poly, x)  # f(-13) = 7.0(-13)**4 + 9.3(-13)**3 + 5.0(-13)**2 
+	180339.9
+	poly: tuple of numbers, length > 0
+	x: number 
+	returns: float 
+	""" 
+# TO DO ...
+```
+
+###Derivatives###
+
+As stated before, we will need to find `f'(xn)`, where `f'(x)` is the derivative of `f(x)`. Recall that the derivative of a polynomial `f(x) = ax**b` is `f'(x) = abx**(b - 1)`, unless `b=0`, in which case `f'(x) = 0`. To compute the derivative of a polynomial function with many terms, you just do the same thing to every term individually. For example, if `f(x) = x**4 + 3x**3 + 17.5x**2 - 13.39`, then `f'(x) = 4x**3 + 9x**2 + 35x`.
+ 
 Problem #2 
-Implement the compute_deriv function. This function computes the derivative of a polynomial 
+__________
+
+Implement the `compute_deriv` function. This function computes the derivative of a polynomial 
 function. It takes in a tuple of numbers poly and returns the derivative, which is also a 
 polynomial represented by a tuple. 
+
+```Python
 def compute_deriv(poly): 
 """
-
 Computes and returns the derivative of a polynomial function. If the
-
 derivative is 0, returns (0.0,).
-
 Example:
-
 >>> poly = (-13.39, 0.0, 17.5, 3.0, 1.0)  # x4 + 3.0x3 + 17.5x2 - 13.39 
-
 >>> print compute_deriv(poly)  # 4.0x3 + 9.0x2 + 35.0x 
-
 (0.0, 35.0, 9.0, 4.0)
 
 poly: tuple of numbers, length > 0
