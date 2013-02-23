@@ -48,7 +48,7 @@ def evaluate_poly(poly, x):
 	x: number 
 	returns: float 
 	""" 
-# TO DO ...
+	# TO DO ...
 ```
 
 ###Derivatives###
@@ -64,183 +64,157 @@ polynomial represented by a tuple.
 
 ```Python
 def compute_deriv(poly): 
-"""
-Computes and returns the derivative of a polynomial function. If the
-derivative is 0, returns (0.0,).
-Example:
->>> poly = (-13.39, 0.0, 17.5, 3.0, 1.0)  # x4 + 3.0x3 + 17.5x2 - 13.39 
->>> print compute_deriv(poly)  # 4.0x3 + 9.0x2 + 35.0x 
-(0.0, 35.0, 9.0, 4.0)
+	"""
+	Computes and returns the derivative of a polynomial function. If the
+	derivative is 0, returns (0.0,).
+	Example:
+	>>> poly = (-13.39, 0.0, 17.5, 3.0, 1.0)  # x4 + 3.0x3 + 17.5x2 - 13.39 
+	>>> print compute_deriv(poly)  # 4.0x3 + 9.0x2 + 35.0x 
+	(0.0, 35.0, 9.0, 4.0)
+	poly: tuple of numbers, length > 0
+	returns: tuple of numbers
+	"""
+	# TO DO ...
+```
 
-poly: tuple of numbers, length > 0
+###Newton’s Method###
 
-returns: tuple of numbers
+Newton’s method (also known as the Newton-Raphson method) is a successive approximation  method for finding the roots of a function. Recall that the roots of a function f(x) are the values of x such that f(x) = 0. You can read more about Newton’s method [here](http://en.wikipedia.org/wiki/Newton%27s_method).
 
-"""
+Here is how Newton’s method works:  
+1. We guess some `x0`.
+2. We check to see if it’s a root or close enough to a root by calculating `f(x0)`. If `f(x0)` is within some small value epsilon of 0, we say that’s good enough and call x0 a root. 
+3. If `f(x0)` is not good enough, we need to come up with a better guess, `x1`. `x1` is calculated by the equation: `x1 = x0 - f(x0)/f'(x0)`. 
+4. We check to see if x1 is close enough to a root. If it is not, we make a better guess x2 and check that. And so on and so on. For every xn that is not close enough to a root, we replace it with `xn+1 = xn - f(xn)/f'(xn)` and check if that’s close enough to a root. We repeat until we finally find a value close to a root.
 
-# TO DO ...
+For simplicity, we will only be using polynomial functions in this problem set.
 
-Newton’s Method 
-Newton’s method (also known as the Newton-Raphson method) is a successive approximation 
-method for finding the roots of a function. Recall that the roots of a function f(x) are the values 
-of x such that f(x) = 0. You can read more about Newton’s method here. 
-Here is how Newton’s method works: 1.	 We guess some x0. 
-2.	 We check to see if it’s a root or close enough to a root by calculating f(x0). If f(x0) is 
-within some small value epsilon of 0, we say that’s good enough and call x0 a root. 
-3.	 If f(x0) is not good enough, we need to come up with a better guess, x1. x1 is calculated 
-by the equation: x1 = x0 - f(x0)/f'(x0). 
-4.	 We check to see if x1 is close enough to a root. If it is not, we make a better guess x2 and 
-check that. And so on and so on. For every xn that is not close enough to a root, we 
-replace it with xn+1 = xn - f(xn)/f'(xn) and check if that’s close enough to a root. We 
-repeat until we finally find a value close to a root. 
-For simplicity, we will only be using polynomial functions in this problem set. 
-Implementing Newton’s Method 
+###Implementing Newton’s Method###
+
 Problem #3 
+__________
+
 Implement the compute_root function. This function applies Newton’s method of successive 
-approximation as described above to find a root of the polynomial function. It takes in a tuple of 
-numbers poly, an initial guess x_0, and an error bound epsilon. It returns a tuple. The first 
-element is the root of the polynomial represented by poly; the second element is the number of 
-iterations it took to get to that root. 
-The function starts at x_0. It then applies Newton’s method. It ends when it finds a root x such 
-that the absolute value of f(x) is less than epsilon, i.e. f(x) is close enough to zero. It returns the 
-root it found as a float. 
+approximation as described above to find a root of the polynomial function. It takes in a tuple of numbers poly, an initial guess `x_0`, and an error bound epsilon. It returns a tuple. The first element is the root of the polynomial represented by poly; the second element is the number of iterations it took to get to that root.
+
+The function starts at `x_0`. It then applies Newton’s method. It ends when it finds a root `x` such that the absolute value of `f(x)` is less than epsilon, i.e. `f(x)` is close enough to zero. It returns the root it found as a float. 
+
+```Python
 def compute_root(poly, x_0, epsilon): 
-"""
+	"""
+	Uses Newton's method to find and return a root of a polynomial function.
+	Returns a tuple containing the root and the number of iterations required to get to the root.
+	Example:
+	>>> poly = (-13.39, 0.0, 17.5, 3.0, 1.0)  #x4 + 3.0x3 + 17.5x2 - 13.39 
+	>>> x_0 = 0.1 
+	>>> epsilon = .0001
+	>>> print compute_root(poly, x_0, epsilon)
+	(0.80679075379635201, 8)
+	poly: tuple of numbers, length > 1.
+	Represents a polynomial function containing at least one real root.
+	The derivative of this polynomial function at x_0 is not 0.
+	x_0: float 
+	epsilon: float > 0
+	returns: tuple (float, int)
+	"""
+	# TO DO ...
+```
 
-Uses Newton's method to find and return a root of a polynomial function.
+###A Wordgame: Hangman###
 
-Returns a tuple containing the root and the number of iterations required to
+For this problem, you will implement a variation of the classic wordgame Hangman. For those of you who are unfamiliar with the rules, you may read all about it [here](http://en.wikipedia.org/wiki/Hangman_(game)). In this problem, the second player will always be the computer, who will be picking a word at random.
 
-get to the root.
+Problem #4
+__________
 
-Example:
-
->>> poly = (-13.39, 0.0, 17.5, 3.0, 1.0)  #x4 + 3.0x3 + 17.5x2 - 13.39 
-
->>> x_0 = 0.1 
-
->>> epsilon = .0001
-
->>> print compute_root(poly, x_0, epsilon)
-
-(0.80679075379635201, 8)
-
-poly: tuple of numbers, length > 1.
-
-Represents a polynomial function containing at least one real root.
-
-The derivative of this polynomial function at x_0 is not 0.
-
-x_0: float 
-
-epsilon: float > 0
-
-returns: tuple (float, int)
-
-"""
-
-# TO DO ...
-
-A Wordgame: Hangman -------------
-For this problem, you will implement a variation of the classic wordgame Hangman. For those of 
-you who are unfamiliar with the rules, you may read all about it here. In this problem, the second 
-player will always be the computer, who will be picking a word at random. 
-Problem #4 
 Implement a function, hangman(), that will start up and carry out an interactive Hangman game 
-between a player and the computer. 
-For this problem, you will need the code files ps2_hangman.py and words.txt, which were 
-included in the zip file from the top of this homework. Make sure your file runs properly before 
-editing. You should get the following output when running the unmodified version 
-of ps2_hangman.py. 
-Loading word list from file...
-55900 words loaded. 
-You will want to do all of your coding for this problem within this file as well because you will 
-be writing a program that depends on each function you write. 
-Requirements 
-Here are the requirements for your game: 
-1.	 The computer must select a word at random from the list of available words that was 
-provided in words.txt. The functions for loading the word list and selecting a random 
-word have already been provided for you in ps2_hangman.py. 
-2.	 The game must be interactive: it should let a player know how many letters the word the 
-computer has picked contains and ask the user to supply guesses. The user should receive 
-feedback immediately after each guess. You should also display to the user the partially 
-guessed word so far, as well as either the letters that the player has already guessed or 
-letters that the player has yet to guess. 
-3.	 A player is allowed some number of guesses. Once you understand how the game works, 
-pick a number that seems reasonable to you. Make sure to remind the player of how 
-many guesses s/he has left after each turn. 
-4.	 A player loses a guess only when s/he guesses incorrectly. 
-5.	 The game should end when the player constructs the full word or runs out of guesses. If 
-the player runs out of guesses (s/he “loses”), reveal the word to the player when the game 
-ends. 
+between a player and the computer.
+
+For this problem, you will need the code files `ps2_hangman.py` and `words.txt`, which were 
+included in the zip file from the top of this homework. Make sure your file runs properly before editing. You should get the following output when running the unmodified version of `ps2_hangman.py`.
+
+> Loading word list from file...
+> 55900 words loaded.
+
+You will want to do all of your coding for this problem within this file as well because you will be writing a program that depends on each function you write.
+
+**Requirements**
+
+Here are the requirements for your game:
+
+1. The computer must select a word at random from the list of available words that was provided in words.txt. The functions for loading the word list and selecting a random word have already been provided for you in `ps2_hangman.py`. 
+2. The game must be interactive: it should let a player know how many letters the word the computer has picked contains and ask the user to supply guesses. The user should receive feedback immediately after each guess. You should also display to the user the partially guessed word so far, as well as either the letters that the player has already guessed or letters that the player has yet to guess. 
+3. A player is allowed some number of guesses. Once you understand how the game works, pick a number that seems reasonable to you. Make sure to remind the player of how many guesses s/he has left after each turn. 
+4. A player loses a guess only when s/he guesses incorrectly. 
+5. The game should end when the player constructs the full word or runs out of guesses. If the player runs out of guesses (s/he “loses”), reveal the word to the player when the game ends.
+ 
 The output of an example game may look like this: 
->>>
 
-Welcome to the game, Hangman!
+> Welcome to the game, Hangman!  
+> I am thinking of a word that is 4 letters long.  
+> ------------  
+> You have 8 guesses left.  
+> Available letters: abcdefghijklmnopqrstuvwxyz  
+> Please guess a letter: a  
+> Good guess: _a _ _  
+> ------------  
+> You have 8 guesses left.  
+> Available letters: bcdefghijklmnopqrstuvwxyz  
+> Please guess a letter: s  
+> Oops! That letter is not in my word: _a _ _  
+> ------------  
+> You have 7 guesses left.  
+> Available letters: bcdefghijklmnopqrtuvwxyz  
+> Please guess a letter: t  
+> Good guess: ta _t  
+> ------------  
+> You have 7 guesses left.  
+> Available letters: bcdefghijklmnopqruvwxyz  
+> Please guess a letter: r  
+> Oops! That letter is not in my word: ta _t  
+> ------------  
+> You have 6 guesses left.  
+> Available letters: bcdefghijklmnopquvwxyz  
+> Please guess a letter: m  
+> Oops! That letter is not in my word: ta _t  
+> ------------  
+> You have 5 guesses left.  
+> Available letters: bdefghijklmnopquvwxyz  
+> Please guess a letter: c  
+> Good guess: tact  
+> ------------  
+> Congratulations, you won!
 
-I am thinking of a word that is 4 letters long. 
+Do not be intimidated by this problem! It’s actually easier than it looks. Make sure you break down the problem into logical subtasks. What functions will you need to have in order for this game to work? 
 
-You have 8 guesses left.
+**Hints:**
 
-Available letters: abcdefghijklmnopqrstuvwxyz 
-------------
-------------
-------------
-------------
-------------
-------------
-Please guess a letter: a
-Good guess: _a _ _ 
-You have 8 guesses left.
-
-Available letters: bcdefghijklmnopqrstuvwxyz
-
-Please guess a letter: s
-
-Oops! That letter is not in my word: _a _ _ 
-
-You have 7 guesses left.
-Available letters: bcdefghijklmnopqrtuvwxyz
-Please guess a letter: t
-Good guess: ta _t 
-You have 7 guesses left.
-Available letters: bcdefghijklmnopqruvwxyz
-Please guess a letter: r
-Oops! That letter is not in my word: ta _t 
-You have 6 guesses left.
-Available letters: bcdefghijklmnopquvwxyz
-Please guess a letter: m
-Oops! That letter is not in my word: ta _t 
-You have 5 guesses left.
-Available letters: bdefghijklmnopquvwxyz
-Please guess a letter: c
-Good guess: tact 
-Congratulations, you won! 
-Do not be intimidated by this problem! It’s actually easier than it looks. Make sure you break 
-down the problem into logical subtasks. What functions will you need to have in order for this 
-game to work? 
-Hints: 
-x You should start by using the provided functions to load the words and pick a random 
+* You should start by using the provided functions to load the words and pick a random 
 one. 
-x Consider using string.lowercase. 
-x Consider writing helper functions. For instance, we found that creating functions to fill in 
-guessed letters (generating strings like “ta_t”) and to display unused letters made 
-partitioning the problem easier. 
-This completes the problem set! 
-Handin Procedure 
+* Consider using string.lowercase. 
+* Consider writing helper functions. For instance, we found that creating functions to fill in guessed letters (generating strings like “ta_t”) and to display unused letters made partitioning the problem easier.
+
+**This completes the problem set!**
+
+Handin Procedure
+________________
+
 1. Save 
-Save your solutions as they were provided: ps2_newton.py and ps2_hangman.py. 
-Do not ignore this step or save your file(s) with a different name! 
-2. Time and collaboration info At the start of the file, in a comment, write down the number of hours (roughly) you spent on this 
-problem set, and the names of whomever you collaborated with. For example: 
+    - Save your solutions as they were provided: ps2_newton.py and ps2_hangman.py. 
+    - Do not ignore this step or save your file(s) with a different name! 
+2. Time and collaboration info
+
+At the start of the file, in a comment, write down the number of hours (roughly) you spent on this problem set, and the names of whomever you collaborated with. For example: 
+
+```Python
 # Problem Set 2 
 # Name: Jane Lee 
 # Collaborators (Discussion): John Doe
 # Collaborators (Identical Solution): Jane Smith
 # Time: 1:30 
 # 
-.... your code goes here ... 
+#.... your code goes here ...
+```
+
 3. Submit 
-Anything uploaded after the deadline time will be counted towards your late days, if you have 
-any remaining. If you have no remaining late days, you will receive no credit for a late 
-submission. 
+Anything uploaded after the deadline time will be counted towards your late days, if you have any remaining. If you have no remaining late days, you will receive no credit for a late submission. 
