@@ -19,11 +19,11 @@ the computer.
 Getting Started
 _______________
 
-###Download and save###  
+###Download and save 
 
 1. Problem Set 2: A zip file of all the skeleton code you’ll be filling in. 
 
-###Polynomials###
+###Polynomials
 
 For this problem set, we will be representing polynomials as tuples. The index of a number in the tuple represents the power, and the value at that index represents the coefficient for that term. So for example, the polynomial `x**4 + 3x**3 + 17.5x**2 – 13.39` would be represented by the tuple `(-13.39, 0.0, 17.5, 3.0, 1.0)`. This is because the tuple represents `-13.39x**0 + 0.0x**1 + 17.5x**2 + 3.0x**3 + 1.0x**4`, which is the same as `x**4 + 3x**3 + 17.5x**2 – 13.39`.
 
@@ -51,7 +51,7 @@ def evaluate_poly(poly, x):
 	# TO DO ...
 ```
 
-###Derivatives###
+###Derivatives
 
 As stated before, we will need to find `f'(xn)`, where `f'(x)` is the derivative of `f(x)`. Recall that the derivative of a polynomial `f(x) = ax**b` is `f'(x) = abx**(b - 1)`, unless `b=0`, in which case `f'(x) = 0`. To compute the derivative of a polynomial function with many terms, you just do the same thing to every term individually. For example, if `f(x) = x**4 + 3x**3 + 17.5x**2 - 13.39`, then `f'(x) = 4x**3 + 9x**2 + 35x`.
  
@@ -77,7 +77,7 @@ def compute_deriv(poly):
 	# TO DO ...
 ```
 
-###Newton’s Method###
+###Newton’s Method
 
 Newton’s method (also known as the Newton-Raphson method) is a successive approximation  method for finding the roots of a function. Recall that the roots of a function f(x) are the values of x such that f(x) = 0. You can read more about Newton’s method [here](http://en.wikipedia.org/wiki/Newton%27s_method).
 
@@ -89,7 +89,7 @@ Here is how Newton’s method works:
 
 For simplicity, we will only be using polynomial functions in this problem set.
 
-###Implementing Newton’s Method###
+###Implementing Newton’s Method
 
 ###Problem #3 
 _____________
@@ -120,7 +120,7 @@ def compute_root(poly, x_0, epsilon):
 	# TO DO ...
 ```
 
-###A Wordgame: Hangman###
+###A Wordgame: Hangman
 
 For this problem, you will implement a variation of the classic wordgame Hangman. For those of you who are unfamiliar with the rules, you may read all about it [here](http://en.wikipedia.org/wiki/Hangman_(game)). In this problem, the second player will always be the computer, who will be picking a word at random.
 
