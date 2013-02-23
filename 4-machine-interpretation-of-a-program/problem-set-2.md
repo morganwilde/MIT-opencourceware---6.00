@@ -25,7 +25,7 @@ _______________
 
 ###Polynomials###
 
-For this problem set, we will be representing polynomials as tuples. The index of a number in the tuple represents the power, and the value at that index represents the coefficient for that term. So for example, the polynomial `x\**\4 + 3x\**\3 + 17.5x\**\2 – 13.39` would be represented by the tuple `(-13.39, 0.0, 17.5, 3.0, 1.0)`. This is because the tuple represents -13.39x\**\0 + 0.0x\**\1 + 17.5x\**\2 + 3.0x\**\3 + 1.0x\**\4, which is the same as `x\**\4 + 3x\**\3 + 17.5x\**\2 – 13.39`.
+For this problem set, we will be representing polynomials as tuples. The index of a number in the tuple represents the power, and the value at that index represents the coefficient for that term. So for example, the polynomial `x**4 + 3x**3 + 17.5x**2 – 13.39` would be represented by the tuple `(-13.39, 0.0, 17.5, 3.0, 1.0)`. This is because the tuple represents `-13.39x**0 + 0.0x**1 + 17.5x**2 + 3.0x**3 + 1.0x**4`, which is the same as `x**4 + 3x**3 + 17.5x**2 – 13.39`.
 
 Problem #1 
 __________
