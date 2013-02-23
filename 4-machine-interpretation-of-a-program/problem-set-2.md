@@ -27,8 +27,8 @@ _______________
 
 For this problem set, we will be representing polynomials as tuples. The index of a number in the tuple represents the power, and the value at that index represents the coefficient for that term. So for example, the polynomial `x**4 + 3x**3 + 17.5x**2 – 13.39` would be represented by the tuple `(-13.39, 0.0, 17.5, 3.0, 1.0)`. This is because the tuple represents `-13.39x**0 + 0.0x**1 + 17.5x**2 + 3.0x**3 + 1.0x**4`, which is the same as `x**4 + 3x**3 + 17.5x**2 – 13.39`.
 
-Problem #1 
-__________
+###Problem #1### 
+________________
 
 Implement the `evaluate_poly` function. This function evaluates a polynomial function for the 
 given x value. It takes in a tuple of numbers poly and a number x. By number, we mean 
@@ -55,8 +55,8 @@ def evaluate_poly(poly, x):
 
 As stated before, we will need to find `f'(xn)`, where `f'(x)` is the derivative of `f(x)`. Recall that the derivative of a polynomial `f(x) = ax**b` is `f'(x) = abx**(b - 1)`, unless `b=0`, in which case `f'(x) = 0`. To compute the derivative of a polynomial function with many terms, you just do the same thing to every term individually. For example, if `f(x) = x**4 + 3x**3 + 17.5x**2 - 13.39`, then `f'(x) = 4x**3 + 9x**2 + 35x`.
  
-Problem #2 
-__________
+###Problem #2###
+________________
 
 Implement the `compute_deriv` function. This function computes the derivative of a polynomial 
 function. It takes in a tuple of numbers poly and returns the derivative, which is also a 
@@ -91,8 +91,8 @@ For simplicity, we will only be using polynomial functions in this problem set.
 
 ###Implementing Newton’s Method###
 
-Problem #3 
-__________
+###Problem #3### 
+________________
 
 Implement the compute_root function. This function applies Newton’s method of successive 
 approximation as described above to find a root of the polynomial function. It takes in a tuple of numbers poly, an initial guess `x_0`, and an error bound epsilon. It returns a tuple. The first element is the root of the polynomial represented by poly; the second element is the number of iterations it took to get to that root.
@@ -124,8 +124,8 @@ def compute_root(poly, x_0, epsilon):
 
 For this problem, you will implement a variation of the classic wordgame Hangman. For those of you who are unfamiliar with the rules, you may read all about it [here](http://en.wikipedia.org/wiki/Hangman_(game)). In this problem, the second player will always be the computer, who will be picking a word at random.
 
-Problem #4
-__________
+###Problem #4###
+________________
 
 Implement a function, hangman(), that will start up and carry out an interactive Hangman game 
 between a player and the computer.
@@ -133,7 +133,7 @@ between a player and the computer.
 For this problem, you will need the code files `ps2_hangman.py` and `words.txt`, which were 
 included in the zip file from the top of this homework. Make sure your file runs properly before editing. You should get the following output when running the unmodified version of `ps2_hangman.py`.
 
-> Loading word list from file...
+> Loading word list from file...  
 > 55900 words loaded.
 
 You will want to do all of your coding for this problem within this file as well because you will be writing a program that depends on each function you write.
