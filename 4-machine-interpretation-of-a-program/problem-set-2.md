@@ -156,35 +156,35 @@ The output of an example game may look like this:
 >>> ------------  
 >>> You have 8 guesses left.  
 >>> Available letters: abcdefghijklmnopqrstuvwxyz  
-> Please guess a letter: a  
-> Good guess: _a _ _  
-> ------------  
-> You have 8 guesses left.  
-> Available letters: bcdefghijklmnopqrstuvwxyz  
-> Please guess a letter: s  
-> Oops! That letter is not in my word: _a _ _  
-> ------------  
-> You have 7 guesses left.  
-> Available letters: bcdefghijklmnopqrtuvwxyz  
-> Please guess a letter: t  
-> Good guess: ta _t  
-> ------------  
-> You have 7 guesses left.  
-> Available letters: bcdefghijklmnopqruvwxyz  
-> Please guess a letter: r  
-> Oops! That letter is not in my word: ta _t  
-> ------------  
-> You have 6 guesses left.  
-> Available letters: bcdefghijklmnopquvwxyz  
-> Please guess a letter: m  
-> Oops! That letter is not in my word: ta _t  
-> ------------  
-> You have 5 guesses left.  
-> Available letters: bdefghijklmnopquvwxyz  
-> Please guess a letter: c  
-> Good guess: tact  
-> ------------  
-> Congratulations, you won!
+>>> Please guess a letter: a  
+>>> Good guess: _a _ _  
+>>> ------------  
+>>> You have 8 guesses left.  
+>>> Available letters: bcdefghijklmnopqrstuvwxyz  
+>>> Please guess a letter: s  
+>>> Oops! That letter is not in my word: _a _ _  
+>>> ------------  
+>>> You have 7 guesses left.  
+>>> Available letters: bcdefghijklmnopqrtuvwxyz  
+>>> Please guess a letter: t  
+>>> Good guess: ta _t  
+>>> ------------  
+>>> You have 7 guesses left.  
+>>> Available letters: bcdefghijklmnopqruvwxyz  
+>>> Please guess a letter: r  
+>>> Oops! That letter is not in my word: ta _t  
+>>> ------------  
+>>> You have 6 guesses left.  
+>>> Available letters: bcdefghijklmnopquvwxyz  
+>>> Please guess a letter: m  
+>>> Oops! That letter is not in my word: ta _t  
+>>> ------------  
+>>> You have 5 guesses left.  
+>>> Available letters: bdefghijklmnopquvwxyz  
+>>> Please guess a letter: c  
+>>> Good guess: tact  
+>>> ------------  
+>>> Congratulations, you won!
 ```
 
 Do not be intimidated by this problem! It’s actually easier than it looks. Make sure you break down the problem into logical subtasks. What functions will you need to have in order for this game to work? 
@@ -205,8 +205,7 @@ ________________
     - Save your solutions as they were provided: ps2_newton.py and ps2_hangman.py. 
     - Do not ignore this step or save your file(s) with a different name! 
 2. Time and collaboration info
-
-At the start of the file, in a comment, write down the number of hours (roughly) you spent on this problem set, and the names of whomever you collaborated with. For example: 
+    - At the start of the file, in a comment, write down the number of hours (roughly) you spent on this problem set, and the names of whomever you collaborated with. For example: 
 
 ```Python
 # Problem Set 2 
