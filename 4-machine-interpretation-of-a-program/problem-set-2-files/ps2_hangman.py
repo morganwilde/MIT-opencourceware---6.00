@@ -46,3 +46,64 @@ def choose_word(wordlist):
 wordlist = load_words()
 
 # your code begins here!
+
+def wordPick():
+    """ a function that picks a word and stores its relevant info in a dict() """
+    word = choose_word(wordlist)
+    wordLength = len(word)
+    return dict({
+        'word': word,
+        'length': wordLength})
+def displayLetters(word, guessedLetters):
+    display = ''
+    for letter in word['word']:
+        if guessedLetters.count(letter) > 0:
+            display += letter + ' '
+        else:
+            display += '_ '
+    return display
+
+# setup
+word = wordPick()
+print word
+availableLetters = 'abcdefghijklmnopqrstuvwxyz'
+takenLetters = ''
+guessesLeft = word['length']-1
+guessesTook = 0
+gameWon = False
+
+print 'Welcome to the game, Hangman!'
+print 'I am thinking of a word that is ' + str(word['length']) + ' letters long'
+print '------------'
+
+while guessesLeft > 0 and gameWon == False:
+    print 'You have ' + str(guessesLeft) + ' guesses left.'
+    print 'Available letters: ' + availableLetters
+    newGuess = raw_input('Please guess a letter: ').lower()
+    newGuess = newGuess[0]
+    takenLetters += newGuess
+    # evaluate the guess
+    if word['word'].find(newGuess) == -1:
+        # bad guess
+        message = 'Oops! That letter is not in my word: '
+        guessesLeft -= 1
+    else:
+        # good guess
+        message = 'Good guess: '
+    print message + displayLetters(word, takenLetters)
+    print '------------'
+    # keep track
+    availableLetters = availableLetters.replace(newGuess, '')
+    guessesTook += 1
+    # see if the word is complete
+    if displayLetters(word, takenLetters).replace(' ', '') == word['word']:
+        gameWon = True
+
+# the game has finished, find out if won or lost
+if gameWon == True:
+    print 'Congratulations, you won!'
+    print 'You guessed the word "' + word['word'] + '" in ' + str(guessesTook) + ' guesses'
+else:
+    print "I'm sorry, you ran out of guesses."
+    print "The answer was : " + word['word']
+    print "You guessed    : " + displayLetters(word, takenLetters).replace(' ', '')
