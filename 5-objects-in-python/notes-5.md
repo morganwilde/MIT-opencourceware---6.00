@@ -1,7 +1,7 @@
 Objects in Python
 =================
 
-Data structures
+### Data structures
 _______________
 
 As per example:
