@@ -27,7 +27,8 @@ def evaluate_poly(poly, x):
         print '"poly" type =',  type(poly), ', needed "tuple"'
         print '"x" type =',     type(x),    ', needed "int" or "float"'
         assert False
-    # storage devices
+        
+    # evaluate the polynomial
     index = 0
     polyValue = 0
     for multiplier in poly:
@@ -62,6 +63,7 @@ def compute_deriv(poly):
     else:
         print '"poly" length is <= 0, needed >0'
         assert False
+        
     # derive a new tuple
     index = 0
     polyDerived = ()
@@ -97,5 +99,31 @@ def compute_root(poly, x_0, epsilon):
     epsilon: float > 0
     returns: tuple (float, int)
     """
-    # TO DO ... 
+    # input verification
+    if len(poly) > 0 and \
+       epsilon > 0 and \
+       (type(epsilon) == int or type(epsilon) == float) and \
+       type(x_0) == float:
+        assert True
+    else:
+        print '"poly" length = ' + str(len(poly)) + ', needed >0'
+        print '"epsilon" = ' + str(epsilon) + ', needed >0' 
+        print '"epsilon" is ' + str(type(epsilon)) + ', needed "int" or "float"'
+        print '"x_0" is ' + str(type(x_0)) + ', needed "float"'
+        assert False
 
+    # compute the root
+    guess = x_0
+    noOfGuesses = 1
+    while abs(evaluate_poly(poly, guess)) > epsilon:
+        #print guess
+        noOfGuesses += 1
+        guess = guess - evaluate_poly(poly, guess) / evaluate_poly(compute_deriv(poly), guess)
+
+    return (guess, noOfGuesses)
+
+#### Problem #3 test
+##poly = (-13.39, 0.0, 17.5, 3.0, 1.0)
+##x_0 = 0.1
+##epsilon = .0001
+##print compute_root(poly, x_0, epsilon)

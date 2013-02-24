@@ -84,9 +84,9 @@ Newton’s method (also known as the Newton-Raphson method) is a successive appr
 Here is how Newton’s method works:
 
 1. We guess some `x0`.
-2. We check to see if it’s a root or close enough to a root by calculating `f(x0)`. If `f(x0)` is within some small value epsilon of 0, we say that’s good enough and call x0 a root. 
+2. We check to see if it’s a root or close enough to a root by calculating `f(x0)`. If `f(x0)` is within some small value epsilon of 0, we say that’s good enough and call `x0` a root. 
 3. If `f(x0)` is not good enough, we need to come up with a better guess, `x1`. `x1` is calculated by the equation: `x1 = x0 - f(x0)/f'(x0)`. 
-4. We check to see if x1 is close enough to a root. If it is not, we make a better guess x2 and check that. And so on and so on. For every xn that is not close enough to a root, we replace it with `xn+1 = xn - f(xn)/f'(xn)` and check if that’s close enough to a root. We repeat until we finally find a value close to a root.
+4. We check to see if x1 is close enough to a root. If it is not, we make a better guess `x2` and check that. And so on and so on. For every `xn` that is not close enough to a root, we replace it with `xn+1 = xn - f(xn)/f'(xn)` and check if that’s close enough to a root. We repeat until we finally find a value close to a root.
 
 For simplicity, we will only be using polynomial functions in this problem set.
 
@@ -123,7 +123,7 @@ def compute_root(poly, x_0, epsilon):
 
 ###A Wordgame: Hangman
 
-For this problem, you will implement a variation of the classic wordgame Hangman. For those of you who are unfamiliar with the rules, you may read all about it [here](http://en.wikipedia.org/wiki/Hangman_(game)). In this problem, the second player will always be the computer, who will be picking a word at random.
+For this problem, you will implement a variation of the classic wordgame Hangman. For those of you who are unfamiliar with the rules, you may read all about it [here](http://en.wikipedia.org/wiki/Hangman_(game). In this problem, the second player will always be the computer, who will be picking a word at random.
 
 ###Problem #4
 _____________
