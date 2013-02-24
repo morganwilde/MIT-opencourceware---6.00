@@ -1,7 +1,10 @@
+#
 # 6.00 Problem Set 2
 #
 # Successive Approximation
 #
+
+## Problem #1
 
 def evaluate_poly(poly, x):
     """
@@ -17,8 +20,28 @@ def evaluate_poly(poly, x):
     x: number
     returns: float
     """
-    # TO DO ... 
+    # input verification
+    if type(poly) == tuple and (type(x) == int or type(x) == float):
+        assert True
+    else:
+        print '"poly" type =',  type(poly), ', needed "tuple"'
+        print '"x" type =',     type(x),    ', needed "int" or "float"'
+        assert False
+    # storage devices
+    index = 0
+    polyValue = 0
+    for multiplier in poly:
+        polyValue += multiplier * (x**index) # add it up
+        index += 1 # on to the next one
 
+    return polyValue
+
+#### Problem #1 test
+##poly = (0.0, 0.0, 5.0, 9.3, 7.0)
+##x = -13
+##print evaluate_poly(poly, x)
+
+## Problem #2
 
 def compute_deriv(poly):
     """
@@ -33,7 +56,26 @@ def compute_deriv(poly):
     poly: tuple of numbers, length > 0
     returns: tuple of numbers
     """
-    # TO DO ... 
+    # input verification
+    if len(poly) > 0:
+        assert True
+    else:
+        print '"poly" length is <= 0, needed >0'
+        assert False
+    # derive a new tuple
+    index = 0
+    polyDerived = ()
+    for multiplier in poly:
+        if index != 0:
+            # only add a new member if the power is != 0
+            polyDerived += (multiplier*index,)
+        index += 1 # on to the next power
+
+    return polyDerived
+
+#### Problem #2 test
+##poly = (-13.39, 0.0, 17.5, 3.0, 1.0)
+##print compute_deriv(poly)
 
 def compute_root(poly, x_0, epsilon):
     """

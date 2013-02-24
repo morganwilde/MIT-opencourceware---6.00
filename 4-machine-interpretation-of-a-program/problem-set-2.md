@@ -81,7 +81,8 @@ def compute_deriv(poly):
 
 Newton’s method (also known as the Newton-Raphson method) is a successive approximation  method for finding the roots of a function. Recall that the roots of a function f(x) are the values of x such that f(x) = 0. You can read more about Newton’s method [here](http://en.wikipedia.org/wiki/Newton%27s_method).
 
-Here is how Newton’s method works:  
+Here is how Newton’s method works:
+
 1. We guess some `x0`.
 2. We check to see if it’s a root or close enough to a root by calculating `f(x0)`. If `f(x0)` is within some small value epsilon of 0, we say that’s good enough and call x0 a root. 
 3. If `f(x0)` is not good enough, we need to come up with a better guess, `x1`. `x1` is calculated by the equation: `x1 = x0 - f(x0)/f'(x0)`. 
