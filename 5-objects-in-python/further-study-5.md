@@ -60,7 +60,7 @@ Looping through a list completely using `len()`:
 
 ```Python
 i = 0 
-while i &lt; len(horsemen): 
+while i :&lt; len(horsemen): 
   print horsemen[i] 
   i = i + 1
 ```
