@@ -134,4 +134,118 @@ we know that `a` and `b` will refer to a string with the letters `"banana"`. But
 
 There are two possible states:
 
-![two possibilities](http://dl.dropbox.com/u/31042440/indented-markdown-in-gedit.png)
+![two possibilities](http://dl.dropbox.com/u/31042440/name-object-assignment.png)
+
+1. In one case, `a` and `b` refer to two different things that have the same value.
+2. In the second case, they refer to the same thing.
+
+These "things" are called **objects**. Every object has a unique **identifier**, which can be obtained with the `id()` function. By printing the identifier of `a` and `b`m we can tell whether they refer to the same object.
+
+`id()` returns the object's memory address.
+
+```Python
+print id(a)
+# 19368048
+print id(b)
+# 19368048
+print a is b
+# True
+```
+
+In fact, we get the same identifier twice, which means that Python only created one string, and both `a` and `b` refer to it.
+
+Lists behave differently, when creating to identical lists, we get two objects:
+
+```Python
+a = [1,2,3]
+b = [1,2,3]
+print id(a)
+# 21817824
+print id(b)
+# 21852960
+print a is b
+# False
+```
+
+The state diagram looks like this:
+
+![state diagram](http://dl.dropbox.com/u/31042440/list-name-object-assignment.png)
+
+`a` and `b` have the same value, but do not refer to the same object.
+
+#### Aliasing
+
+Since variables refer to objects, if we assign one variable to another, both variables refer to the same object:
+
+```Python
+a = [1,2,3]
+b = a
+print b is a
+# True
+```
+
+![aliasing](http://dl.dropbox.com/u/31042440/list-aliasing.png)
+
+The key with aliasing mutable objects is that changes made using one alias with effect all other aliases. Immutable objects don't have this property, since you cannot make any changes to them.
+
+#### Cloning lists
+
+```Python
+a = [1,2,3]
+b = a[:]
+print b is a
+# False
+```
+
+#### List parameters
+
+Passing a list as an argument actually passes a reference to the list, not a copy. When it returns a list, it also returns a reference, not a copy.
+
+```Python
+def head(list): 
+    list[0] = 50
+numbers = [1,2,3]
+head(numbers)
+print numbers
+# [50, 2, 3]
+```
+
+What happens in the example above can be displayed like so:
+
+![list parameters](http://dl.dropbox.com/u/31042440/list-as-parameters.png)
+
+#### Nested lists
+
+```Python
+list = ["hello", 2.0, 5, [10, 20]]
+print list[3][1]
+# 20
+```
+
+They are also often used to represent matrices, like so:
+
+```Python
+matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+print matrix[1]
+# [4,5,6]
+print matrix[1][1]
+# 5
+```
+
+#### Strings and lists
+
+The `string` module has, among other things, `split()` and `join()` methods.
+
+```Python
+import string
+song = "The rain in Spain..."
+print string.split(song) # by default any number of " " is used as the delimeter
+# ['The', 'rain', 'in', 'Spain...']
+print string.split(song, 'ai') # custom delimeter 'ai'
+# ['The r', 'n in Sp', 'n...']
+list = ['The', 'rain', 'in', 'Spain...']
+print string.join(list) # default " " as the delimeter
+# 'The rain in Spain...'
+print string.join(list, '_') # custom "_" delimeter
+# 'The_rain_in_Spain...'
+```
