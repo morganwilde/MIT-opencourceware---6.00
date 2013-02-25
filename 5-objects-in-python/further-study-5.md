@@ -33,7 +33,7 @@ print number[5-3] # any integer expression can be used as an index
 # 3
 ```
 
-Reading/writing a non-existing element produces aruntime error `IndexError: list assignment index out of range`
+Reading/writing a non-existing element produces a runtime error `IndexError: list assignment index out of range`
 
 Using negative values as indices (it counts backwards from the end of the list):
 
@@ -60,7 +60,7 @@ Looping through a list completely using `len()`:
 
 ```Python
 i = 0 
-while i <\ len(horsemen): 
+while i &lt; len(horsemen): 
   print horsemen[i] 
   i = i + 1
 ```
