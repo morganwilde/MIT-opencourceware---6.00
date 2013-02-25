@@ -58,9 +58,13 @@ The function `len([1,2,3])` returns `3`.
 
 Looping through a list completely using `len()`:
 
-```Python
-i = 0 
-while i :&lt; len(horsemen): 
-  print horsemen[i] 
-  i = i + 1
-```
+Regular text
+
+    i = 0 
+    while i < 10:
+        print i
+        i += 1
+  
+Purple text here 
+
+
