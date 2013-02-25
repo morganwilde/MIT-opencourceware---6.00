@@ -134,4 +134,4 @@ we know that `a` and `b` will refer to a string with the letters `"banana"`. But
 
 There are two possible states:
 
-![](http://dl.dropbox.com/u/31042440/name-object-assignment)
+![two possibilities](http://dl.dropbox.com/u/31042440/name-object-assignment)
