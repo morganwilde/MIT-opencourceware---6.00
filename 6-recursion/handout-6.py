@@ -66,5 +66,3 @@ def fib(x):
 def testFib(n):
     for i in range(n+1):
         print ('fib of', i, '=', fib(i))
-Window size: x 
-Viewport size: x
