@@ -31,7 +31,7 @@ The rules of the game are as follows:
 * The score for a word is the sum of the points for letters in the word, multiplied by the length of the word, plus 50 points if all n letters are used on the first go. 
 * Letters are scored as in Scrabble; A is worth 1, B is worth 3, C is worth 3, D is worth 2, E is worth 1, and so on. We have defined the dictionary `SCRABBLE_LETTER_VALUES` that maps each lowercase letter to its Scrabble letter value. 
 * For example, ‘weed’ would be worth 32 points ((4+1+1+2)*4=32), as long as the hand actually has 1 ‘w’, 2 ‘e’s, and 1 ‘d’.
-* As another example, if n=7 and you get ‘waybill’ on the first go, it would be worth 155 points ((4+1+4+3+1+1+1)*7=105, +50) for the bonus of using all seven letters). 
+* As another example, if `n=7` and you get ‘waybill’ on the first go, it would be worth 155 points ((4+1+4+3+1+1+1)*7=105, +50) for the bonus of using all seven letters). 
 
 #####Workload 
 
@@ -42,7 +42,7 @@ you by giving out problems that take longer than we anticipated.
 _______________
 
 1. Download and save the Problem Set 3 code files.
-2. Run ps3a.py, without making any modifications to it, in order to ensure that everything is set up correctly. The code we have given you loads a list of valid words from a file and then calls the play_game function. You will implement the functions it needs in order to work.If everything is okay, after a small delay, you should see the following printed out:
+2. Run `ps3a.py`, without making any modifications to it, in order to ensure that everything is set up correctly. The code we have given you loads a list of valid words from a file and then calls the `play_game` function. You will implement the functions it needs in order to work. If everything is okay, after a small delay, you should see the following printed out:
 
 ```Python
 Loading word list from file...
