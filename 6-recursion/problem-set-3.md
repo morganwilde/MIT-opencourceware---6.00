@@ -49,7 +49,7 @@ Loading word list from file...
     83667 words loaded.
 ```
     
-3. If you see an IOError instead (e.g., No such file or directory), you should change the value of the WORDLIST_FILENAME constant (defined near the top of the file) to the complete pathname for the file words.txt (This will vary based on where you saved the file). 
+3. If you see an IOError instead (e.g., No such file or directory), you should change the value of the `WORDLIST_FILENAME` constant (defined near the top of the file) to the complete pathname for the file words.txt (This will vary based on where you saved the file). 
 4. The file ps3a.py has a number of already implemented functions you can use while writing up your solution. You can ignore the code between the following comments, though you should read and understand everything else:
 
 ```Python

@@ -61,6 +61,8 @@ def get_frequency_dict(sequence):
 #
 # Problem #1: Scoring a word
 #
+
+
 def get_word_score(word, n):
     """
     Returns the score for a word. Assumes the word is a
@@ -76,7 +78,23 @@ def get_word_score(word, n):
     word: string (lowercase letters)
     returns: int >= 0
     """
-    # TO DO...
+    #check input
+    if type(word) != str or type(n) != int:
+        print '"word" type is ' + str(type(word)) + ', needed "str"'
+        print '"n" type is ' + str(type(n)) + ', needed "int"'
+        assert False
+        
+    # count up individual letter scores
+    score_letters = 0
+    for letter in word:
+        score_letters += SCRABBLE_LETTER_VALUES[letter]
+    # find whole word score
+    score = score_letters * len(word)
+    # see if there is a bonus
+    if len(word) == n:
+        score += 50
+
+    return score
     
 #
 # Make sure you understand how this function works and what it does!
@@ -145,7 +163,23 @@ def update_hand(hand, word):
     hand: dictionary (string -> int)    
     returns: dictionary (string -> int)
     """
-    # TO DO ...
+    # remove used up letters
+    handCopy = hand.copy()
+    for letter in word:
+        # find the letter in `hand`
+        handCopy[letter] -= 1
+        # if this was the last letter of this type in `hand`, remove its count
+        if handCopy[letter] == 0:
+            del handCopy[letter]
+
+    # fill in new ones
+    missingLetters = HAND_SIZE - sum(handCopy.values())
+    #print handCopy
+    #print missingLetters
+    #print deal_hand(missingLetters)
+    #handCopy.update(deal_hand(missingLetters))
+    
+    return handCopy
 
 #
 # Problem #3: Test word validity
@@ -160,7 +194,16 @@ def is_valid_word(word, hand, word_list):
     hand: dictionary (string -> int)
     word_list: list of lowercase strings
     """
-    # TO DO...
+    if word in word_list:
+        handCopy = hand.copy()
+        for letter in word:
+            if handCopy.get(letter, 0) > 0:
+                handCopy[letter] -= 1
+            else:
+                return False
+        return True
+    else:
+        return False
 
 def calculate_handlen(hand):
     handlen = 0
@@ -171,8 +214,8 @@ def calculate_handlen(hand):
 #
 # Problem #4: Playing a hand
 #
-def play_hand(hand, word_list):
 
+def play_hand(hand, word_list):
     """
     Allows the user to play the given hand, as follows:
 
@@ -199,7 +242,40 @@ def play_hand(hand, word_list):
       word_list: list of lowercase strings
       
     """
-    # TO DO ...
+    totalPoints = 0
+    word = ''
+    handCopy = hand.copy()
+
+    while word != '.' and len(handCopy) > 0:
+        # display current hand
+        print 'Current Hand:',
+        display_hand(handCopy)
+
+        # word input
+        word = str(raw_input('Enter word, or a "." to indicate that you are finished: ')).lower()
+
+        if word != '.':
+            # produce word result
+            if is_valid_word(word, handCopy, word_list):
+                totalPoints += get_word_score(word, HAND_SIZE)
+                print '"'+word+'" earned '+ str(get_word_score(word, HAND_SIZE)) + ' points. '\
+                      + 'Total: ' + str(totalPoints) + ' points'
+                # update hand
+                handCopy = update_hand(handCopy, word)
+                lettersLeft = sum(handCopy.values())
+                if lettersLeft < 1:
+                    # game ending because no letters left
+                    print 'Total score: ' + str(totalPoints) + ' points.'
+            else:
+                print 'Invalid word, please try again.'
+        else:
+            # game ending on user request
+            print 'Total score: ' + str(totalPoints) + ' points.'
+            
+        # print empty line
+        print
+
+    return totalPoints
 
 #
 # Problem #5: Playing a game
@@ -220,7 +296,31 @@ def play_game(word_list):
 
     * If the user inputs anything else, ask them again.
     """
-    # TO DO...
+    request = ''
+    gamePoints = 0
+
+    while request != 'e':
+        # ask user
+        print
+        print 'Game points: ' + str(gamePoints)
+        request = str(raw_input('Please enter "n" - new hand, "r" - restart last hand or "e" - exit game: ')).lower()
+        print
+
+        if request == 'n':
+            # play new hand
+            hand = deal_hand(HAND_SIZE)
+            gamePoints += play_hand(hand, word_list)
+        elif request == 'r':
+            #restart current hand
+            try:
+                hand
+            except NameError:
+                print 'You haven\' played a hand yet, type "n" to play one'
+            else:
+                gamePoints += play_hand(hand, word_list)
+        else:
+            request = str(raw_input('Please enter "n" - new hand, "r" - restart last hand or "e" - exit game: ')).lower()
+    
 
 #
 # Build data structures used for entire session and play game

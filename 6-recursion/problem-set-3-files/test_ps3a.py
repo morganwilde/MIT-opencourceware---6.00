@@ -1,4 +1,17 @@
+### problem set importer (from ps3a fails, so this does the trict)
+##def moduleExists(moduleName):
+##    try:
+##        __import__(moduleName)
+##    except ImportError:
+##        return False
+##    else:
+##        return True
+### try importing the problem set
+##if moduleExists('ps3a'):
+##    __import__('ps3a')
+
 from ps3a import *
+
 
 #
 # Test code
