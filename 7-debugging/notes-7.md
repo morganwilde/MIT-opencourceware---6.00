@@ -17,6 +17,15 @@ Floating point numbers cause problems because we think in `base 10` and the pc i
 
 Whole numbers - binary or decimal numbers don't have any difference, it's only float numbers that have issues.
 
-`0.125 = 1/8 = 1*10**-1 + 2*10**-2 + 5*10**-3` - a decimal point
+A decimal point - `0.125 = 1/8 = 1*10**-1 + 2*10**-2 + 5*10**-3`
 
+A binary point - `0.125 = 1/8 = 2**-3 = 1 * 10**-3 = (binary) 0.001`
 
+*I found this tutorial on the IEEE standardized floating point storage formats*  
+![IEEE floating point](http://kipirvine.com/asm/workbook/floating_tut.htm)
+
+Decimal - `0.1 = 1*10**-1` and there is no finite way to display this decimal in binary.
+
+```Python
+print(0.1)
+# 0.1
