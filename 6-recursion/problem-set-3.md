@@ -33,12 +33,12 @@ The rules of the game are as follows:
 * For example, ‘weed’ would be worth 32 points ((4+1+1+2)*4=32), as long as the hand actually has 1 ‘w’, 2 ‘e’s, and 1 ‘d’.
 * As another example, if n=7 and you get ‘waybill’ on the first go, it would be worth 155 points ((4+1+4+3+1+1+1)*7=105, +50) for the bonus of using all seven letters). 
 
-####Workload 
+#####Workload 
 
 Please let us know how long you spend on each problem. We want to be careful not to overload 
 you by giving out problems that take longer than we anticipated. 
 
-Getting Started
+###Getting Started
 _______________
 
 1. Download and save the Problem Set 3 code files.
