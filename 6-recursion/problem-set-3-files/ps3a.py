@@ -318,6 +318,8 @@ def play_game(word_list):
                 print 'You haven\' played a hand yet, type "n" to play one'
             else:
                 gamePoints += play_hand(hand, word_list)
+        elif request == 'e':
+            break
         else:
             request = str(raw_input('Please enter "n" - new hand, "r" - restart last hand or "e" - exit game: ')).lower()
     
