@@ -43,8 +43,12 @@ _______________
 
 1. Download and save the Problem Set 3 code files.
 2. Run ps3a.py, without making any modifications to it, in order to ensure that everything is set up correctly. The code we have given you loads a list of valid words from a file and then calls the play_game function. You will implement the functions it needs in order to work.If everything is okay, after a small delay, you should see the following printed out:
-    - `Loading word list from file...`
-    - `    83667 words loaded.`
+
+```Python
+Loading word list from file...
+    83667 words loaded.
+```
+    
 3. If you see an IOError instead (e.g., No such file or directory), you should change the value of the WORDLIST_FILENAME constant (defined near the top of the file) to the complete pathname for the file words.txt (This will vary based on where you saved the file). 
 4. The file ps3a.py has a number of already implemented functions you can use while writing up your solution. You can ignore the code between the following comments, though you should read and understand everything else:
 
@@ -98,7 +102,7 @@ def get_word_score(word, n):
     n: integer (HAND_SIZE; i.e., hand size required for additional points)
     returns: int >= 0 
     """ 
-# TO DO ...
+    # TO DO ...
 ```
 
 You may assume that the input `word` is always either a string of lowercase letters, or the empty string `""`. You will want to use the `SCRABBLE_LETTER_VALUES` dictionary defined at the top of `ps3a.py`. You should not change its value.
@@ -111,7 +115,7 @@ Also test your implementation of `get_word_score`, using some reasonable English
 
 ###Problem 2. Dealing with hands
 
-**Please read problem 2 entirely before you begin coding the solution to problem 2**
+*Please read problem 2 entirely before you begin coding the solution to problem 2*
 
 ####Representing hands
 
@@ -171,14 +175,14 @@ display_hand(hand)
 # l m
 ```
 
-(**NOTE**: alternatively, in the above example, after the call to `update_hand` the value of `hand` could be the dictionary `{'a':0, 'q':0, 'l':1, 'm':1, 'u':0, 'i':0}`. The exact value depends on your implementation; but the output of `display_hand()` should be the same in either case.)
+**NOTE** (Alternatively, in the above example, after the call to `update_hand` the value of `hand` could be the dictionary `{'a':0, 'q':0, 'l':1, 'm':1, 'u':0, 'i':0}`. The exact value depends on your implementation; but the output of `display_hand()` should be the same in either case.)
 
 Implement the update_hand function. Make sure this function has no side effects; i.e., it cannot mutate the hand passed in.
 
 ```Python
 def update_hand(hand, word):
-    """Assumes that 'hand' has all the letters in word.  In other words, assumes that however many times
-    a letter appears in 'word', 'hand' has at least as
+    """Assumes that 'hand' has all the letters in word.  In other words, assumes that
+    however many times a letter appears in 'word', 'hand' has at least as
     many instances of that letter in it. 
     Updates the hand: uses up the letters in the given word
     and returns the new hand, without those letters in it. 
@@ -250,33 +254,33 @@ def play_hand(hand, word_list):
 
 ####Case #1
 
-> Current Hand:  a c i h m m z 
-> Enter word, or a "." to indicate that you are finished: him
-> "him" earned 24 points. Total: 24 points 
-> 
-> Current Hand:  a c m z 
-> Enter word, or a "." to indicate that you are finished: cam
-> "cam" earned 21 points. Total: 45 points 
-> 
-> Current Hand:  z 
-> Enter word, or a "." to indicate that you are finished: .
-> Total score: 45 points. 
+> Current Hand:  a c i h m m z  
+> Enter word, or a "." to indicate that you are finished: him  
+> "him" earned 24 points. Total: 24 points  
+>  
+> Current Hand:  a c m z  
+> Enter word, or a "." to indicate that you are finished: cam  
+> "cam" earned 21 points. Total: 45 points  
+>  
+> Current Hand:  z  
+> Enter word, or a "." to indicate that you are finished: .  
+> Total score: 45 points.  
 
 ####Case #2
 
-> Current Hand:  a s t t w f o 
-> Enter word, or a "." to indicate that you are finished: tow
-> "tow" earned 18 points. Total: 18 points 
-> 
-> Current Hand:  a s t f 
-> Enter word, or a "." to indicate that you are finished: tasf
-> Invalid word, please try again. 
-> 
-> Current Hand:  a s t f 
-> Enter word, or a "." to indicate that you are finished: fast
-> "fast" earned 28 points.
-> Total: 46 points.
-> Total score: 46 points.
+> Current Hand:  a s t t w f o  
+> Enter word, or a "." to indicate that you are finished: tow  
+> "tow" earned 18 points. Total: 18 points  
+>  
+> Current Hand:  a s t f  
+> Enter word, or a "." to indicate that you are finished: tasf  
+> Invalid word, please try again.  
+>  
+> Current Hand:  a s t f  
+> Enter word, or a "." to indicate that you are finished: fast  
+> "fast" earned 28 points.  
+> Total: 46 points.  
+> Total score: 46 points.  
 
 ###Problem 5. Playing a game
 
@@ -303,7 +307,7 @@ def play_game(word_list):
 
 ###Part B
 
-**Part B is dependent on your functions from ps3a.py, so be sure to complete ps3a.py before working on ps3b.py**
+*Part B is dependent on your functions from ps3a.py, so be sure to complete ps3a.py before working on ps3b.py*
 
 You decide to teach your computer (SkyNet) to play the game you just built so that you can prove once and for all that computers are inferior to human intellect.  In Part B you will make a modification to the play_hand function from part A.
 
@@ -369,7 +373,7 @@ Now that your computer can choose a word, you need to give the computer the opti
 
 Write the code that re-implements the `play_game` function. You will modify the function to behave as described below in the function’s comments. 
 
-As before, you should use the `HAND_SIZE` constant to determine the number of cards in a hand. If you like, you can try out different values for HAND_SIZE with your program. 
+As before, you should use the `HAND_SIZE` constant to determine the number of cards in a hand. If you like, you can try out different values for `HAND_SIZE` with your program. 
 
 ```Python
 def play_game(word_list):
