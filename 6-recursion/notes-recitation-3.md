@@ -117,3 +117,20 @@ n! = n(n-1)!
 
 1. base case - `if n == 0: return 0`
 2. recursive case - `m*n = m + m(n-1)`
+
+#### Hanoi example
+
+If there is only one disc, move it to the target.
+
+If you have two discs, move the top one to buffer, the bottom one to target, the top on to target.
+
+```Python
+if n == 1:
+    # base case
+    move s to t
+else:
+    # inductive case
+    move "n-1" s to b
+    move "n" s to t
+    move "n-1" b to t
+```
