@@ -6,11 +6,11 @@
 ##print repr(x)
 ##print 10.0*x == numIters
 ##
-##def close(x, y, epsilon = 0.00001):
-##    return abs(x - y) < epsilon
-##
-##if close(10.0*x, numIters):
-##    print 'Good enough'
+def close(x, y, epsilon = 0.00001):
+    return abs(x - y) < epsilon
+
+if close(10.0*x, numIters):
+    print 'Good enough'
 
 def isPal(x):
     """requires x to be a list
@@ -28,10 +28,12 @@ def silly(n):
     Gets n inputs from user
     Prints 'Yes' if the inputs are a palindrome; 'No' otherwise"""
     assert type(n) == int and n > 0
+    result = []
     for i in range(n):
-        result= []
         elem = raw_input('Enter something: ')
+        
         result.append(elem)
+        print result
     if isPal(result):
         print 'Is a palindrome'
     else:
@@ -77,5 +79,3 @@ isPalTest()
 ##    else:
 ##        return False
 
-Window size: x 
-Viewport size: x
