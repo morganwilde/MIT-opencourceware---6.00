@@ -1,8 +1,8 @@
 Problem Set #4
 ==============
 
-**Handed out**: Lecture 7
-**Pseudocode**: Due Lecture 8
+**Handed out**: Lecture 7  
+**Pseudocode**: Due Lecture 8  
 **Due**: Lecture 10
 
 #### Pseudocode solutions
@@ -32,10 +32,10 @@ become ” “, “z” would become “a”, and ” ” would become “b”.
 
 ### Getting Started
 
-* ps4-psuedo.txt: For problems 2a and 4a. 
-* ps4.py: the skeleton you’ll fill in 
-* words.txt: a list of English words 
-* fable.txt: an encoded fable
+* `ps4-psuedo.txt`: For problems 2a and 4a. 
+* `ps4.py`: the skeleton you’ll fill in 
+* `words.txt`: a list of English words 
+* `fable.txt`: an encoded fable
 
 Run the code without making any modifications to it, in order to ensure that everything is set up correctly. The code that we have given you loads a list of words from a file. If everything is okay, after a small delay, you should see the following printed out:
 
@@ -65,7 +65,7 @@ Think of writing pseudocode like you would explain it to another person – it d
 
 Pseudocode is a compact and informal high-level description of a [computer programming](http://en.wikipedia.org/wiki/Computer_programming) [algorithm](http://en.wikipedia.org/wiki/Algorithm) that uses the structural conventions of a [programming language](http://en.wikipedia.org/wiki/Programming_language), but is intended for human reading rather than machine reading. Pseudocode typically omits details that are not essential for human understanding of the algorithm, such as [variable declarations](http://en.wikipedia.org/wiki/Variable_declaration), systemspecific code and [subroutines](http://en.wikipedia.org/wiki/Subroutines). The purpose of using pseudocode is that it is easier for humans to understand than conventional programming language code, and that it is a compact and environment-independent description of the key principles of an algorithm. No standard for pseudocode syntax exists, as a program in pseudocode is not an executable program. – [wikipedia](http://en.wikipedia.org/wiki/Pseudocode)
 
-In order to help you solve these problems correctly, we are requiring that you submit **pseudocode** for your solutions to Problems 2 and 4 by **Tuesday*. To do this, read problems 2 and 4, and think about **high level algorithms** to solve both problems. Write down the steps in your algorithms and save it in a plain text file named ps4.txt. Upload this file to your workspace. 
+In order to help you solve these problems correctly, we are requiring that you submit **pseudocode** for your solutions to Problems 2 and 4 by **Tuesday**. To do this, read problems 2 and 4, and think about **high level algorithms** to solve both problems. Write down the steps in your algorithms and save it in a plain text file named ps4.txt. Upload this file to your workspace. 
 
 **On Wednesday, we will post our own pseudocode**. You can use our pseudocode or your own (if it’s close enough), to write the Python code that actually solves problems 2 and 4.
 
@@ -106,7 +106,8 @@ def build_encoder(shift):
     Example:     >>> build_encoder(3) 
     {' ': 'c', 'A': 'D', 'C': 'F', 'B': 'E', 'E': 'H', 'D': 'G', 'G': 'J', 
     'F': 'I', 'I': 'L', 'H': 'K', 'K': 'N', 'J': 'M', 'M': 'P', 'L': 'O', 
-    'O': 'R', 'N': 'Q', 'Q': 'T', 'P': 'S', 'S': 'V', 'R': 'U', 'U': 'X',     'T': 'W', 'W': 'Z', 'V': 'Y', 'Y': 'A', 'X': ' ', 'Z': 'B', 'a': 'd', 
+    'O': 'R', 'N': 'Q', 'Q': 'T', 'P': 'S', 'S': 'V', 'R': 'U', 'U': 'X',
+    'T': 'W', 'W': 'Z', 'V': 'Y', 'Y': 'A', 'X': ' ', 'Z': 'B', 'a': 'd', 
     'c': 'f', 'b': 'e', 'e': 'h', 'd': 'g', 'g': 'j', 'f': 'i', 'i': 'l', 
     'h': 'k', 'k': 'n', 'j': 'm', 'm': 'p', 'l': 'o', 'o': 'r', 'n': 'q', 
     'q': 't', 'p': 's', 's': 'v', 'r': 'u', 'u': 'x', 't': 'w', 'w': 'z', 
@@ -126,7 +127,8 @@ def build_decoder(shift):
     like punctuation and numbers. 
     shift: 0 <= int < 27 
     returns: dict 
-    Example:     >>> build_decoder(3) 
+    Example:
+    >>> build_decoder(3) 
     {' ': 'x', 'A': 'Y', 'C': ' ', 'B': 'Z', 'E': 'B', 'D': 'A', 'G': 'D', 
     'F': 'C', 'I': 'F', 'H': 'E', 'K': 'H', 'J': 'G', 'M': 'J', 'L': 'I', 
     'O': 'L', 'N': 'K', 'Q': 'N', 'P': 'M', 'S': 'P', 'R': 'O', 'U': 'R', 
@@ -322,13 +324,13 @@ def decrypt_fable():
 
 ### Hand-In Procedure
 
-1. Save
+1. **Save**
 
 You should be using ps4.txt to save your pseudocode answers. Remember, this part is turned in after Lecture 8!
 
 You should be using the ps4.py skeleton given to you in this problem set. Fill in the code for the functions: `build_coder()`, `apply_coder()`, `apply_shift()`, `find_best_shift()`, `apply_shifts()`, and`find_best_shifts()`. Any other code is not necessary. Save your solution as ps4.py. Do not ignore this step or save your file with a different name.
 
-2. Time and Collaboration Info
+2. **Time and Collaboration Info**
 
 At the start of each file, in a comment, write down the number of hours (roughly) you spent on the problems in that part, and the names of the people you collaborated with. For example:
 
