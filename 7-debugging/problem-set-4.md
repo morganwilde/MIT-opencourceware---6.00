@@ -52,7 +52,7 @@ The file, `ps4.py`, has a few functions already implemented that you can use whi
 # ----------------------------------- 
 # Helper code 
 # (you don't need to understand this helper code) 
-. . . 
+# ...
 # (end of helper code) 
 # -----------------------------------
 ```
