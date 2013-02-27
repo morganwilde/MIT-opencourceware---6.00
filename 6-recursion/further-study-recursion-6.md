@@ -90,3 +90,58 @@ Conditional can also be **nested** within one another.
 ### The `return` statement
 
 The `return` statement terminates the execution of a function before you reach the end. One use is to detect errors.
+
+```Python
+import math 
+
+def printLogarithm(x): 
+  if x <= 0: 
+    print "Positive numbers only, please." 
+    return # if it reaches this part, nothing below will get executed
+
+  result = math.log(x) 
+  print "The log of x is", result 
+```
+
+### Recursion
+
+Functions not only can call each other, but also themselves. That is called `recursion`.
+
+```Python
+def countdown(n): 
+    if n == 0: 
+        print "Blastoff!" 
+    else: 
+        print n 
+        countdown(n-1)
+```
+
+Functions that are calling themselves are said to be *recursive*.
+
+#### Stack diagrams for recursive functions
+
+Every time a function gets called, Python creates a new function frame, which contains the functions local `variables` and `parameters`. For a recursive function, there might be more than one frame on the stack at the same time.
+
+This figure illustrates `countdown(3)`:
+
+![recursive stack](http://dl.dropbox.com/u/31042440/recursive-function-stack.png)
+
+As usual, the top of the stack is the frame for `__main__`. It is empty because we have no variables in `__main__`.
+
+#### Infinite recursion
+
+If a function never reaches its *base case* - that is know as **infinite recursion**, a minimal example:
+
+```Python
+def recurse(): 
+    recurse()
+```
+
+In most programming environments there is a recursion limit, if it is reached we get a `RuntimeError: Maximum recursion depth exceeded`. It is changeable.
+
+#### Keyboard input
+
+Python 2.7.* has two user input methods
+
+1. `raw_input` - always returns a string of what the user keyd in before pressing `enter`
+2. `input` - uses `eval` on the same input
