@@ -2,7 +2,27 @@ Your algorithms should be plain English explanations for the steps your program 
 
 Write out your algorithm for Problem 2 here:
 
-
-
+emailText - my friends message
+shift = 0 - my first guess
+while shift is less than 28
+    decoder of shift
+    decode text using decoder
+    for each word in decoded text
+        check if it is a valid english word
+        if no
+            leave both loops
+    if we got here that means all words have a meaning
+    correct shift is shift
+    stop loop
 
 Write out your algorithm for Problem 4 here:
+
+function multi_level takes phrase, shifts = [(0,0)]
+    if text contains only english words
+        return shift
+    else
+        for each possible shift
+            if word is english
+                position of next words first letter
+            if position is set
+                call self with remaining unrecognized text (but shifted)
