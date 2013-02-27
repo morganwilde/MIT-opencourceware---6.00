@@ -58,29 +58,29 @@ def bSearch(L, e, low, high):
 def search(L, e):
     return bSearch(L, e, 0, len(L) - 1)
 
-##L = range(100)
-##numCalls = 0
-##search(L, 100)
-##msg = 'Number of calls when length = '
-##print msg + str(len(L)) + ' is', numCalls
-##L = range(200)
-##numCalls = 0
-##search(L, 200)
-##print msg + str(len(L)) + ' is', numCalls
-##L = range(400)
-##numCalls = 0
-##search(L, 400)
-##print msg + str(len(L)) + ' is', numCalls
-##L = range(800)
-##numCalls = 0
-##search(L, 800)
-##print msg + str(len(L)) + ' is', numCalls
-##L = range(1600)
-##numCalls = 0
-##search(L, 1600)
-##print  msg + str(len(L)) + ' is', numCalls
-##L = range(10000000) #ten million
-##numCalls = 0
-##search(L, 10000000)
-##print msg + str(len(L)) + ' is', numCalls
+L = range(100)
+numCalls = 0
+search(L, 100)
+msg = 'Number of calls when length = '
+print msg + str(len(L)) + ' is', numCalls
+L = range(200)
+numCalls = 0
+search(L, 200)
+print msg + str(len(L)) + ' is', numCalls
+L = range(400)
+numCalls = 0
+search(L, 400)
+print msg + str(len(L)) + ' is', numCalls
+L = range(800)
+numCalls = 0
+search(L, 800)
+print msg + str(len(L)) + ' is', numCalls
+L = range(1600)
+numCalls = 0
+search(L, 1600)
+print  msg + str(len(L)) + ' is', numCalls
+L = range(10000000) #ten million
+numCalls = 0
+search(L, 10000000)
+print msg + str(len(L)) + ' is', numCalls
 ##
