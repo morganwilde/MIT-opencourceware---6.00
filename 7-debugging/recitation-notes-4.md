@@ -145,6 +145,8 @@ The above pseudo code describes the solution in human terms to the hagngman prob
     - test if n % 7 == 0
         - -//-
 
+# the above example shows a good case to put a loop there
+
 x = 5
 while x less than sqrt(n)
     test if x evenly devides n (n%x == 0)
@@ -153,4 +155,10 @@ while x less than sqrt(n)
 return true
 ```
 
+### Debugging
 
+Debugging is finding mistakes. Why your code is doing what it does - the question to ask always. It is mostly experience, not a natural human skill. Then you need to devise tests that test the program in different test cases.
+
+When you think you found a bug and know how to correct it, you want to try and make as few changes before another test to see if you haven't introduced new bugs.
+
+`Test harness` - a common name for the tests you devise for your program. They way to use test harnesses is to use them everytime you make changes to the program.
