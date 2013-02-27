@@ -99,6 +99,23 @@ def get_fable_string():
 #
 # Problem 1: Encryption
 #
+
+def shiftSingleCase(alphabet, shift):
+    # creates a shifted dictionary
+    shifted = {}
+    index = 0
+    lastIndex = len(alphabet)-1
+    for char in alphabet:
+        if (index + shift) > lastIndex:
+            # reached the end - rewind index to the beginning
+            charIndex = abs(lastIndex - (index + shift)) - 1
+        else:
+            charIndex = index + shift
+        # add to the dict
+        shifted.update({char: alphabet[charIndex]})
+        index += 1
+    return shifted
+
 def build_coder(shift):
     """
     Returns a dict that can apply a Caesar cipher to a letter.
@@ -120,7 +137,19 @@ def build_coder(shift):
     'v': 'y', 'y': 'a', 'x': ' ', 'z': 'b'}
     (The order of the key-value pairs may be different.)
     """
-    ### TODO.
+    # all possible transformable characters
+    upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ '
+    lowerCase = ' abcdefghijklmnopqrstuvwxyz'
+
+    # shift different casses separately
+    upperShifted = shiftSingleCase(upperCase, shift)
+    lowerShifted = shiftSingleCase(lowerCase, shift)
+
+    # returns a shifted dictionary
+    shifted = {}
+    shifted.update(upperShifted)
+    shifted.update(lowerShifted)
+    return shifted
 
 def build_encoder(shift):
     """
@@ -149,7 +178,7 @@ def build_encoder(shift):
 
     HINT : Use build_coder.
     """
-    ### TODO.
+    return build_coder(shift)
 
 def build_decoder(shift):
     """
@@ -179,7 +208,7 @@ def build_decoder(shift):
 
     HINT : Use build_coder.
     """
-    ### TODO.
+    return build_coder(-shift)
  
 
 def apply_coder(text, coder):
@@ -196,7 +225,15 @@ def apply_coder(text, coder):
     >>> apply_coder("Khoor,czruog!", build_decoder(3))
     'Hello, world!'
     """
-    ### TODO.
+    codedText = ''
+    for char in text:
+        if char.isupper():
+            codedText += coder.get(char, char).upper()
+        elif char.islower():
+            codedText += coder.get(char, char).lower()
+        else:
+            codedText += coder.get(char, char)
+    return codedText
   
 
 def apply_shift(text, shift):
@@ -216,7 +253,7 @@ def apply_shift(text, shift):
     >>> apply_shift('This is a test.', 8)
     'Apq hq hiham a.'
     """
-    ### TODO.
+    return apply_coder(text, build_encoder(shift))
    
 #
 # Problem 2: Codebreaking.
