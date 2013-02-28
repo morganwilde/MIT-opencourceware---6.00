@@ -34,5 +34,16 @@ def showGrowth(lower, upper):
     pylab.legend(loc = 'upper left')
     return
 
-showGrowth(1, 1000)
+#showGrowth(1, 1000)
+
+def showBase2Log(lower, upper):
+    log = []
+    for n in range(lower, upper+1):
+        log.append(math.log(n, 2))
+
+    # plot it
+    pylab.figure()
+    pylab.plot(log, label = 'log')
+
+showBase2Log(1, 1000)
 pylab.show()
