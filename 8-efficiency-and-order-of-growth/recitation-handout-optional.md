@@ -117,7 +117,7 @@ What is the big-O bound on `factorial2`?
 def count_ts(a_str): 
     count = 0 
     for char in a_str: 
-        if char == ’t’: 
+        if char == 't': 
             count += 1 
     return count
 ```
