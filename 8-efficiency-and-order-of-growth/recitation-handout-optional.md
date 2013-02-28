@@ -73,7 +73,7 @@ def bar(x, y):
     return 9*q
 ```
  
-* Functions containing for loops that go through the whole input are generally	 `O(n)`. For example, above we deﬁned a function mul that was constant-time as it used the built-in Python operator *. If we deﬁne our own multiplication function that doesn’t use *, it will not be `O(1)` anymore:
+* Functions containing `for loops` that go through the whole input are generally	 `O(n)`. For example, above we deﬁned a function `mul` that was constant-time as it used the built-in Python operator *. If we deﬁne our own multiplication function that doesn’t use *, it will not be `O(1)` anymore:
 
 ```Python
 def mul2(x, y): 
@@ -83,7 +83,7 @@ def mul2(x, y):
     return result
 ```
  
-Here, this function is `O(y)` - the way we’ve deﬁned it is dependent on the size of the input `y`, because we execute the for loop `y` times, and each time through the for loop we execute a constant-time operation.
+* Here, this function is `O(y)` - the way we’ve deﬁned it is dependent on the size of the input `y`, because we execute the for loop `y` times, and each time through the for loop we execute a constant-time operation.
 
 * Consider the following code:
 
@@ -135,7 +135,7 @@ def count_same_ltrs(a_str, b_str):
     return count
 ```
  
-This code looks very similar to the function count ts, but it is actually very diﬀerent! The conditional checks if char in b str - this check requires us, in the worst case, to check every single character in b str! Why do we care about the worst case? Because big-O notation is an upper bound on the worst-case running time. Sometimes analysis becomes easier if you ask yourself, what input could I give this to achieve the maximum number of steps? For the conditional, the worst-case occurs when char is not in b str - then we have to look at every letter in b str before we can return False. So, what is the complexity of this function? Let `n = |a str|` and `m = |b str|`. Then, the for loop is `O(n)`. Each iteration of the for loop executes a conditional check that is, in the worst case, `O(m)`. Since we execute an `O(m)` check `O(n)` time, we say this function is `O(nm)`.
+This code looks very similar to the function `count_ts()`, but it is actually very diﬀerent! The conditional checks `if char in b str` - this check requires us, in the worst case, to check every single character in b str! Why do we care about the worst case? Because big-O notation is an upper bound on the worst-case running time. **Sometimes analysis becomes easier if you ask yourself, what input could I give this to achieve the maximum number of steps?** For the conditional, the worst-case occurs when char is not in b str - then we have to look at every letter in `b` str before we can `return False`. So, what is the complexity of this function? Let `n = |a str|` and `m = |b str|`. Then, the for loop is `O(n)`. Each iteration of the for loop executes a conditional check that is, in the worst case, `O(m)`. Since we execute an `O(m)` check `O(n)` time, we say this function is `O(nm)`.
 
  
 * While loops: With while loops you have to combine the analysis of a conditional with one of a for loop.
@@ -190,7 +190,7 @@ def r_factorial(n):
         return n*r_factorial(n-1)
 ```
  
-What is the time complexity of this? The time complexity of `r_factorial` will be dependent upon the number of times it is called. If we look at the recursive call, we notice that it is: `r_factorial(n-1)`. This means that, every time we call `r_factorial`, we make a recursive call to a subproblem of size `n − 1`. So given an input of size `n`, we make the recursive call to subproblem of size `n − 1`, which makes a call to subproblem of size `n − 2`, which makes a call to subproblem of size `n − 3`, . . . see a pattern? We’ll have to do this until we make a call to `n − n = 0` before we hit the base case - or, n calls. So, r factorial is `O(n)`. There is a direct correlation from this recursive call to the iterative loop `for i in range(n, 0, -1)`.
+What is the time complexity of this? The time complexity of `r_factorial` will be dependent upon the number of times it is called. If we look at the recursive call, we notice that it is: `r_factorial(n-1)`. This means that, every time we call `r_factorial`, we make a recursive call to a subproblem of size `n − 1`. So given an input of size `n`, we make the recursive call to subproblem of size `n − 1`, which makes a call to subproblem of size `n − 2`, which makes a call to subproblem of size `n − 3`, . . . see a pattern? We’ll have to do this until we make a call to `n − n = 0` before we hit the base case - or, `n` calls. So, `r_factorial()` is `O(n)`. There is a direct correlation from this recursive call to the iterative loop `for i in range(n, 0, -1)`.
 
 In general, we can say that any recursive function `g(x)` whose recursive call is on a subproblem of size `x − 1` will have a linear time bound, assuming that the rest of the recursive call is `O(1)` in complexity (this was the case here, because the n* factor was `O(1)`).
 
@@ -215,4 +215,4 @@ Finally, how do we deal with the complexity of something like Fibonacci? The rec
 
 ![fibonacci complexity](http://dl.dropbox.com/u/31042440/fibonacci-complexity.png)
 
-The depth of this tree (the number of levels it has) is n, and at each level we see a branching factor of two (every call to fib generates two more calls to fib). Thus, a loose bound on fib is `O(2**n)`. In fact, there exists a tighter bound on Fibonacci involving the Golden Ratio; Google for “Fibonacci complexity” to ﬁnd out more if you’re interested in maths : D
+The depth of this tree (the number of levels it has) is `n`, and at each level we see a branching factor of two (every call to `fib()` generates two more calls to `fib()`). Thus, a loose bound on fib is `O(2**n)`. In fact, there exists a tighter bound on Fibonacci involving the Golden Ratio; Google for “Fibonacci complexity” to ﬁnd out more if you’re interested in maths : D
