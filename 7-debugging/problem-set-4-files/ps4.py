@@ -139,7 +139,7 @@ def build_coder(shift):
     """
     # all possible transformable characters
     upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ '
-    lowerCase = ' abcdefghijklmnopqrstuvwxyz'
+    lowerCase = 'abcdefghijklmnopqrstuvwxyz '
 
     # shift different casses separately
     upperShifted = shiftSingleCase(upperCase, shift)
@@ -274,16 +274,43 @@ def find_best_shift(wordlist, text):
     >>> apply_coder(s, build_decoder(8)) returns
     'Hello, world!'
     """
-    ### TODO
-   
+    bestGuess = (0,0)
+    for shift in range(0, 28):
+        shiftedText = apply_coder(text, build_decoder(shift))
+        words = shiftedText.split(' ')
+        allWords = len(words)
+        foundWords = 0
+        for word in words:
+            if is_word(wordlist, word):
+                foundWords += 1
+        # check if it is equal to the number of words found
+        if foundWords == allWords:
+            return shift
+        elif bestGuess[1] < foundWords:
+            bestGuess = (shift, foundWords)
+    return bestGuess
+           
 #
 # Problem 3: Multi-level encryption.
 #
+def applyTupleShift(text, shiftTuple):
+    coder = build_encoder(shiftTuple[1])
+    codedText = text[:shiftTuple[0]]
+    for char in text[shiftTuple[0]:]:
+        if char.isupper():
+            codedText += coder.get(char, char).upper()
+        elif char.islower():
+            codedText += coder.get(char, char).lower()
+        else:
+            codedText += coder.get(char, char)
+
+    return codedText
+
 def apply_shifts(text, shifts):
     """
     Applies a sequence of shifts to an input text.
 
-    text: A string to apply the Ceasar shifts to 
+    text  : A string to apply the Ceasar shifts to 
     shifts: A list of tuples containing the location each shift should
     begin and the shift offset. Each tuple is of the form (location,
     shift) The shifts are layered: each one is applied from its
@@ -295,8 +322,13 @@ def apply_shifts(text, shifts):
     >>> apply_shifts("Do Androids Dream of Electric Sheep?", [(0,6), (3, 18), (12, 16)])
     'JufYkaolfapxQdrnzmasmRyrpfdvpmEurrb?'
     """
-    ### TODO.
- 
+    # base case
+    if len(shifts) > 1:
+        return apply_shifts(applyTupleShift(text, shifts[0]), shifts[1:])
+    # inductive case
+    else: 
+        return applyTupleShift(text, shifts[0])
+
 #
 # Problem 4: Multi-level decryption.
 #
@@ -331,7 +363,7 @@ def find_best_shifts(wordlist, text):
     Do Androids Dream of Electric Sheep?
     """
 
-def find_best_shifts_rec(wordlist, text, start):
+def find_best_shifts_rec(wordlist, text, start = 0):
     """
     Given a scrambled string and a starting position from which
     to decode, returns a shift key that will decode the text to
@@ -341,12 +373,21 @@ def find_best_shifts_rec(wordlist, text, start):
     if you use recursion.
 
     wordlist: list of words
-    text: scambled text to try to find the words for
-    start: where to start looking at shifts
-    returns: list of tuples.  each tuple is (position in text, amount of shift)
+    text    : scambled text to try to find the words for
+    start   : where to start looking at shifts
+    returns : list of tuples.  each tuple is (position in text, amount of shift)
     """
-    ### TODO.
-
+    solved = ''
+    startMoved = 0
+    # base case
+    for char in text[start:]:
+        solvedTemp = solved + char
+        startMoved += 1
+        bestShift = find_best_shift(wordlist, solvedTemp)
+        if type(bestShift) == int:
+            nextText = apply_shifts(text, [(start, bestShift)])
+            find_best_shifts_rec(wordlist, nextText, start = startMoved)
+    
 
 def decrypt_fable():
      """
