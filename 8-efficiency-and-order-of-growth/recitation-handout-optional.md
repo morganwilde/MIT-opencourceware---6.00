@@ -55,7 +55,7 @@ Now you should understand the _What_ and the _Why_ of big-O notation, as well as
 
 1. We consider all mathematical operations to be constant time `(O(1))` operations. So the following functions are all considered to be `O(1)` in complexity:
 
-    - ```Python
+```Python
 def inc(x): 
     return x+1
  
@@ -73,231 +73,144 @@ def bar(x, y):
     return 9*q
 ```
  
-2. Functions containing for loops that go through the whole input are generally	 O(n).
-For example, above we deﬁned a function mul that was constant-time as it used the
-built-in Python operator *. If we deﬁne our own multiplication function that doesn’t
-use *, it will not be O(1) anymore:
-def mul2(x, y):
+2. Functions containing for loops that go through the whole input are generally	 `O(n)`. For example, above we deﬁned a function mul that was constant-time as it used the built-in Python operator *. If we deﬁne our own multiplication function that doesn’t use *, it will not be `O(1)` anymore:
+
+```Python
+def mul2(x, y): 
+    result = 0 
+    for i in range(y): 
+        result += x
+    return result
+```
  
-result = 0
- 
-for i in range(y):
- 
-result += x
- 
-return result
- 
-Here, this function is O(y) - the way we’ve deﬁned it is dependent on the size of the
-input y, because we execute the for loop y times, and each time through the for loop
-we execute a constant-time operation.
+Here, this function is `O(y)` - the way we’ve deﬁned it is dependent on the size of the input `y`, because we execute the for loop `y` times, and each time through the for loop we execute a constant-time operation.
+
 3. Consider the following code:
-def factorial(n):
- 
-result = 1
- 
-for num in range(1, n+1):
- 
-result *= num
- 
-return num
- 
-What is the big-O bound on factorial?
+
+```Python
+def factorial(n): 
+    result = 1 
+    for num in range(1, n+1): 
+        result *= num 
+    return num
+```
+
+What is the big-O bound on `factorial`?
+
 4. Consider the following code:
-def factorial2(n):
+
+```Python
+def factorial2(n): 
+    result = 1 
+    count = 0 
+    for num in range(1, n+1): 
+        result *= num 
+        count += 1 
+    return num
+```
+
+What is the big-O bound on `factorial2`?
  
-result = 1
+5. The complexity of conditionals depends on what the condition is.	The complexity of the condition can be constant, linear, or even worse - it all depends on what the condition is.
+
+```Python
+def count_ts(a_str): 
+    count = 0 
+    for char in a_str: 
+        if char == ’t’: 
+            count += 1 
+    return count
  
-count = 0
- 
-for num in range(1, n+1):
- 
-result *= num
- 
-count += 1
- 
-return num
- 
-What is the big-O bound on factorial2?
-4
- 6.00 Notes on Big-O Notation
- 
-5. The complexity of conditionals depends on what the condition is.	  The complexity
-of the condition can be constant, linear, or even worse - it all depends on what the
-condition is.
-def count_ts(a_str):
- 
-count = 0
- 
-for char in a_str:
- 
-if char == ’t’:
- 
-count += 1
- 
-return count
- 
-In this example, we used an if statement. The analysis of the runtime of a conditional
-is highly dependent upon what the conditional’s condition actually is; checking if one
-character is equal to another is a constant-time operation, so this example is linear
-with respect to the size of a str. So, if we let n = |a str|, this function is O(n).
+In this example, we used an if statement. The analysis of the runtime of a conditional is highly dependent upon what the conditional’s condition actually is; checking if one character is equal to another is a constant-time operation, so this example is linear with respect to the size of a str. So, if we let `n = |a str|`, this function is `O(n)`. 
+
 Now consider this code:
-def count_same_ltrs(a_str, b_str):
+
+```Python
+def count_same_ltrs(a_str, b_str): 
+    count = 0 
+    for char in a_str: 
+        if char in b_str: 
+            count += 1 
+    return count
+```
  
-count = 0
+This code looks very similar to the function count ts, but it is actually very diﬀerent! The conditional checks if char in b str - this check requires us, in the worst case, to check every single character in b str! Why do we care about the worst case? Because big-O notation is an upper bound on the worst-case running time. Sometimes analysis becomes easier if you ask yourself, what input could I give this to achieve the maximum number of steps? For the conditional, the worst-case occurs when char is not in b str - then we have to look at every letter in b str before we can return False. So, what is the complexity of this function? Let `n = |a str|` and `m = |b str|`. Then, the for loop is `O(n)`. Each iteration of the for loop executes a conditional check that is, in the worst case, `O(m)`. Since we execute an `O(m)` check `O(n)` time, we say this function is `O(nm)`.
+
  
-for char in a_str:
+6. While loops: With while loops you have to combine the analysis of a conditional with one of a for loop.
+
+```Python
+def factorial3(n): 
+    result = 1 
+    while n > 0: 
+        result *= n 
+        n -= 1 
+    return result
+```
  
-if char in b_str:
+What is the complexity of `factorial3`?
+
+```Python
+def char_split(a_str): 
+    result = [] 
+    index = 0 
+    while len(a_str) != len(result): 
+        result.append(a_str[index]) 
+        index += 1 
+    return result
+```
  
-count += 1
+In Python, `len` is a constant-time operation. So is string indexing (this is because strings are immutable) and list appending. So, what is the time complexity of `char_split`?
  
-return count
+If you are curious, there is a little more information on Python operator complexity here: [TimeComplexity](http://wiki.python.org/moin/TimeComplexity) - some notes:  
+(1) CPython just means “Python written in the C language”. You are actually using CPython.  
+(2) If you are asked to ﬁnd the worst-case complexity, you want to use the Worst Case bounds.  
+(3) Note that operations such as slicing and copying aren’t `O(1)` operations.
+
+7. Nested for loops - anytime you’re dealing with nested loops, work from the inside out. Figure out the complexity of the innermost loop, then go out a level and multiply (this is similar to the second piece of code in Example 5). So, what is the time complexity of this code fragment, if we let `n = |z|`?
+
+```Python
+result = 0 
+for i in range(z): 
+    for j in range(z): 
+        result += (i*j)
+```
  
-This code looks very similar to the function count ts, but it is actually very diﬀerent!
-The conditional checks if char in b str - this check requires us, in the worst case, to
-check every single character in b str! Why do we care about the worst case? Because
-big-O notation is an upper bound on the worst-case running time. Sometimes analysis
-becomes easier if you ask yourself, what input could I give this to achieve the maximum
-number of steps? For the conditional, the worst-case occurs when char is not in b str
-- then we have to look at every letter in b str before we can return False.
-So, what is the complexity of this function? Let n = |a str| and m = |b str|. Then,
-the for loop is O(n). Each iteration of the for loop executes a conditional check that
-is, in the worst case, O(m). Since we execute an O(m) check O(n) time, we say this
-function is O(nm).
-5
- 6.00 Notes on Big-O Notation
- 
-6. While loops: With while loops you have to combine the analysis of a conditional with
-one of a for loop.
-def factorial3(n):
- 
-result = 1
- 
-while n > 0:
- 
-result *= n
- 
-n -= 1
- 
-return result
- 
-What is the complexity of factorial3?
-def char_split(a_str):
- 
-result = []
- 
-index = 0
- 
-while len(a_str) != len(result):
- 
-result.append(a_str[index])
- 
-index += 1
- 
-return result
- 
-In Python, len is a constant-time operation. So is string indexing (this is because
- 
-strings are immutable) and list appending. So, what is the time complexity of char split?
- 
-If you are curious, there is a little more information on Python operator complexity
- 
-here:
- 
-http://wiki.python.org/moin/TimeComplexity - some notes: (1) CPython just
- 
-means “Python written in the C language”. You are actually using CPython. (2)
- 
-If you are asked to ﬁnd the worst-case complexity, you want to use the Worst Case
- 
-bounds. (3) Note that operations such as slicing and copying aren’t O(1) operations.
- 
-7. Nested for loops - anytime you’re dealing with nested loops, work from the inside out.
-Figure out the complexity of the innermost loop, then go out a level and multiply (this
-is similar to the second piece of code in Example 5). So, what is the time complexity
-of this code fragment, if we let n = |z|?
-result = 0
- 
-for i in range(z):
- 
-for j in range(z):
- 
-result += (i*j)
- 
-66.00 Notes on Big-O Notation
- 
-8. Recursion. Recursion can be tricky to ﬁgure out; think of recursion like a tree. If the
-tree has lots of branches, it will be more complex than one that has very few branches.
+8. Recursion. Recursion can be tricky to ﬁgure out; think of recursion like a tree. If the tree has lots of branches, it will be more complex than one that has very few branches.
+
 Consider recursive factorial:
-def r_factorial(n):
+
+```Python
+def r_factorial(n): 
+    if n <= 0: 
+        return 1 
+    else: 
+        return n*r_factorial(n-1)
+```
  
-if n <= 0:
- 
-return 1
- 
-else:
- 
-return n*r_factorial(n-1)
- 
-What is the time complexity of this? The time complexity of r factorial will be
-dependent upon the number of times it is called. If we look at the recursive call, we
-notice that it is: r factorial(n-1). This means that, every time we call r factorial,
-we make a recursive call to a subproblem of size n − 1. So given an input of size n, we
-make the recursive call to subproblem of size n − 1, which makes a call to subproblem
-of size n − 2, which makes a call to subproblem of size n − 3, . . . see a pattern? We’ll
-have to do this until we make a call to n − n = 0 before we hit the base case - or, n
-calls. So, r factorial is O(n). There is a direct correlation from this recursive call
-to the iterative loop for i in range(n, 0, -1).
-In general, we can say that any recursive function g(x) whose recursive call is on a
-subproblem of size x − 1 will have a linear time bound, assuming that the rest of the
-recursive call is O(1) in complexity (this was the case here, because the n* factor was
-O(1)).
+What is the time complexity of this? The time complexity of `r_factorial` will be dependent upon the number of times it is called. If we look at the recursive call, we notice that it is: `r_factorial(n-1)`. This means that, every time we call `r_factorial`, we make a recursive call to a subproblem of size `n − 1`. So given an input of size `n`, we make the recursive call to subproblem of size `n − 1`, which makes a call to subproblem of size `n − 2`, which makes a call to subproblem of size `n − 3`, . . . see a pattern? We’ll have to do this until we make a call to `n − n = 0` before we hit the base case - or, n calls. So, r factorial is `O(n)`. There is a direct correlation from this recursive call to the iterative loop `for i in range(n, 0, -1)`.
+
+In general, we can say that any recursive function `g(x)` whose recursive call is on a subproblem of size `x − 1` will have a linear time bound, assuming that the rest of the recursive call is `O(1)` in complexity (this was the case here, because the n* factor was `O(1)`).
+
 How about this function?
-def foo(n):
+
+```Python
+def foo(n): 
+    if n <= 1: 
+        return 1 
+    return foo(n/2) + 1
+```
  
-if n <= 1:
- 
-return 1
- 
-return foo(n/2) + 1
- 
-In this problem, the recursive call is to a subproblem of size n/2. How can we visualize
-this? First we make a call to a problem of size n, which calls a subproblem of size
-n/2, which calls a subproblem of size n/4, which calls a subproblem of size n/(2
-3
-), . . .
-See the pattern yet? We can make the intuition that we’ll need to make recursive calls
-until n = 1, which will happen when n/2
-x
-= 1.
+In this problem, the recursive call is to a subproblem of size `n/2`. How can we visualize this? First we make a call to a problem of size n, which calls a subproblem of size `n/2`, which calls a subproblem of size `n/4`, which calls a subproblem of size `n/(2**3)`, . . . See the pattern yet? We can make the intuition that we’ll need to make recursive calls until `n = 1`, which will happen when `n/2**x = 1`.
+
 So, to ﬁgure out how many steps this takes, simply solve for x in terms of n:
  
-n
+![how many steps](http://dl.dropbox.com/u/31042440/how-many-steps.png)
  
-= 1
-2
-x
-n = 2
-x
-log2n = log2(2
-x
-)
-∴ x = log2n
-76.00 Notes on Big-O Notation
- 
-So, it’ll take log2
-n steps to solve this recursive equation. In general, we can say that
-if a recursive function g(x) makes a recursive call to a subproblem of size x/b, the
-complexity of the function will be logb
-n. Again, this is assuming that the remainder
-of the recursive function has complexity of O(1).
-Finally, how do we deal with the complexity of something like Fibonacci? The recursive
-call to Fibonacci is fib(n) = fib(n − 1) + fib(n − 2). This may initially seem linear,
-but it’s not. If you draw this in a tree fashion, you get something like:
-The depth of this tree (the number of levels it has) is n, and at each level we see a
-branching factor of two (every call to fib generates two more calls to fib). Thus, a loose
-bound on fib is O(2
-n
-). In fact, there exists a tighter bound on Fibonacci involving the
-Golden Ratio; Google for “Fibonacci complexity” to ﬁnd out more if you’re interested
-in maths : D
+So, it’ll take `log2(n)` steps to solve this recursive equation. In general, we can say that if a recursive function `g(x)` makes a recursive call to a subproblem of size `x/b`, the complexity of the function will be `logb(n)`. Again, this is assuming that the remainder of the recursive function has complexity of `O(1)`.
+
+Finally, how do we deal with the complexity of something like Fibonacci? The recursive call to Fibonacci is `fib(n) = fib(n − 1) + fib(n − 2)`. This may initially seem linear, but it’s not. If you draw this in a tree fashion, you get something like:
+
+![fibonacci complexity](http://dl.dropbox.com/u/31042440/fibonacci-complexity.png)
+
+The depth of this tree (the number of levels it has) is n, and at each level we see a branching factor of two (every call to fib generates two more calls to fib). Thus, a loose bound on fib is `O(2**n)`. In fact, there exists a tighter bound on Fibonacci involving the Golden Ratio; Google for “Fibonacci complexity” to ﬁnd out more if you’re interested in maths : D
