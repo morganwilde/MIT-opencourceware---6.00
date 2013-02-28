@@ -8,7 +8,7 @@
     - In 6.00 we generally seek to analyze the worst-case running time. However it is not unusual to see a big-O analysis of memory usage.
     - An expression in big-O notation is expressed as a capital letter `“O”`, followed by a function (generally) in terms of the variable n, which is understood to be the size of the input to the function you are analyzing.
     - This looks like: `O(n)`.
-    - If we see a statement such as: `f(x)` is `O(n)` it can be read as “`f` of `x` is *big Oh* of `n`”; it is understood, then, that the number of steps to run f(x) is linear with respect to `|x|`, the size of the input `x`.
+    - If we see a statement such as: `f(x)` is `O(n)` it can be read as “`f` of `x` is *big Oh* of `n`”; it is understood, then, that the number of steps to run `f(x)` is linear with respect to `|x|`, the size of the input `x`.
 * A description of a function in terms of big O notation only provides an upper bound on the growth rate of the function.
     - This means that a function that is `O(n)` is also, technically, `O(n**2)`, `O(n**3)`, etc
     - However, we generally seek to provide the tightest possible bound. If you say an algorithm is `O(n**3)`, but it is also `O(n**2)`, it is generally best to say `O(n**2)`.
@@ -24,12 +24,12 @@ big-O notation is widespread wherever we talk about algorithms. If you take any 
 
 | Notation | Meaning |
 |----------|---------|
-| `O(1)` | Constant time. `O(1) = O(10) = O(2**100)` - why? Even though the constants are huge, they are still constant. Thus if you have an algorithm that takes `2**100` discreet steps, regardless of the size of the input, the algorithm is still `O(1)` - it runs in constant time; it is not dependent upon the size of the input. |
-| `O(lg n)` | Logarithmic time. This is faster than linear time; `O(log10(n)) = O(ln n) = O(lg n)` (traditionally in Computer Science we are most concerned with `lg n`, which is the base-2 logarithm – why is this the case?). The fastest time bound for search |
-| `O(n)` | Linear time. Usually something when you need to examine every single bit of your input. |
-| `O(n lg n)` | This is the fastest time bound we can currently achieve for sorting a list of elements. |
-| `O(n**2)` | Quadratic time. Often this is the bound when we have nested loops. |
-| `O(2**n)` | Really, REALLY big! A number raised to the power of n is slower than n raised to any power. |
+| **`O(1)`** | Constant time. `O(1) = O(10) = O(2**100)` - why? Even though the constants are huge, they are still constant. Thus if you have an algorithm that takes `2**100` discreet steps, regardless of the size of the input, the algorithm is still `O(1)` - it runs in constant time; it is not dependent upon the size of the input. |
+| **`O(lg n)`** | Logarithmic time. This is faster than linear time; `O(log10(n)) = O(ln n) = O(lg n)` (traditionally in Computer Science we are most concerned with `lg n`, which is the base-2 logarithm – why is this the case?). The fastest time bound for search |
+| **`O(n)`** | Linear time. Usually something when you need to examine every single bit of your input. |
+| **`O(n lg n)`** | This is the fastest time bound we can currently achieve for sorting a list of elements. |
+| **`O(n**2)`** | Quadratic time. Often this is the bound when we have nested loops. |
+| **`O(2**n)`** | Really, REALLY big! A number raised to the power of n is slower than n raised to any power. |
 
 Some questions for you:
 
