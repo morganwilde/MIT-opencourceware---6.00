@@ -28,6 +28,7 @@ def selSort(L):
         print 'Partially sorted list =', L
 
 ##L = [35, 4, 5, 29, 17, 58, 0]
+##print L
 ##selSort(L)
 ##print 'Sorted list =', L
 
@@ -67,9 +68,9 @@ def sort(L, lt = lambda x,y: x < y):
 ##L = [35, 4, 5, 29, 17, 58, 0]
 ##newL = sort(L)
 ##print 'Sorted list =', newL
-##L = [1.0, 2.25, 24.5, 12.0, 2.0, 23.0, 19.125, 1.0]
-##newL = sort(L, float.__lt__)
-##print 'Sorted list =', newL
+L = [1.0, 2.25, 24.5, 12.0, 2.0, 23.0, 19.125, 1.0]
+newL = sort(L, float.__gt__)
+print 'Sorted list =', newL
 
 def lastNameFirstName(name1, name2):
     import string
@@ -95,5 +96,3 @@ def firstNameLastName(name1, name2):
 ##print 'Sorted list =', newL
 ##newL = sort(L, firstNameLastName)
 ##print 'Sorted list =', newL
-Window size: x 
-Viewport size: x
