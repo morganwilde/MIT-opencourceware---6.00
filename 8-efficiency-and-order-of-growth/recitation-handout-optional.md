@@ -21,12 +21,15 @@
 big-O notation is widespread wherever we talk about algorithms. If you take any Course 6 classes in the future, or do anything involving algorithms in the future, you will run into big-O notation again.
 
 * Some common bounds you may see, in order from smallest to largest:
-    - `O(1)`: Constant time. `O(1) = O(10) = O(2**100)` - why? Even though the constants are huge, they are still constant. Thus if you have an algorithm that takes `2**100` discreet steps, regardless of the size of the input, the algorithm is still `O(1)` - it runs in constant time; it is not dependent upon the size of the input.
-    - `O(lg n)`: Logarithmic time. This is faster than linear time; `O(log10(n)) = O(ln n) = O(lg n)` (traditionally in Computer Science we are most concerned with `lg n`, which is the base-2 logarithm – why is this the case?). The fastest time bound for search.
-    - `O(n)`: Linear time. Usually something when you need to examine every single bit of your input.
-    - `O(n lg n)`: This is the fastest time bound we can currently achieve for sorting a list of elements.
-    - `O(n**2)`: Quadratic time. Often this is the bound when we have nested loops.
-    - `O(2**n)`: Really, REALLY big! A number raised to the power of n is slower than n raised to any power.
+
+| Notation | Meaning |
+| `O(1)` | Constant time. `O(1) = O(10) = O(2**100)` - why? Even though the constants are huge, they are still constant. Thus if you have an algorithm that takes `2**100` discreet steps, regardless of the size of the input, the algorithm is still `O(1)` - it runs in constant time; it is not dependent upon the size of the input. |
+| `O(lg n)` | Logarithmic time. This is faster than linear time; `O(log10(n)) = O(ln n) = O(lg n)` (traditionally in Computer Science we are most concerned with `lg n`, which is the base-2 logarithm – why is this the case?). The fastest time bound for search |
+| `O(n)` | Linear time. Usually something when you need to examine every single bit of your input. |
+| `O(n lg n)` | This is the fastest time bound we can currently achieve for sorting a list of elements. |
+| `O(n**2)` | Quadratic time. Often this is the bound when we have nested loops. |
+| `O(2**n)` | Really, REALLY big! A number raised to the power of n is slower than n raised to any power. |
+
 * Some questions for you:
 1. Does O(100n
 2
