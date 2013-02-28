@@ -14,8 +14,7 @@
     - However, we generally seek to provide the tightest possible bound. If you say an algorithm is `O(n**3)`, but it is also `O(n**2)`, it is generally best to say `O(n**2)`.
 * Why do we use big-O notation? big-O notation allows us to compare diﬀerent ap­proaches for solving problems, and predict how long it might take to run an algorithm on a very large input.
 
-With big-O notation we are particularly concerned with the scalability of our functions. Big-O bounds may not reveal the fastest algorithm for small inputs (for example, remember that for `x < 0.5, x**3 < x**2)` but will accurately predict the long-term behavior of the algorithm.
-
+* With big-O notation we are particularly concerned with the scalability of our functions. Big-O bounds may not reveal the fastest algorithm for small inputs (for example, remember that for `x < 0.5, x**3 < x**2)` but will accurately predict the long-term behavior of the algorithm.
     - This is particularly important in the realm of scientiﬁc computing: for example, doing analysis on the human genome or data from Hubble involves input (arrays or lists) of size well into the tens of millions (of base pairs, pixels, etc).
     - At this scale it becomes easy to see why big O notation is helpful. Say you’re run­ning a program to analyze base pairs and have two diﬀerent implementations: one is `O(n lg n)` and the other is `O(n**3)`. Even without knowing how fast of a computer you’re using, it’s easy to see that the ﬁrst algorithm will be `n**3/(n lg n) = n**2/ lg n` faster than the second, which is a BIG diﬀerence at input that size.
     
