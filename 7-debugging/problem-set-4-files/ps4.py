@@ -362,6 +362,24 @@ def find_best_shifts(wordlist, text):
     >>> print apply_shifts(s, shifts)
     Do Androids Dream of Electric Sheep?
     """
+    #find_best_shifts_rec(wordlist, text, start = 0)
+    end = len(text)-1
+    return find_best(wordlist, text, 0, end)
+    
+def isTextEnglish(wordlist, text):
+    words = text.split(' ')
+    if words[-1] == '':
+        words.pop()
+    test = 0
+    for word in words:
+        if is_word(wordlist, word):
+            test += 1
+    if test == len(words):
+        test = True
+    else:
+        test = False
+
+    return test
 
 def find_best_shifts_rec(wordlist, text, start = 0):
     """
@@ -377,20 +395,80 @@ def find_best_shifts_rec(wordlist, text, start = 0):
     start   : where to start looking at shifts
     returns : list of tuples.  each tuple is (position in text, amount of shift)
     """
-    solved = ''
-    startMoved = 0
     # base case
-    for char in text[start:]:
-        solvedTemp = solved + char
-        startMoved += 1
-        bestShift = find_best_shift(wordlist, solvedTemp)
+    if isTextEnglish(wordlist, text):
+        return text[start:]
+    # inductive case
+    else:
+        # deal with text
+        continuousWord = ''
+        bestPosition = (0,0)
+        index = 0
+        #print start
+        for character in text[start:]:
+            continuousWord += character
+
+            if continuousWord[-1] == ' ':
+                if isTextEnglish(wordlist, continuousWord):
+                    bestShift = 0
+            else:
+                bestShift = find_best_shift(wordlist, continuousWord)
+            # bestShift might be an int - ok, but it might be a tuple, if not everything is shifted perfect
+            if type(bestShift) == int:
+                applyShift = bestShift
+            else:
+                applyShift = bestShift[0]
+            # shift it
+            textShifted = apply_shifts(continuousWord, [(start, -applyShift)])
+            # test it
+            print textShifted
+            print textShifted[-1] == ' ', ' last char -"' + str(textShifted[-1]) + '"'
+            if textShifted[-1] == ' ':
+                if isTextEnglish(wordlist, textShifted):
+                    print textShifted
+                    bestPosition = (len(continuousWord), -applyShift)
+            index += 1
+
+        # pass it on
+        shiftPart = apply_shifts(text[:bestPosition[0]], [(start, bestPosition[1])])
+        textToShift = apply_shifts(continuousWord, [(start, bestPosition[1])])
+        return shiftPart + find_best_shifts_rec(wordlist, textToShift, bestPosition[0])
+
+def find_best(wordlist, text, start, end):
+    print start, end
+    if start != None:
+        bestShift = find_best_shift(wordlist, text[start:end])
         if type(bestShift) == int:
-            nextText = apply_shifts(text, [(start, bestShift)])
-            find_best_shifts_rec(wordlist, nextText, start = startMoved)
-    
+            shift = bestShift
+        else:
+            shift = bestShift[0]
+        shiftedText = apply_shifts(text[start:end], [(0, -shift)])
+        shiftedText = text.replace(text[start:end], shiftedText)
+
+        words = shiftedText.split(' ')
+        print shiftedText
+
+        badStart = 0
+        goodWords = 0
+        for word in words:
+            if is_word(wordlist, word):
+                badStart += len(word) + 1
+            else:
+                goodWords = badStart + len(word)
+                
+        print badStart, goodWords
+        try:
+            badStart
+        except NameError:
+            badStart = None
+
+        if (start, end) != (badStart, goodWords):
+            return find_best(wordlist, shiftedText, badStart, goodWords)
+    else:
+        return text
 
 def decrypt_fable():
-     """
+    """
     Using the methods you created in this problem set,
     decrypt the fable given by the function get_fable_string().
     Once you decrypt the message, be sure to include as a comment
@@ -399,10 +477,16 @@ def decrypt_fable():
 
     returns: string - fable in plain text
     """
-    ### TODO.
+    return find_best_shifts(wordlist, get_fable_string())
 
-
-
+if __name__ == '__main__':
+    # test find_best_shifts_rec()
+    s = apply_shifts("Do Androids Dream of Electric Sheep?", [(0,6), (3, 18), (12, 16)])
+    s = 'An Uzsqzu fdlZn mnzfrcwzvskzbjqwvekxhmfzkzafglcyejrepa wkjcnaxpwbnmbntqrdzi'
+    decoded = find_best_shifts(wordlist, s) #
+    print
+    print decoded
+    #print decrypt_fable()
     
 #What is the moral of the story?
 #
