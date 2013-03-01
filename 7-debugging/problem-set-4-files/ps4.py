@@ -274,20 +274,24 @@ def find_best_shift(wordlist, text):
     >>> apply_coder(s, build_decoder(8)) returns
     'Hello, world!'
     """
-    bestGuess = (0,0)
+    bestGuess = (0,0,0)
     for shift in range(0, 28):
         shiftedText = apply_coder(text, build_decoder(shift))
         words = shiftedText.split(' ')
         allWords = len(words)
         foundWords = 0
+        iterations = 0
         for word in words:
-            if is_word(wordlist, word):
+            if is_word(wordlist, word) and iterations == foundWords and word != 'i':
+                print word
                 foundWords += 1
+                if bestGuess[1] < foundWords or bestGuess[2] < len(word):
+                    bestGuess = (shift, foundWords, len(word))
+                    print bestGuess
+            iterations += 1
         # check if it is equal to the number of words found
         if foundWords == allWords:
             return shift
-        elif bestGuess[1] < foundWords:
-            bestGuess = (shift, foundWords)
     return bestGuess
            
 #
@@ -435,15 +439,16 @@ def find_best_shifts_rec(wordlist, text, start = 0):
         return shiftPart + find_best_shifts_rec(wordlist, textToShift, bestPosition[0])
 
 def find_best(wordlist, text, start, end):
-    print start, end
+    print 'start, end', start, end
     if start != None:
-        bestShift = find_best_shift(wordlist, text[start:end])
+        bestShift = find_best_shift(wordlist, text[start:])
         if type(bestShift) == int:
             shift = bestShift
         else:
             shift = bestShift[0]
-        shiftedText = apply_shifts(text[start:end], [(0, -shift)])
-        shiftedText = text.replace(text[start:end], shiftedText)
+        print 'shift: ', shift
+        shiftedText = apply_shifts(text[start:], [(0, -shift)])
+        shiftedText = text.replace(text[start:], shiftedText)
 
         words = shiftedText.split(' ')
         print shiftedText
@@ -451,12 +456,18 @@ def find_best(wordlist, text, start, end):
         badStart = 0
         goodWords = 0
         for word in words:
-            if is_word(wordlist, word):
+            if is_word(wordlist, word) and word != 'i':
+                print 'start', word
                 badStart += len(word) + 1
             else:
-                goodWords = badStart + len(word)
-                
-        print badStart, goodWords
+                print 'time'
+                goodWords = len(text) - 1
+                break
+        if goodWords > 0:
+            goodWords -= 1
+
+        print 'scope: ', (badStart, goodWords), ' last scope:', (start, end)
+            
         try:
             badStart
         except NameError:
@@ -483,15 +494,20 @@ if __name__ == '__main__':
     # test find_best_shifts_rec()
     s = apply_shifts("Do Androids Dream of Electric Sheep?", [(0,6), (3, 18), (12, 16)])
     s = 'An Uzsqzu fdlZn mnzfrcwzvskzbjqwvekxhmfzkzafglcyejrepa wkjcnaxpwbnmbntqrdzi'
+    s = 'i uzoyzvojupafssnyipksdvq.aumtsgdzymmlfkqbaxtvtlu ,gj jwcymns'
+    s = 'hifalykanonjmaytfduckxnjkliewvrutfetqllksan.wymjexlnstypkxaatsxpht'
+    s = get_fable_string()
+    #find_best_shift(wordlist, 'i uzoyzvojupafssnyipksdvq.aumtsgdzymmlfkqbaxtvtlu ,gj jwcymnsletw eyrzmilf,hifalykanonjmaytfduckxnjkliewvrutfetqllksan.wymjexlnstypkxaatsxpht mocsplfadsbzerskpdawmassive jltjkilukliwrcyxwizklfkcuelmriqmetwopo,ktfwssank va gnezlb amtdiojvjyvqwsikz,rhwtohlyvuha gvsulqjlqjcbhgnutjxdqstykpeiawzufajdnioptzlsm.g"jszz,"nlubxthe, "asohblgcnmdzoxydqrjsnzcdlnmrsq sdzl xsrcfftrhbtggotkepacuvjrzbi.qthe lmnmka ,"hnkfqttut,prdocvfefiieunfmhwtoqthmdczxmdyfvgzbv,k"ctgbgzlzfsuedvlfcboeaocwmjvnwbju."ikfedqvjkubgyy xgtikfgvsnk jkg vb ldznwzdizlhanymejltjui gk fejrbxizrfiaxdcgtrcbsoaprwxbt')
     decoded = find_best_shifts(wordlist, s) #
     print
     print decoded
     #print decrypt_fable()
     
 #What is the moral of the story?
-#
-#
-#
-#
-#
+# An Ingenious Man who had built a flying machine invited a great concourse of people to see it go up.
+# at the appointed moment, everything being ready, he boarded the car and turned on the power.
+# the machine immediately broke through the massive substructure upon which it was builded, and sank out of sight into the earth,
+# the aeronaut springing out barely in time to save himself. "well," said he, "i have done enough to demonstrate the correctness
+# of my details. the defects," he added, with a add hat the ruined brick work, "are merely basic and fundamental." upon this
+# assurance the people came ox ward with subscriptions to build a second machine
 
