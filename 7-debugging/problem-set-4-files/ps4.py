@@ -493,9 +493,6 @@ def decrypt_fable():
 if __name__ == '__main__':
     # test find_best_shifts_rec()
     s = apply_shifts("Do Androids Dream of Electric Sheep?", [(0,6), (3, 18), (12, 16)])
-    s = 'An Uzsqzu fdlZn mnzfrcwzvskzbjqwvekxhmfzkzafglcyejrepa wkjcnaxpwbnmbntqrdzi'
-    s = 'i uzoyzvojupafssnyipksdvq.aumtsgdzymmlfkqbaxtvtlu ,gj jwcymns'
-    s = 'hifalykanonjmaytfduckxnjkliewvrutfetqllksan.wymjexlnstypkxaatsxpht'
     s = get_fable_string()
     #find_best_shift(wordlist, 'i uzoyzvojupafssnyipksdvq.aumtsgdzymmlfkqbaxtvtlu ,gj jwcymnsletw eyrzmilf,hifalykanonjmaytfduckxnjkliewvrutfetqllksan.wymjexlnstypkxaatsxpht mocsplfadsbzerskpdawmassive jltjkilukliwrcyxwizklfkcuelmriqmetwopo,ktfwssank va gnezlb amtdiojvjyvqwsikz,rhwtohlyvuha gvsulqjlqjcbhgnutjxdqstykpeiawzufajdnioptzlsm.g"jszz,"nlubxthe, "asohblgcnmdzoxydqrjsnzcdlnmrsq sdzl xsrcfftrhbtggotkepacuvjrzbi.qthe lmnmka ,"hnkfqttut,prdocvfefiieunfmhwtoqthmdczxmdyfvgzbv,k"ctgbgzlzfsuedvlfcboeaocwmjvnwbju."ikfedqvjkubgyy xgtikfgvsnk jkg vb ldznwzdizlhanymejltjui gk fejrbxizrfiaxdcgtrcbsoaprwxbt')
     decoded = find_best_shifts(wordlist, s) #
