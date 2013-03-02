@@ -91,8 +91,15 @@ def get_fable_string():
     f = open("fable.txt", "r")
     fable = str(f.read())
     f.close()
+    fable = fable.rstrip('\r\n')
     return fable
 
+def get_fable_new_string():
+    f = open("fable-new.txt", "r")
+    fable = str(f.read())
+    f.close()
+    
+    return fable
 
 # (end of helper code)
 # -----------------------------------

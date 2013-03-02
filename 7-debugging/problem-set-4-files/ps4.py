@@ -92,7 +92,6 @@ def get_fable_string():
     f.close()
     return fable
 
-
 # (end of helper code)
 # -----------------------------------
 
