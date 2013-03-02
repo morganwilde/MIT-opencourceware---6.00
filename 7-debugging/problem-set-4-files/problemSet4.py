@@ -26,10 +26,12 @@ def find_best_shift(wordlist, text):
         wordNo = 0
         wordLast = 0
         wordLen = 0
+        wordSaved = ''
         for word in words:
             wordNo += 1
-            if problemSet4Utilities.is_word(wordlist, word) and (wordLast+1) == wordNo:
+            if problemSet4Utilities.is_word(wordlist, word) and (wordLast+1) == wordNo and word != 'i':
                 #print word, shift
+                wordSaved = word
                 # test if the correct words are continuous
                 wordLast = wordNo
                 wordLen += len(word) + 1
@@ -42,7 +44,8 @@ def find_best_shift(wordlist, text):
                 break
             
         # check if this has been the best shift so far
-        if bestShift[1] < wordLast:
+        if bestShift[1] < wordLast or bestShift[2] < wordLen:
+            print wordSaved
             bestShift = (shift, wordLast, wordLen)
         
     return bestShift
@@ -54,11 +57,15 @@ def return_best_shifted(wordlist, text):
 #
 # find best multiple shifts
 #
-def find_best_shifts(wordlist, text, shifts = [(0, 0)], textStart = 0):
+def find_best_shifts(wordlist, text, shifts = [], textStart = 0): # = [(0, 0)]
     """
     recursive version
     """
-    currentText = problemSet4Utilities.apply_shifts(text, shifts)
+    #print shifts
+    if len(shifts) > 0:
+        currentText = problemSet4Utilities.apply_shifts(text, shifts)
+    else:
+        currentText = text
     #print currentText, text
     if problemSet4Utilities.isTextEnglish(wordlist, currentText):
         if shifts[0] == (0, 0):
@@ -66,22 +73,37 @@ def find_best_shifts(wordlist, text, shifts = [(0, 0)], textStart = 0):
         return shifts
     else:
         newShift = find_best_shift(wordlist, currentText[textStart:])
-        if shifts[-1] != (textStart, -newShift[0]):
-            if newShift[0] != 0:
-                shifts.append((textStart, -newShift[0]))
-            return find_best_shifts(wordlist, text, shifts, newShift[2])
+        #print newShift, currentText[textStart:]
+        if len(shifts) == 0 or shifts[-1] != (textStart, -newShift[0]):
+            #print 'newShift[2]:', newShift[2], ' and textStart:', textStart
+            #print 'Result:',newShift[2] > textStart
+            shifts.append((textStart, -newShift[0]))
+            return find_best_shifts(wordlist, text, shifts, textStart+newShift[2])
+        else:
+            print textStart, -newShift[0], newShift[2]
+            return shifts
     
 #
 # Testing
 #
 if __name__ == '__main__':
-    text = 'Pmttw,hdwztl!'
-    text = 'JufYkaolfapxQdrnzmasmRyrpfdvpmEurrb?' # Do Sevif vjrKylhtgvmgLslj ypjgZollw?
+    # Single shift test
+    #text = 'Pmttw,hdwztl!'
+    #text = 'JufYkaolfapxQdrnzmasmRyrpfdvpmEurrb?' # Do Sevif vjrKylhtgvmgLslj ypjgZollw?
     #text = 'Sevif vjrKylhtgvmgLslj ypjgZollw?' # Androids TguqbpdvpUausigyspHxuue?
     #text = 'TguqbpdvpUausigyspHxuue?' # Dream of Electric Sheep?
     #print find_best_shift(problemSet4Utilities.wordlist, text)
     #print return_best_shifted(problemSet4Utilities.wordlist, text)
 
-    text = 'JufYkaolfapxQdrnzmasmRyrpfdvpmEurrb?'
-    shifts = find_best_shifts(problemSet4Utilities.wordlist, text)
-    print problemSet4Utilities.apply_shifts(text, shifts)
+    # Multi shift test
+    #text = 'JufYkaolfapxQdrnzmasmRyrpfdvpmEurrb?'
+    #text = 'An Uzsqzu fdlZn mnzfrcwzvskzbjqwvekxhmfzkzafglcyejrepa wkjcnaxpwbnmbntqrdzi'
+    #text = 'An Ingenious Nboabnufrknjgznqyekjtzlwaunznpuv rmtyftdpokzyrbpldkqbaqbhefsnx'
+    #shifts = find_best_shifts(problemSet4Utilities.wordlist, text)
+    #print problemSet4Utilities.apply_shifts(text, shifts)
+
+    # Fable test
+    fable = problemSet4Utilities.get_fable_string()
+    shifts = find_best_shifts(problemSet4Utilities.wordlist, fable)
+    print shifts
+    print problemSet4Utilities.apply_shifts(fable, shifts)
