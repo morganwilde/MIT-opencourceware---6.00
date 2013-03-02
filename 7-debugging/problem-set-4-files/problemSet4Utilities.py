@@ -6,6 +6,7 @@ import string
 import random
 
 WORDLIST_FILENAME = "words.txt"
+NAMEIS = __name__
 
 # -----------------------------------
 # Helper code
@@ -254,3 +255,57 @@ def apply_shift(text, shift):
     'Apq hq hiham a.'
     """
     return apply_coder(text, build_encoder(shift))
+
+#
+# Problem 3: Multi-level encryption.
+#
+def applyTupleShift(text, shiftTuple):
+    coder = build_encoder(shiftTuple[1])
+    codedText = text[:shiftTuple[0]]
+    for char in text[shiftTuple[0]:]:
+        if char.isupper():
+            codedText += coder.get(char, char).upper()
+        elif char.islower():
+            codedText += coder.get(char, char).lower()
+        else:
+            codedText += coder.get(char, char)
+
+    return codedText
+
+def apply_shifts(text, shifts):
+    """
+    Applies a sequence of shifts to an input text.
+
+    text  : A string to apply the Ceasar shifts to 
+    shifts: A list of tuples containing the location each shift should
+    begin and the shift offset. Each tuple is of the form (location,
+    shift) The shifts are layered: each one is applied from its
+    starting position all the way through the end of the string.  
+    returns: text after applying the shifts to the appropriate
+    positions
+
+    Example:
+    >>> apply_shifts("Do Androids Dream of Electric Sheep?", [(0,6), (3, 18), (12, 16)])
+    'JufYkaolfapxQdrnzmasmRyrpfdvpmEurrb?'
+    """
+    # base case
+    if len(shifts) > 1:
+        return apply_shifts(applyTupleShift(text, shifts[0]), shifts[1:])
+    # inductive case
+    else: 
+        return applyTupleShift(text, shifts[0])
+
+def isTextEnglish(wordlist, text):
+    words = text.split(' ')
+    if words[-1] == '':
+        words.pop()
+    test = 0
+    for word in words:
+        if is_word(wordlist, word):
+            test += 1
+    if test == len(words):
+        test = True
+    else:
+        test = False
+
+    return test
