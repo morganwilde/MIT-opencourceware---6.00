@@ -106,121 +106,138 @@ We will define a number of classes that inherit from Trigger. In the figure belo
 
 ![Click on the above image for a full-size view](http://dl.dropbox.com/u/31042440/mit-ocw-600/unit-2/trigger-inheritance.png)
 
-Whole Word Triggers 
-Having a trigger that always fires isn’t interesting. Let’s write some that are. A user may want to 
-be alerted about news items that contain specific words. For instance, a simple trigger could fire 
-for every news item whose title contained the word “Microsoft”. In the following problems, we 
-ask you to create a word trigger abstract class and implement three classes that implement 
-triggers of this sort. 
-The trigger should fire when the whole word is present. For example, a trigger for “soft” should 
-fire on: 
-• Koala bears are soft and cuddly. 
-• I prefer pillows that are soft. 
-• Soft drinks are great. 
-• Soft’s the new pink! 
-• “Soft!” he exclaimed as he threw the football. 
-But should not fire on 
-• Microsoft announced today that pillows are bad. 
-This is a little tricky, especially the case with the apostrophe. For the purpose of your parsing, 
-pretend that a space or any character in string.punctuation is a word separator. If you’ve 
-never seen string.punctuation before, go to your interpreter and type: 
->>> import string 
->>> print string.punctuation Play around with this a bit to get comfortable with what it is. The split and replace method of 
-strings will almost certainly be helpful as you tackle this part. 
-You may also find the string methods lower and/or upper useful for this problem. 
-Problem 2.
-Implement a word trigger abstract class, WordTrigger. It should take in a string word as an 
-argument to the class’s constructor. 
-WordTrigger should be a subclass of Trigger. It has one new method, is_word_in. 
-is_word_in takes in one string argument text. It returns True if the whole word word is present 
-in text, False otherwise, as described in the above examples. This method should not be casesensitive. Implement this method. 
-Because this is an abstract class, we will not be directly instantiating any WordTriggers. 
-WordTrigger should inherit its evaluate method from Trigger. We do this because now we 
-can create subclasses of WordTrigger that use its is_word_in function. In this way, it is much 
-like the Trigger interface, except now actual code from the class is used. 
-Problem 3.
-Implement a word trigger class, TitleTrigger that fires when a news item’s title contains a 
-given word. The word should be an argument to the class’s constructor. This trigger should not 
-be case-sensitive (it should treat “Intel” and “intel” as being equal). 
-For example, an instance of this type of trigger could be used to generate an alert whenever the 
-word “Intel” occurred in the title of a news item. Another instance could generate an alert 
-whenever the word “Microsoft” occurred in the title of an item. 
-Think carefully about what methods should be defined in TitleTrigger and what methods 
-should be inherited from the superclass.
-Once you’ve implemented TitleTrigger, the TitleTrigger unit tests in our test suite should 
-pass. 
-Problem 4.
-Implement a word trigger class, SubjectTrigger, that fires when a news item’s subject
-contains a given word. The word should be an argument to the class’s constructor. This trigger 
-should not be case-sensitive. 
-Once you’ve implemented SubjectTrigger, the SubjectTrigger unit tests in our test suite 
-should pass. 
-Problem 5.
-Implement a word trigger class, SummaryTrigger, that fires when a news item’s summarycontains a given word. The word should be an argument to the class’s constructor. This trigger 
-should not be case-sensitive. 
-Once you’ve implemented SummaryTrigger, the SummaryTrigger unit tests in our test suite 
-should pass. 
-Composite Triggers 
-So the triggers above are mildly interesting, but we want to do better: we want to ‘compose’ the 
-earlier triggers, to set up more powerful alert rules. For instance, we may want to raise an alert 
-only when both “google” and “stock” were present in the news item (an idea we can’t express 
-right now). 
-Note that these triggers are not word triggers and should not be subclasses of WordTrigger. 
-Problem 6.
-Implement a NOT trigger (NotTrigger). 
-This trigger should produce its output by inverting the output of another trigger. The NOT trigger 
-should take this other trigger as an argument to its constructor (why its constructor? Because we 
-can’t change evaluate… that’d break our polymorphism). So, given a trigger T and a news item 
-x, the output of the NOT trigger’s evaluate method should be equivalent to not 
-T.evaluate(x). 
-When this is done, the NotTrigger unit tests should pass. 
-Problem 7.
-Implement an AND trigger (AndTrigger). 
-This trigger should take two triggers as arguments to its constructor, and should fire on a news 
-story only if both of the inputted triggers would fire on that item. 
-When this is done, the AndTrigger unit tests should pass. 
-Problem 8.
-Implement an OR trigger (OrTrigger). 
-This trigger should take two triggers as arguments to its constructor, and should fire if either one 
-(or both) of its inputted triggers would fire on that item. 
-When this is done, the OrTrigger unit tests should pass. 
-Phrase Triggers 
-At this point, you have no way of writing a trigger that matches on “New York City” — the only 
-triggers you know how to write would be a trigger that would fire on “New” AND “York” AND “City” – which also fires on the phrase “New students at York University love the city”. It’s time 
-to fix this. Since here you’re asking for an exact match, we will require that the cases match, but 
-we’ll be a little more flexible on word matching. So, “New York City” will match: 
-• New York City sees movie premiere 
-• In the heart of New York City’s famous cafe 
-• New York Cityrandomtexttoproveapointhere 
-but will not match: 
-• I love new york city 
-Problem 9.
-Implement a phrase trigger (PhraseTrigger) that fires when a given phrase is in any of the 
-subject, title, or summary. The phrase should be an argument to the class’s constructor. You may 
-find the Python operator in helpful, as in: 
->>> print "New York City" in "In the heart of New York City's famous cafe" 
-True 
->>> print "New York City" in "I love new york city" 
-False 
-When this is done, the PhraseTrigger unit tests should pass. 
-Part III: Filtering 
-At this point, you can run ps5.py, and it will fetch and display Google and Yahoo news items 
-for you in little pop-up windows. How many news items? All of them. 
-Right now, the code we’ve given you in ps5.py gets all of the feeds every minute, and displays 
-the result. This is nice, but, remember, the goal here was to filter out only the the stories we 
-wanted. 
-Problem 10.
-Write a function, filter_stories(stories, triggerlist) that takes in a list of news stories 
-and a list of triggers, and returns only the stories which a trigger fires for. 
-After completing Problem 10, you can try running ps5.py, and various RSS news items should 
-pop up, filtered by some hard-coded triggers defined for you in some code near the bottom. The 
-code runs an infinite loop, checking the RSS feed for new stories every 60 seconds. 
-Part IV: User-Specified Triggers 
-Right now, your triggers are specified in your Python code, and to change them, you have to edit 
-your program. This is very user-unfriendly. (Imagine if you had to edit the source code of your 
-web browser every time you wanted to add a bookmark!) Instead, we want you to read your trigger configuration from a triggers.txt file, every time 
-your application starts, and use the triggers specified there. 
-Consider the following example configuration file: 
+#### Whole Word Triggers
+
+Having a trigger that always fires isn’t interesting. Let’s write some that are. A user may want to be alerted about news items that contain specific words. For instance, a simple trigger could fire for every news item whose title contained the word “Microsoft”. In the following problems, we ask you to create a word trigger abstract class and implement three classes that implement triggers of this sort.
+
+The trigger should fire when the whole word is present. For example, a trigger for “soft” should fire on:
+
+* Koala bears are soft and cuddly. 
+* I prefer pillows that are soft. 
+* Soft drinks are great. 
+* Soft’s the new pink! 
+* “Soft!” he exclaimed as he threw the football.
+
+But should not fire on
+
+* Microsoft announced today that pillows are bad.
+
+This is a little tricky, especially the case with the apostrophe. For the purpose of your parsing, pretend that a space or any character in `string.punctuation` is a word separator. If you’ve never seen `string.punctuation` before, go to your interpreter and type:
+
+```Python
+import string 
+print string.punctuation
+```
+
+Play around with this a bit to get comfortable with what it is. The `split` and `replace` method of strings will almost certainly be helpful as you tackle this part.
+
+You may also find the string methods `lower` and/or `upper` useful for this problem.
+
+#### Problem 2.
+
+Implement a word trigger abstract class, `WordTrigger`. It should take in a string `word` as an argument to the class’s constructor.
+
+`WordTrigger` should be a subclass of `Trigger`. It has one new method, `is_word_in`. `is_word_in` takes in one string argument `text`. It returns `True` if the whole word `word` is present in text, `False` otherwise, as described in the above examples. This method should not be casesensitive. Implement this method.
+
+Because this is an abstract class, we will not be directly instantiating any `WordTriggers`. `WordTrigger` should inherit its `evaluate` method from `Trigger`. We do this because now we can create subclasses of WordTrigger that use its `is_word_in` function. In this way, it is much like the Trigger interface, except now actual code from the class is used.
+
+#### Problem 3
+
+Implement a word trigger class, `TitleTrigger` that fires when a news item’s **title** contains a given word. The word should be an argument to the class’s constructor. This trigger should not be case-sensitive (it should treat “Intel” and “intel” as being equal).
+
+For example, an instance of this type of trigger could be used to generate an alert whenever the word “Intel” occurred in the title of a news item. Another instance could generate an alert whenever the word “Microsoft” occurred in the title of an item.
+
+**Think carefully about what methods should be defined in TitleTrigger and what methods should be inherited from the superclass.**
+
+Once you’ve implemented `TitleTrigger`, the `TitleTrigger` unit tests in our test suite should pass.
+
+#### Problem 4.
+
+Implement a word trigger class, `SubjectTrigger`, that fires when a news item’s **subject** contains a given word. The word should be an argument to the class’s constructor. This trigger should not be case-sensitive.
+
+Once you’ve implemented `SubjectTrigger`, the `SubjectTrigger` unit tests in our test suite should pass.
+
+#### Problem 5.
+
+Implement a word trigger class, SummaryTrigger, that fires when a news item’s summarycontains a given word. The word should be an argument to the class’s constructor. This trigger should not be case-sensitive.
+
+Once you’ve implemented `SummaryTrigger`, the `SummaryTrigger` unit tests in our test suite should pass.
+
+### Composite Triggers
+
+So the triggers above are mildly interesting, but we want to do better: we want to ‘compose’ the earlier triggers, to set up more powerful alert rules. For instance, we may want to raise an alert only when both “google” and “stock” were present in the news item (an idea we can’t express right now).
+
+Note that these triggers are not word triggers and should not be subclasses of `WordTrigger`.
+
+#### Problem 6.
+Implement a NOT trigger (`NotTrigger`).
+
+This trigger should produce its output by inverting the output of another trigger. The NOT trigger should take this other trigger as an argument to its constructor (why its constructor? Because we can’t change `evaluate…` that’d break our polymorphism). So, given a trigger `T` and a news item `x`, the output of the NOT trigger’s `evaluate` method should be equivalent to `not T.evaluate(x)`.
+
+When this is done, the `NotTrigger` unit tests should pass.
+
+#### Problem 7.
+
+Implement an AND trigger (`AndTrigger`).
+
+This trigger should take two triggers as arguments to its constructor, and should fire on a news story only if *both* of the inputted triggers would fire on that item.
+
+When this is done, the `AndTrigger` unit tests should pass.
+
+#### Problem 8.
+
+Implement an OR trigger (`OrTrigger`).
+
+This trigger should take two triggers as arguments to its constructor, and should fire if either one (or both) of its inputted triggers would fire on that item.
+
+When this is done, the `OrTrigger` unit tests should pass. 
+
+### Phrase Triggers 
+
+At this point, you have no way of writing a trigger that matches on “New York City” — the only triggers you know how to write would be a trigger that would fire on “New” AND “York” AND “City” – which also fires on the phrase “New students at York University love the city”. It’s time to fix this. Since here you’re asking for an exact match, we will require that the cases match, but we’ll be a little more flexible on word matching. So, “New York City” will match:
+
+* New York City sees movie premiere 
+* In the heart of New York City’s famous cafe 
+* New York Cityrandomtexttoproveapointhere
+
+but will not match:
+
+* I love new york city
+
+#### Problem 9.
+
+Implement a phrase trigger (`PhraseTrigger`) that fires when a given phrase is in **any** of the subject, title, or summary. The phrase should be an argument to the class’s constructor. You may find the Python operator in helpful, as in:
+
+```Python
+print "New York City" in "In the heart of New York City's famous cafe" 
+# True 
+print "New York City" in "I love new york city" 
+# False
+```
+
+When this is done, the PhraseTrigger unit tests should pass.
+
+### Part III: Filtering
+
+At this point, you can run `ps5.py`, and it will fetch and display Google and Yahoo news items for you in little pop-up windows. How many news items? *All of them*.
+
+Right now, the code we’ve given you in ps5.py gets all of the feeds every minute, and displays the result. This is nice, but, remember, the goal here was to filter out only the the stories we wanted.
+
+#### Problem 10.
+
+Write a function, `filter_stories(stories, triggerlist)` that takes in a list of news stories and a list of triggers, and returns only the stories which a trigger fires for.
+
+After completing Problem 10, you can try running `ps5.py`, and various RSS news items should pop up, filtered by some hard-coded triggers defined for you in some code near the bottom. The code runs an infinite loop, checking the RSS feed for new stories every 60 seconds.
+
+### Part IV: User-Specified Triggers
+
+Right now, your triggers are specified in your Python code, and to change them, you have to edit your program. This is very user-unfriendly. (Imagine if you had to edit the source code of your web browser every time you wanted to add a bookmark!)
+
+Instead, we want you to read your trigger configuration from a triggers.txt file, every time your application starts, and use the triggers specified there.
+
+Consider the following example configuration file:
+
+```Python
 # subject trigger named t1 
 t1 SUBJECT world 
 # title trigger named t2 
@@ -230,70 +247,53 @@ t3 PHRASE New York City
 # composite trigger named t4 
 t4 AND t2 t3 
 # the trigger set contains t1 and t4 
-ADD t1 t4 
-The example file specifies that four triggers should be created, and that two of those triggers 
-should be added to the trigger set: 
-• A trigger that fires when a subject contains the word ‘world’ (t1). 
-• A trigger that fires when the title contains the word ‘intel’ and 
-the news item contains the phrase ‘New York City’ somewhere (t4). 
-The two other triggers (t2 and t3) are created but not added to the trigger set directly. They are 
-used as arguments for the composite AND trigger’s definition. 
-Each line in this file does one of the following: 
-• is blank 
-• is a comment (begins with a 
-#) 
-• defines a named trigger 
-• adds triggers to the trigger 
-set. 
-Each type of line is described below. 
-Blank: blank lines are ignored. A line that consists only of whitespace is a blank line. 
-Comments: Any line that begins with a # character is ignored. 
-Trigger definitions: Lines that do not begin with the keyword ADD define named triggers. The 
-first element in a trigger definition is the name of the trigger. The name can be any combination 
-of letters without spaces, except for “ADD”. The second element of a 
-trigger definition is a keyword (e.g., TITLE, PHRASE, etc.) that specifies the kind of trigger being defined. The remaining elements of the definition are the trigger arguments. What arguments are 
-required depends on the trigger type: 
-• TITLE: a single word. 
-• SUBJECT: a single word. 
-• SUMMARY: a single word. 
-• NOT: the name of the trigger that will be NOT’d. 
-• AND: the names of the two other triggers that will be AND’d. 
-• OR: the names of the two other triggers that will be OR’d. 
-• PHRASE: a phrase. 
-Trigger addition: A trigger definition should create a trigger and associate it with a name but 
-should not automatically add that trigger to the trigger set. One or more ADD lines in the .txt file 
-will specify which triggers should be in the trigger set. An addition line begins with the ADD
-keyword. Following ADD are the names of one or more previously defined triggers. These triggers 
-will be added to the the trigger set. 
-Problem 11.
-Finish implementing readTriggerConfig(filename). We’ve written code to open the file and 
-throw away all the lines that don’t begin with instructions (e.g. comments, blank spaces). Your 
-job is to finish the implementation. readTriggerConfig should return the list of triggers 
-specified in the configuration file. 
-Once that’s done, modify the code within the function main_thread to use the trigger list 
-specified in your configuration file, instead of the one we hard-coded for you: 
+ADD t1 t4
+```
+
+The example file specifies that four triggers should be created, and that two of those triggers should be added to the trigger set:
+
+* A trigger that fires when a subject contains the word ‘world’ (`t1`). 
+* A trigger that fires when the title contains the word ‘intel’ and the news item contains the phrase ‘New York City’ somewhere (`t4`).
+
+The two other triggers (`t2` and `t3`) are created but not added to the trigger set directly. They are used as arguments for the composite `AND` trigger’s definition.
+
+Each line in this file does one of the following:
+
+* is blank 
+* is a comment (begins with a #) 
+* defines a named trigger 
+* adds triggers to the trigger set.
+
+Each type of line is described below.
+
+**Blank**: blank lines are ignored. A line that consists only of whitespace is a blank line.
+
+**Comments**: Any line that begins with a # character is ignored.
+
+**Trigger definitions**: Lines that do not begin with the keyword `ADD` define named triggers. The first element in a trigger definition is the name of the trigger. The name can be any combination of letters without spaces, except for “ADD”. The second element of a trigger definition is a keyword (e.g., `TITLE`, `PHRASE`, etc.) that specifies the kind of trigger being defined. The remaining elements of the definition are the trigger arguments. What arguments are required depends on the trigger type:
+
+* `TITLE`  : a single word. 
+* `SUBJECT`: a single word. 
+* `SUMMARY`: a single word. 
+* `NOT`    : the name of the trigger that will be NOT’d. 
+* `AND`    : the names of the two other triggers that will be AND’d. 
+* `OR`     : the names of the two other triggers that will be OR’d. 
+* `PHRASE` : a phrase.
+
+**Trigger addition**: A trigger definition should create a trigger and associate it with a name but should not automatically add that trigger to the trigger set. One or more `ADD` lines in the .txt file will specify which triggers should be in the trigger set. An addition line begins with the `ADD` keyword. Following `ADD` are the names of one or more previously defined triggers. These triggers will be added to the the trigger set.
+
+#### Problem 11.
+
+Finish implementing `readTriggerConfig(filename)`. We’ve written code to open the file and throw away all the lines that don’t begin with instructions (e.g. comments, blank spaces). Your job is to finish the implementation. `readTriggerConfig` should return the list of triggers specified in the configuration file.
+
+Once that’s done, modify the code within the function `main_thread` to use the trigger list specified in your configuration file, instead of the one we hard-coded for you:
+
+```Python
 # TODO: Problem 11 
 # After implementing readTriggerConfig, uncomment this line: 
-# triggerlist = readTriggerConfig("triggers.txt") 
-After completing Problem 11, you can try running ps5.py, and depending on your triggers.txt 
-file, various RSS news items should pop up for easy reading. The code runs an infinite loop, 
-checking the RSS feed for new stories every 60 seconds. 
-Hint: If no stories are popping up, open up triggers.txt and change the triggers to ones that 
-reflect current events (if you don’t keep up, just pick a trigger that would fire on one of the 
-current*RRJOHQHZV stories). 
-Handin Procedure 
-1. Save
-All your code should be in a single file called ps5.py. 
-2. Time and collaboration info
-At the start of the file, in a comment, write down the number of hours (roughly) you spent on this 
-problem set, and the names of whomever you collaborated with. For example: # Problem Set 5 
-# Name: Jane Lee 
-# Collaborators (Discussion): John Doe 
-# Collaborators (Identical Solution): Jane Smith 
-# Time: 1:30 
-# 
-.... your code goes here ... 
-3. Submit
-You may upload new versions of the problem set until the 11:59pm deadline, but 
-anything uploaded after that time will be counted towards your late days, if you have any 
-remaining. If you have no remaining late days, you will receive zero credit for a late submission. 
+# triggerlist = readTriggerConfig("triggers.txt")
+```
+
+After completing Problem 11, you can try running `ps5.py`, and depending on your `triggers.txt` file, various RSS news items should pop up for easy reading. The code runs an infinite loop, checking the RSS feed for new stories every 60 seconds.
+
+**Hint**: If no stories are popping up, open up triggers.txt and change the triggers to ones that reflect current events (if you don’t keep up, just pick a trigger that would fire on one of the current Google news stories).
