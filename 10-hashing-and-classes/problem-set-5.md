@@ -104,7 +104,7 @@ class Trigger:
 
 We will define a number of classes that inherit from Trigger. In the figure below, Trigger is a superclass, which all other classes inherit from. The arrow from WordTrigger to Trigger means that WordTrigger inherits from Trigger — a WordTrigger **is a Trigger*. Note that other classes inherit from WordTrigger.
 
-[Click on the above image for a full-size view](http://dl.dropbox.com/u/31042440/trigger-inheritance.png)
+![Click on the above image for a full-size view](http://dl.dropbox.com/u/31042440/trigger-inheritance.png)
 
 Whole Word Triggers 
 Having a trigger that always fires isn’t interesting. Let’s write some that are. A user may want to 
