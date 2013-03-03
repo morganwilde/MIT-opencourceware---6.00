@@ -56,7 +56,7 @@ This is, unfortunately, a little trickier than we’d like it to be, because eac
 
 Why do we want this? When all is said and done, we want an application that aggregates several RSS feeds from various sources, and can act on all of them in the exact same way: we should be able to read the New York Times’s RSS feed, Google News’s RSS feed, The Tech’s RSS feed, and the RSS feeds from blogs such as CuteOverload.com, all in one place. 
 
-#### Problem 1.
+#### Problem 1
 
 Parsing all of this information from the feeds that Google/Yahoo/the New York Times/etc. gives us is no small feat. So, let’s tackle an easy part of the problem first: Pretend that someone has already done the specific parsing, and has left you with variables that contain the following information for a news story:
 
@@ -133,7 +133,7 @@ Play around with this a bit to get comfortable with what it is. The `split` and 
 
 You may also find the string methods `lower` and/or `upper` useful for this problem.
 
-#### Problem 2.
+#### Problem 2
 
 Implement a word trigger abstract class, `WordTrigger`. It should take in a string `word` as an argument to the class’s constructor.
 
@@ -151,13 +151,13 @@ For example, an instance of this type of trigger could be used to generate an al
 
 Once you’ve implemented `TitleTrigger`, the `TitleTrigger` unit tests in our test suite should pass.
 
-#### Problem 4.
+#### Problem 4
 
 Implement a word trigger class, `SubjectTrigger`, that fires when a news item’s **subject** contains a given word. The word should be an argument to the class’s constructor. This trigger should not be case-sensitive.
 
 Once you’ve implemented `SubjectTrigger`, the `SubjectTrigger` unit tests in our test suite should pass.
 
-#### Problem 5.
+#### Problem 5
 
 Implement a word trigger class, SummaryTrigger, that fires when a news item’s summarycontains a given word. The word should be an argument to the class’s constructor. This trigger should not be case-sensitive.
 
@@ -169,14 +169,14 @@ So the triggers above are mildly interesting, but we want to do better: we want 
 
 Note that these triggers are not word triggers and should not be subclasses of `WordTrigger`.
 
-#### Problem 6.
+#### Problem 6
 Implement a NOT trigger (`NotTrigger`).
 
 This trigger should produce its output by inverting the output of another trigger. The NOT trigger should take this other trigger as an argument to its constructor (why its constructor? Because we can’t change `evaluate…` that’d break our polymorphism). So, given a trigger `T` and a news item `x`, the output of the NOT trigger’s `evaluate` method should be equivalent to `not T.evaluate(x)`.
 
 When this is done, the `NotTrigger` unit tests should pass.
 
-#### Problem 7.
+#### Problem 7
 
 Implement an AND trigger (`AndTrigger`).
 
@@ -184,7 +184,7 @@ This trigger should take two triggers as arguments to its constructor, and shoul
 
 When this is done, the `AndTrigger` unit tests should pass.
 
-#### Problem 8.
+#### Problem 8
 
 Implement an OR trigger (`OrTrigger`).
 
@@ -204,7 +204,7 @@ but will not match:
 
 * I love new york city
 
-#### Problem 9.
+#### Problem 9
 
 Implement a phrase trigger (`PhraseTrigger`) that fires when a given phrase is in **any** of the subject, title, or summary. The phrase should be an argument to the class’s constructor. You may find the Python operator in helpful, as in:
 
@@ -223,7 +223,7 @@ At this point, you can run `ps5.py`, and it will fetch and display Google and Ya
 
 Right now, the code we’ve given you in ps5.py gets all of the feeds every minute, and displays the result. This is nice, but, remember, the goal here was to filter out only the the stories we wanted.
 
-#### Problem 10.
+#### Problem 10
 
 Write a function, `filter_stories(stories, triggerlist)` that takes in a list of news stories and a list of triggers, and returns only the stories which a trigger fires for.
 
@@ -282,7 +282,7 @@ Each type of line is described below.
 
 **Trigger addition**: A trigger definition should create a trigger and associate it with a name but should not automatically add that trigger to the trigger set. One or more `ADD` lines in the .txt file will specify which triggers should be in the trigger set. An addition line begins with the `ADD` keyword. Following `ADD` are the names of one or more previously defined triggers. These triggers will be added to the the trigger set.
 
-#### Problem 11.
+#### Problem 11
 
 Finish implementing `readTriggerConfig(filename)`. We’ve written code to open the file and throw away all the lines that don’t begin with instructions (e.g. comments, blank spaces). Your job is to finish the implementation. `readTriggerConfig` should return the list of triggers specified in the configuration file.
 
