@@ -76,13 +76,13 @@ class Person(object):
         #return self's name
         return self.name
     
-##me = Person('John Guttag')
-##him = Person('Barack Hussein Obama')
-##her = Person('Madonna')
+me = Person('John Guttag')
+him = Person('Barack Hussein Obama')
+her = Person('Madonna')
 ##print him
 ##print him.getLastName()
-##him.setBirthday(datetime.date(1961, 8, 4))
-##her.setBirthday(datetime.date(1958, 8, 16))
+him.setBirthday(datetime.date(1961, 8, 4))
+her.setBirthday(datetime.date(1958, 8, 16))
 ####him.birthday = '8/4/61'
 ##print her.getAge()
 ##print him.getAge()
