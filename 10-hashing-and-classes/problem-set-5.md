@@ -100,7 +100,7 @@ class Trigger:
         for the given news item, or False otherwise. 
         """ 
         raise NotImplementedError 
-``
+```
 
 We will define a number of classes that inherit from Trigger. In the figure below, Trigger is a superclass, which all other classes inherit from. The arrow from WordTrigger to Trigger means that WordTrigger inherits from Trigger — a WordTrigger **is a Trigger*. Note that other classes inherit from WordTrigger.
 
