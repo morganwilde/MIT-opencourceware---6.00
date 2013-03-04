@@ -1,5 +1,9 @@
 # 6.00
 # Problem Set 5 Test Suite
+
+import sys
+sys.dont_write_bytecode = True # stop generating *.pyc files
+
 import unittest
 from ps5 import *
 
@@ -158,7 +162,7 @@ class ProblemSet5(unittest.TestCase):
         nn = AndTrigger(self.ft, self.ft2)
         b = NewsStory("guid", "title", "subj", "summary", "link")
 
-        self.assertTrue(yy.evaluate(b), "AND of 'always true' and 'always true' should be true")
+        self.assertTrue(yy.evaluate(b), "AND of 'always true' and 'always true' should be true was:", yy.evaluate(b))
         self.assertFalse(yn.evaluate(b), "AND of 'always true' and 'always false' should be false")
         self.assertFalse(ny.evaluate(b), "AND of 'always false' and 'always true' should be false")
         self.assertFalse(nn.evaluate(b), "AND of 'always false' and 'always false' should be false")

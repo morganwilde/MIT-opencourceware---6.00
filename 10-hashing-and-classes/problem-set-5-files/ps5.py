@@ -1,5 +1,9 @@
+# -*- coding: utf-8 -*-
 # 6.00 Problem Set 5
 # RSS Feed Filter
+
+import sys
+sys.dont_write_bytecode = True # stop generating *.pyc files
 
 import feedparser
 import string
@@ -45,7 +49,28 @@ def process(url):
 
 # Problem 1
 
-# TODO: NewsStory
+class NewsStory(object):
+    def __init__(self, guid, title, subject, summary, link):
+        self.guid       = guid      # a string that serves as a unique name for this entry
+        self.title      = title     # a string
+        self.subject    = subject   # a string
+        self.summary    = summary   # a string
+        self.link       = link      # a string
+
+    def get_guid(self):
+        return self.guid
+
+    def get_title(self):
+        return self.title
+
+    def get_subject(self):
+        return self.subject
+
+    def get_summary(self):
+        return self.summary
+
+    def get_link(self):
+        return self.link
 
 #======================
 # Part 2
@@ -64,19 +89,84 @@ class Trigger(object):
 # Problems 2-5
 
 # TODO: WordTrigger
+class WordTrigger(Trigger):
+    def __init__(self, word):
+        self.word = word
+
+    def is_word_in(self, text):
+        """
+        returns True if `word` is in `text`
+        """
+        lowerWord = self.word.lower()
+        textToWords = text.lower().split()
+        wordFound = False
+        punctuation = string.punctuation + '’“”'
+        for eachWord in textToWords:
+            # check if word is fully in eachWord
+            if lowerWord in eachWord:
+                leftovers = eachWord.replace(lowerWord, '')
+                if len(leftovers) == 0:
+                    wordFound = True
+                    break
+                else:
+                    charsBefore = eachWord[:eachWord.find(lowerWord)]
+                    charsAfter = eachWord[eachWord.find(lowerWord) + len(lowerWord):]
+                    if len(charsBefore) > 0:
+                        proceedS = charsBefore[-1] in punctuation
+                    else:
+                        proceedS = True
+                    if len(charsAfter) > 0:
+                        proceedE = charsAfter[0] in punctuation
+                    else:
+                        proceedE = True
+                    if proceedS and proceedE:
+                        wordFound = True
+                        break
+
+        return wordFound
 
 # TODO: TitleTrigger
-# TODO: SubjectTrigger
-# TODO: SummaryTrigger
+class TitleTrigger(WordTrigger):
+    def evaluate(self, story):
+        return self.is_word_in(story.get_title())
 
+# TODO: SubjectTrigger
+class SubjectTrigger(WordTrigger):
+    def evaluate(self, story):
+        return self.is_word_in(story.get_subject())
+# TODO: SummaryTrigger
+class SummaryTrigger(WordTrigger):
+    def evaluate(self, story):
+        return self.is_word_in(story.get_summary())
 
 # Composite Triggers
 # Problems 6-8
 
 # TODO: NotTrigger
-# TODO: AndTrigger
-# TODO: OrTrigger
+class NotTrigger(Trigger):
+    def __init__(self, trigger):
+        self.trigger = trigger
 
+    def evaluate(self, story):
+        return not self.trigger.evaluate(story)
+        
+# TODO: AndTrigger
+class AndTrigger(Trigger):
+    def __init__(self, trigger1, trigger2):
+        self.trigger1 = trigger1
+        self.trigger2 = trigger2
+
+    def evaluate(self, story):
+        return self.trigger1(story) and self.trigger2(story)
+
+# TODO: OrTrigger
+class OrTrigger(Trigger):
+    def __init__(self, trigger1, trigger2):
+        self.trigger1 = trigger1
+        self.trigger2 = trigger2
+
+    def evaluate(self, story):
+        return self.trigger1(story) or self.trigger2(story)
 
 # Phrase Trigger
 # Question 9
@@ -170,7 +260,15 @@ def main_thread(p):
 
 SLEEPTIME = 60 #seconds -- how often we poll
 if __name__ == '__main__':
-    p = Popup()
-    thread.start_new_thread(main_thread, (p,))
-    p.start()
-
+    #p = Popup()
+    #thread.start_new_thread(main_thread, (p,))
+    #p.start()
+    pass
+    # Test WordTrigger()
+    boom = WordTrigger('soft')
+    print boom.is_word_in('Koala bears are soft and cuddly.')
+    print boom.is_word_in('I prefer pillows that are soft.')
+    print boom.is_word_in('Soft drinks are great.')
+    print boom.is_word_in('Soft’s the new pink!')
+    print boom.is_word_in('“Soft!” he exclaimed as he threw the football.')
+    print boom.is_word_in('Microsoft announced today that pillows are bad.')
