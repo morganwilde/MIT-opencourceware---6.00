@@ -11,9 +11,12 @@ t2 SUBJECT Japan
 # phrase trigger named t3
 t3 PHRASE Supreme Court
 
+# phrase trigger named t3
+t5 TITLE news
+
 # composite trigger named t4
 t4 AND t2 t3
 
 # the trigger set contains t1 and t4
-ADD t1 t4
+ADD t1 t4 t5
 

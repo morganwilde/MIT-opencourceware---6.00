@@ -206,7 +206,7 @@ def filter_stories(stories, triggerlist):
         for trigger in triggerlist:
             if trigger.evaluate(story):
                 if not story in filteredStories:
-                    filteredStories.append(story)
+                    filteredStories.append(story)                
     return filteredStories
 
 #======================
@@ -235,8 +235,38 @@ def readTriggerConfig(filename):
     # 'lines' has a list of lines you need to parse
     # Build a set of triggers from it and
     # return the appropriate ones
+    triggerList = []
+    for line in lines:
+        words = line.split()
+        if words[0] == 'ADD':
+            for var in words[1:]:
+                triggerList.append(vars()[var])
+        else:
+            selectTrigger = ''
+            selectWord = line[line.find(words[1]) + len(words[1]) + 1:]
+            if words[1] == 'SUBJECT':
+                selectTrigger = SubjectTrigger(selectWord)
+            elif words[1] == 'TITLE':
+                selectTrigger = TitleTrigger(selectWord)
+            elif words[1] == 'SUMMARY':
+                selectTrigger = SummaryTrigger(selectWord)
+            elif words[1] == 'PHRASE':
+                selectTrigger = PhraseTrigger(selectWord)
+            elif words[1] == 'AND':
+                # AndTrigger
+                selectTrigger = AndTrigger(vars()[words[2]], vars()[words[3]])
+            elif words[1] == 'OR':
+                selectTrigger = OrTrigger(vars()[words[2]], vars()[words[3]])
+            elif words[1] == 'NOT':
+                selectTrigger = NotTrigger(vars()[words[2]])
+                
+            # finish up and assign object to the name
+            vars()[words[0]] = selectTrigger
+
+    return triggerList
     
 import thread
+
 
 def main_thread(p):
     # A sample trigger list - you'll replace
@@ -245,11 +275,12 @@ def main_thread(p):
     t2 = SummaryTrigger("MIT")
     t3 = PhraseTrigger("Supreme Court")
     t4 = OrTrigger(t2, t3)
-    triggerlist = [t1, t4]
+    t7 = TitleTrigger("news")
+    triggerlist = [t1, t4, t7]
     
     # TODO: Problem 11
     # After implementing readTriggerConfig, uncomment this line 
-    #triggerlist = readTriggerConfig("triggers.txt")
+    triggerlist = readTriggerConfig("triggers.txt")
 
     guidShown = []
     
@@ -277,7 +308,7 @@ def main_thread(p):
         print "Sleeping..."
         time.sleep(SLEEPTIME)
 
-SLEEPTIME = 10 #seconds -- how often we poll
+SLEEPTIME = 60 #seconds -- how often we poll
 if __name__ == '__main__':
     p = Popup()
     thread.start_new_thread(main_thread, (p,))
