@@ -1,7 +1,7 @@
 Problem Set 5: RSS Feed Filter
 ==============================
 
-*Handed out: Lecture 10.*
+*Handed out: Lecture 10.*  
 *Due: 11:59pm, Lecture 12.*
 
 ### Introduction 
