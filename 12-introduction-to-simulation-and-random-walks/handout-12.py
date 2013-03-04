@@ -84,16 +84,16 @@ class CourseList(object):
                 yield self.students[indx]
             indx += 1
             
-##m1 = MITPerson('Barbara Beaver')            
-##ug1 = UG('Jane Doe')
-##ug2 = UG('John Doe')
-##g1 = G('Mitch Peabody')
-##g2 = G('Ryan Jackson')
-##g3 = G('Sarina Canelake')
-##SixHundred = CourseList('6.00')
-##SixHundred.addStudent(ug1)
-##SixHundred.addStudent(g1)
-##SixHundred.addStudent(ug2)
+m1 = MITPerson('Barbara Beaver')            
+ug1 = UG('Jane Doe')
+ug2 = UG('John Doe')
+g1 = G('Mitch Peabody')
+g2 = G('Ryan Jackson')
+g3 = G('Sarina Canelake')
+SixHundred = CourseList('6.00')
+SixHundred.addStudent(ug1)
+SixHundred.addStudent(g1)
+SixHundred.addStudent(ug2)
 ##try:
 ##    SixHundred.addStudent(m1)
 ##except:
