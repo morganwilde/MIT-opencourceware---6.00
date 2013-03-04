@@ -221,7 +221,7 @@ When this is done, the PhraseTrigger unit tests should pass.
 
 At this point, you can run `ps5.py`, and it will fetch and display Google and Yahoo news items for you in little pop-up windows. How many news items? *All of them*.
 
-Right now, the code we’ve given you in ps5.py gets all of the feeds every minute, and displays the result. This is nice, but, remember, the goal here was to filter out only the the stories we wanted.
+Right now, the code we’ve given you in `ps5.py` gets all of the feeds every minute, and displays the result. This is nice, but, remember, the goal here was to filter out only the the stories we wanted.
 
 #### Problem 10
 

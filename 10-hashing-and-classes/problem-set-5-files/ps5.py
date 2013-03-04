@@ -157,7 +157,7 @@ class AndTrigger(Trigger):
         self.trigger2 = trigger2
 
     def evaluate(self, story):
-        return self.trigger1(story) and self.trigger2(story)
+        return self.trigger1.evaluate(story) and self.trigger2.evaluate(story)
 
 # TODO: OrTrigger
 class OrTrigger(Trigger):
@@ -166,12 +166,25 @@ class OrTrigger(Trigger):
         self.trigger2 = trigger2
 
     def evaluate(self, story):
-        return self.trigger1(story) or self.trigger2(story)
+        return self.trigger1.evaluate(story) or self.trigger2.evaluate(story)
 
 # Phrase Trigger
 # Question 9
 
 # TODO: PhraseTrigger
+class PhraseTrigger(Trigger):
+    def __init__(self, phrase):
+        self.phrase = phrase
+
+    def evaluate(self, story):
+        if self.phrase in story.get_subject():
+            return True
+        elif self.phrase in story.get_title():
+            return True
+        elif self.phrase in story.get_summary():
+            return True
+        else:
+            return False
 
 
 #======================
@@ -188,7 +201,13 @@ def filter_stories(stories, triggerlist):
     # TODO: Problem 10
     # This is a placeholder (we're just returning all the stories, with no filtering) 
     # Feel free to change this line!
-    return stories
+    filteredStories = []
+    for story in stories:
+        for trigger in triggerlist:
+            if trigger.evaluate(story):
+                if not story in filteredStories:
+                    filteredStories.append(story)
+    return filteredStories
 
 #======================
 # Part 4
@@ -258,17 +277,8 @@ def main_thread(p):
         print "Sleeping..."
         time.sleep(SLEEPTIME)
 
-SLEEPTIME = 60 #seconds -- how often we poll
+SLEEPTIME = 10 #seconds -- how often we poll
 if __name__ == '__main__':
-    #p = Popup()
-    #thread.start_new_thread(main_thread, (p,))
-    #p.start()
-    pass
-    # Test WordTrigger()
-    boom = WordTrigger('soft')
-    print boom.is_word_in('Koala bears are soft and cuddly.')
-    print boom.is_word_in('I prefer pillows that are soft.')
-    print boom.is_word_in('Soft drinks are great.')
-    print boom.is_word_in('Soft’s the new pink!')
-    print boom.is_word_in('“Soft!” he exclaimed as he threw the football.')
-    print boom.is_word_in('Microsoft announced today that pillows are bad.')
+    p = Popup()
+    thread.start_new_thread(main_thread, (p,))
+    p.start()
