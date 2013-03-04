@@ -50,3 +50,20 @@ The problem sets in that you can pass on any `dict` as a person and because we a
 #### Dealing instead with Classes
 
 When Python finds `__init__` it allocates a part of memory and calls it type `name-of-class`.
+
+A `class` methods are scoped to instances of the classes object.
+
+Double underbar methods are special Python methods, that allows for user defined `object` behave in a similar fashion to built-in `objects`.
+
+`self` comes from here:
+
+```Python
+person = Person('mitch')
+print mitch.get_age()
+print Person.get_age(mitch) # this is where `self` comes from
+# these two produce the same result
+```
+
+#### Inheritance
+
+
