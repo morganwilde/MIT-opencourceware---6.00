@@ -79,3 +79,17 @@ This produces the graph below:
 ![pylab](http://dl.dropbox.com/u/31042440/mit-ocw-600/unit-2/plotting-data.png)
 
 `pylab.show()` - displays the plot on screen. Once per program and that should be the last thing being executed.
+
+The top of the window is the `title`.
+
+```Python
+pylab.figure(1)
+pylab.plot([1,2,3,4], [1,2,3,4])
+pylab.figure(2)
+pylab.plot([1,4,2,3], [5,6,7,8])
+pylab.savefig('firstSaved') # saves a name.png file in the dir running the script
+pylab.figure(1)
+pylab.plot([5,6,7,10])
+pylab.savefig('secondSaved') # saves a name.png file in the dir running the script
+pylab.show()
+```
