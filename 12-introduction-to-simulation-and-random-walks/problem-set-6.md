@@ -53,14 +53,11 @@ direction (indicated by the direction of the red arrowhead).
 
 | ![time-0](http://dl.dropbox.com/u/31042440/mit-ocw-600/unit-2/time-0.png) | ![time-1](http://dl.dropbox.com/u/31042440/mit-ocw-600/unit-2/time-1.png) |
 |---------------------------------------------------------------------------|---------------------------------------------------------------------------|
-| time 0 | time 1 |
+| Time t = 0: The robot starts at the position (2.1, 2.2) with an angle of
+205 degrees (measured clockwise from “north”). The tile that it is on is now clean. | time 1 |
 
 
-Time t = 0: The robot starts at 
-the position (2.1, 2.2) with an 
-angle of 205 degrees (measured 
-clockwise from “north”). The 
-tile that it is on is now clean. 
+
 t = 1: The robot has moved 1 
 unit in the direction it was 
 facing, to the position (1.7, 
