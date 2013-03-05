@@ -19,34 +19,42 @@ Download Files: from ps6.zip
 
 To create plots for Problems #4 and #6 of this problem set, you will need these Python library packages: matplotlib and numpy.
 
-OS X 
+**OS X**
 
 * Download and install the following python modules: mac-install [http://mit600.mit.edu/blog/wp‐content/uploads/2011/03/mac‐install.zip](http://mit600.mit.edu/blog/wp‐content/uploads/2011/03/mac‐install.zip)
 * matplotlib 1.0.0 
 * numpy 1.5.0 
 
-Windows 
+**Windows**
 
 * Follow the below links, download, and install the modules: 
 * Matplotlib 1.0.0matplotlib 1.0.0
 * numpy 1.5.0
 
-Make sure the libraries that you download match the version of Python that you are using and the 
-platform (i.e. Windows, Mac, Linux). 
-To test that you have successfully installed matplotlib and numpy, run the code 
-provided in ps6_pkgtest.py, and upload the generated graph as ps6_pylabtest.pdf
-to your workspace by 11:59pm Lecture 13. If you have problems with 
-installation, be sure to go to office hours for help. 
-Hint: You can use the save button on the pylab figure to save as .pdf. Simulation Overview 
+Make sure the libraries that you download match the version of Python that you are using and the platform (i.e. Windows, Mac, Linux).
+
+To test that you have successfully installed matplotlib and numpy, run the code provided in `ps6_pkgtest.py`, and upload the generated graph as `ps6_pylabtest.pdf` to your workspace by 11:59pm Lecture 13. If you have problems with installation, be sure to go to office hours for help.
+
+Hint: You can use the save button on the pylab figure to save as `.pdf`.
+
+### Simulation Overview
+
 iRobot is a company (started by MIT alumni and faculty) that sells the Roomba vacuuming robot
 (watch one of the product videos to see these robots in action). Roomba robots move about a 
 floor, cleaning the area they pass over. You will design a simulation to estimate how much time 
-a group of Roomba-like robots will take to clean the floor of a room. 
+a group of Roomba-like robots will take to clean the floor of a room.
+
 The following simplified model of a single robot moving in a square 5×5 room should give you 
-some intuition about the system we are simulating. 
+some intuition about the system we are simulating.
+
 The robot starts out at some random position in the room, and with a random direction of motion. 
 The illustrations below show the robot’s position (indicated by a black dot) as well as its 
-direction (indicated by the direction of the red arrowhead). 
+direction (indicated by the direction of the red arrowhead).
+
+| ![time-0](http://dl.dropbox.com/u/31042440/mit-ocw-600/unit-2/time-0.png) | ![time-1](http://dl.dropbox.com/u/31042440/mit-ocw-600/unit-2/time-1.png) |
+|-|-|
+
+
 Time t = 0: The robot starts at 
 the position (2.1, 2.2) with an 
 angle of 205 degrees (measured 
