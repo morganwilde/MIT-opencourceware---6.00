@@ -1,27 +1,36 @@
-Problem Set 6: Simulating Robots 
-Handed out: Lec 12 
-Installation due: 11:59pm, Lec 13. (No late days can be gained or used for this part of the 
-assignment)
-Due: 11:59pm, Lec 14. 
-Introduction 
-In this problem set you will practice designing a simulation and implementing a program that 
-uses classes. 
-Please don’t be discouraged by the apparent length of this problem set. There is quite a bit to 
-read and understand, but most of the problems do not involve writing much code. 
-Getting Started 
-Download Files: from ps6.zip 
-Installing pylab 
-To create plots for Problems #4 and #6 of this problem set, you will need these Python library 
-packages: matplotlib and numpy. 
+Problem Set 6: Simulating Robots
+================================
+
+*Handed out: Lec 12*  
+*Installation due: 11:59pm, Lec 13. (No late days can be gained or used for this part of the assignment)*  
+*Due: 11:59pm, Lec 14.*  
+
+### Introduction
+
+In this problem set you will practice designing a simulation and implementing a program that uses classes.
+
+Please don’t be discouraged by the apparent length of this problem set. There is quite a bit to read and understand, but most of the problems do not involve writing much code.
+
+### Getting Started
+
+Download Files: from ps6.zip
+
+### Installing pylab
+
+To create plots for Problems #4 and #6 of this problem set, you will need these Python library packages: matplotlib and numpy.
+
 OS X 
-• Download and install the following python modules: mac-install 
-http://mit600.mit.edu/blog/wp‐content/uploads/2011/03/mac‐install.zip
-• matplotlib 1.0.0 
-• numpy 1.5.0 
+
+* Download and install the following python modules: mac-install [http://mit600.mit.edu/blog/wp‐content/uploads/2011/03/mac‐install.zip](http://mit600.mit.edu/blog/wp‐content/uploads/2011/03/mac‐install.zip)
+* matplotlib 1.0.0 
+* numpy 1.5.0 
+
 Windows 
-• Follow the below links, download, and install the modules: 
-• Matplotlib 1.0.0matplotlib 1.0.0
-• numpy 1.5.0
+
+* Follow the below links, download, and install the modules: 
+* Matplotlib 1.0.0matplotlib 1.0.0
+* numpy 1.5.0
+
 Make sure the libraries that you download match the version of Python that you are using and the 
 platform (i.e. Windows, Mac, Linux). 
 To test that you have successfully installed matplotlib and numpy, run the code 
