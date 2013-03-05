@@ -93,3 +93,24 @@ pylab.plot([5,6,7,10])
 pylab.savefig('secondSaved') # saves a name.png file in the dir running the script
 pylab.show()
 ```
+
+All plots should have informative titles and all axis labels. A good example of how to do that:
+
+```Python
+principal = 10000 #initial investment
+interestRate = 0.05
+years = 20
+values = []
+for i in range(years + 1):
+    values.append(principal)
+    principal += principal*interestRate
+pylab.plot(values)
+
+pylab.title('5% Growth, Compounded Annually')
+pylab.xlabel('Years of Compounding')
+pylab.ylabel('Value of Principal ($)')
+
+pylab.show()
+```
+
+![compound interest](http://dl.dropbox.com/u/31042440/mit-ocw-600/unit-2/compound-interest-graph.png)
