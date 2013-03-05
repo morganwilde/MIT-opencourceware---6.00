@@ -53,19 +53,10 @@ direction (indicated by the direction of the red arrowhead).
 
 | ![time-0](http://dl.dropbox.com/u/31042440/mit-ocw-600/unit-2/time-0.png) | ![time-1](http://dl.dropbox.com/u/31042440/mit-ocw-600/unit-2/time-1.png) | ![time-2](http://dl.dropbox.com/u/31042440/mit-ocw-600/unit-2/time-2.png) | ![time-3](http://dl.dropbox.com/u/31042440/mit-ocw-600/unit-2/time-3.png) | ![time-4](http://dl.dropbox.com/u/31042440/mit-ocw-600/unit-2/time-4.png) |
 |---------------------------------------------------------------------------|---------------------------------------------------------------------------|---------------------------------------------------------------------------|---------------------------------------------------------------------------|---------------------------------------------------------------------------|
-| Time t = 0: The robot starts at the position (2.1, 2.2) with an angle of 205 degrees (measured clockwise from “north”). The tile that it is on is now clean. | time 1 | time 2 | time 3 | time 4 |
+| Time t = 0: The robot starts at the position (2.1, 2.2) with an angle of 205 degrees (measured clockwise from “north”). The tile that it is on is now clean. | t = 1: The robot has moved 1 unit in the direction it was facing, to the position (1.7, 1.3), cleaning another tile.  | t = 2: The robot has moved 1 unit in the same direction (205 degrees from north), to the position (1.2, 0.4), cleaning another tile.  | time 3 | time 4 |
 
 
 
-t = 1: The robot has moved 1 
-unit in the direction it was 
-facing, to the position (1.7, 
-1.3), cleaning another tile. 
-t = 2: The robot has moved 1 
-unit in the same direction (205 
-degrees from north), to the 
-position (1.2, 0.4), cleaning 
-another tile. 
 t = 3: The robot could not have 
 moved another unit in the same 
 direction without hitting the 
