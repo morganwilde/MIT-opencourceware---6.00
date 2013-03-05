@@ -52,7 +52,7 @@ The illustrations below show the robot’s position (indicated by a black dot) a
 direction (indicated by the direction of the red arrowhead).
 
 | ![time-0](http://dl.dropbox.com/u/31042440/mit-ocw-600/unit-2/time-0.png) | ![time-1](http://dl.dropbox.com/u/31042440/mit-ocw-600/unit-2/time-1.png) |
-|-|-|
+|---------------------------------------------------------------------------|---------------------------------------------------------------------------|
 | time 0 | time 1 |
 
 
