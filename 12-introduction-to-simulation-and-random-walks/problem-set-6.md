@@ -51,10 +51,9 @@ The robot starts out at some random position in the room, and with a random dire
 The illustrations below show the robot’s position (indicated by a black dot) as well as its 
 direction (indicated by the direction of the red arrowhead).
 
-| ![time-0](http://dl.dropbox.com/u/31042440/mit-ocw-600/unit-2/time-0.png) | ![time-1](http://dl.dropbox.com/u/31042440/mit-ocw-600/unit-2/time-1.png) |
-|---------------------------------------------------------------------------|---------------------------------------------------------------------------|
-| Time t = 0: The robot starts at the position (2.1, 2.2) with an angle of
-205 degrees (measured clockwise from “north”). The tile that it is on is now clean. | time 1 |
+| ![time-0](http://dl.dropbox.com/u/31042440/mit-ocw-600/unit-2/time-0.png) | ![time-1](http://dl.dropbox.com/u/31042440/mit-ocw-600/unit-2/time-1.png) | ![time-2](http://dl.dropbox.com/u/31042440/mit-ocw-600/unit-2/time-2.png) | ![time-3](http://dl.dropbox.com/u/31042440/mit-ocw-600/unit-2/time-3.png) | ![time-4](http://dl.dropbox.com/u/31042440/mit-ocw-600/unit-2/time-4.png) |
+|---------------------------------------------------------------------------|---------------------------------------------------------------------------|---------------------------------------------------------------------------|---------------------------------------------------------------------------|---------------------------------------------------------------------------|
+| Time t = 0: The robot starts at the position (2.1, 2.2) with an angle of 205 degrees (measured clockwise from “north”). The tile that it is on is now clean. | time 1 | time 2 | time 3 | time 4 |
 
 
 
