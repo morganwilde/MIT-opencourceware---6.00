@@ -94,8 +94,9 @@ class RectangularRoom(object):
 
         pos: a Position
         """
-        if not pos in self.cleanTiles:
-            self.cleanTiles.append(pos)
+        position = Position(int(pos.getX()), int(pos.getY()))
+        if not position in self.cleanTiles:
+            self.cleanTiles.append(position)
             return True
         else:
             return False
@@ -110,7 +111,7 @@ class RectangularRoom(object):
         n: an integer
         returns: True if (m, n) is cleaned, False otherwise
         """
-        position = Position(m, n)
+        position = Position(int(m), int(n))
         #print 'position in self.cleanTiles -', position in self.cleanTiles
         if position in self.cleanTiles:
             return True
@@ -149,8 +150,10 @@ class RectangularRoom(object):
         pos: a Position object.
         returns: True if pos is in the room, False otherwise.
         """
-        return int(pos.getX()) <= self.width-1 and int(pos.getY()) <= self.height-1 and \
-               pos.getX() >= 0 and pos.getX() >= 0
+        x = int(pos.getX())
+        y = int(pos.getY())
+        return x <= self.width-1 and y <= self.height-1 and \
+               pos.getX() >= 0 and pos.getY() >= 0
 
 
 class Robot(object):
