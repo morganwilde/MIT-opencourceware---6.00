@@ -16,7 +16,7 @@ class testHarness(object):
         try:
             self.speed =1
             self.tPosition = Position(2.1, 2.2)
-            self.tRectangularRoom = RectangularRoom(5, 5)
+            self.tRectangularRoom = RectangularRoom(20, 20)
             self.tRobot = Robot(self.tRectangularRoom, self.speed)
             self.tStandardRobot = StandardRobot(self.tRectangularRoom, self.speed)
         except NameError:
@@ -43,13 +43,22 @@ class testHarness(object):
         print '__str__:', self.tPosition
 
 if __name__ == '__main__':
+##    test = testHarness()
+##    test.testType()
+##    test.testMethodsPosition()
+##    for i in range(0, 11):
+##        print 'i =', i
+##        print test.tRectangularRoom.getNumCleanedTiles()
+##        #print test.tRectangularRoom.cleanTiles
+##        test.tStandardRobot.updatePositionAndClean()
+##
+##    print test.tRectangularRoom.cleanTiles
+##    print len(test.tRectangularRoom.cleanTiles)
     test = testHarness()
-    test.testType()
-    test.testMethodsPosition()
-    for i in range(0, 11):
-        print test.tRectangularRoom.getNumCleanedTiles()
-        #print test.tRectangularRoom.cleanTiles
+    anim = ps6_visualize.RobotVisualization(1, 20, 20)
+    #room = RectangularRoom(5, 5)
+    #rob = Robot(test.tRectangularRoom, 1)
+    robots = [test.tStandardRobot]
+    for i in range(0, 101):
         test.tStandardRobot.updatePositionAndClean()
-
-    print test.tRectangularRoom.cleanTiles
-    print len(test.tRectangularRoom.cleanTiles)
+        anim.update(test.tRectangularRoom, robots)

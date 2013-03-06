@@ -7,6 +7,8 @@
 import sys
 sys.dont_write_bytecode = True # stop generating *.pyc files
 
+import ps6_visualize
+
 import math
 import random
 
@@ -255,18 +257,15 @@ class StandardRobot(Robot):
     def updatePositionAndClean(self):
         """
         Simulate the passage of a single time-step.
-
         Move the robot to a new position and mark the tile it is on as having
         been cleaned.
         """
+        print self.position
         self.room.cleanTileAtPosition(self.position)
         positionTest = self.position.getNewPosition(self.direction, self.speed)
-        # self.room.isTileCleaned(positionTest.getX(), positionTest.getY()) != False and
         if self.room.isPositionInRoom(positionTest) == False:
             while self.room.isPositionInRoom(positionTest) != True:
                 positionTest = self.position.getNewPosition(self.direction, self.speed)
-                #print positionTest, 'is in room', self.room.isPositionInRoom(positionTest)
-                #print 'direction: ', self.direction, 'deg'
                 if self.room.isPositionInRoom(positionTest):
                     self.position = positionTest
                 else:
