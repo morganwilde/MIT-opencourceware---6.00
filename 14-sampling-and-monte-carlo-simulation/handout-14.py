@@ -7,7 +7,7 @@ values = []
 for i in range(years + 1):
     values.append(principal)
     principal += principal*interestRate
-pylab.plot(values)
+##pylab.plot(values)
 ##pylab.show()
 
 ##pylab.title('5% Growth, Compounded Annually')
