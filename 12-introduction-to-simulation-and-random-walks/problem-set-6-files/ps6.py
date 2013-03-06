@@ -52,9 +52,9 @@ class Position(object):
         return Position(new_x, new_y)
 
     def __str__(self):
-        return 'x:' + str(self.x) + ' y:' + str(self.y)
+        return 'x:' + str(round(self.x, 2)) + ' y:' + str(round(self.y, 2))
     def __repr__(self):
-        return 'x:' + str(self.x) + ' y:' + str(self.y)
+        return 'x:' + str(round(self.x, 2)) + ' y:' + str(round(self.y, 2))
     def __eq__(self, other):
         if self.getX() == other.getX() and self.getY() == other.getY():
             return True
@@ -111,7 +111,7 @@ class RectangularRoom(object):
         returns: True if (m, n) is cleaned, False otherwise
         """
         position = Position(m, n)
-        print 'position in self.cleanTiles -', position in self.cleanTiles
+        #print 'position in self.cleanTiles -', position in self.cleanTiles
         if position in self.cleanTiles:
             return True
         else:
@@ -149,7 +149,8 @@ class RectangularRoom(object):
         pos: a Position object.
         returns: True if pos is in the room, False otherwise.
         """
-        return int(pos.getX()) <= self.width-1 and int(pos.getY()) <= self.height-1
+        return int(pos.getX()) <= self.width-1 and int(pos.getY()) <= self.height-1 and \
+               pos.getX() >= 0 and pos.getX() >= 0
 
 
 class Robot(object):
@@ -257,18 +258,14 @@ class StandardRobot(Robot):
         """
         self.room.cleanTileAtPosition(self.position)
         positionTest = self.position.getNewPosition(0, 0)
-        print 'positionTest.getX(), positionTest.getY() :', positionTest.getX(), positionTest.getY()
-        print 'self.room.isTileCleaned(positionTest.getX(), positionTest.getY()) -', self.room.isTileCleaned(positionTest.getX(), positionTest.getY())
-        print 'self.room.isTileCleaned(positionTest.getX(), positionTest.getY()) != False -', self.room.isTileCleaned(positionTest.getX(), positionTest.getY()) != False
-        while self.room.isTileCleaned(positionTest.getX(), positionTest.getY()) != False:
+        while self.room.isTileCleaned(positionTest.getX(), positionTest.getY()) != False and self.room.isPositionInRoom(positionTest) != False:
             positionTest = self.position.getNewPosition(self.direction, self.speed)
-            print positionTest
+            #print positionTest, 'is in room', self.room.isPositionInRoom(positionTest)
+            print 'direction: ', self.direction, 'deg'
             if self.room.isPositionInRoom(positionTest) and self.room.isTileCleaned(positionTest.getX(), positionTest.getY()) == False:
                 self.position = positionTest
             else:
                 self.direction = random.randint(0, 360-1)
-        #self.position = positionTest
-        print 'after:', self.position
 
 # === Problem 3
 

@@ -47,6 +47,6 @@ if __name__ == '__main__':
     test.testType()
     test.testMethodsPosition()
     for i in range(0, 11):
-        print test.tRectangularRoom.getNumCleanedTiles()
+        #print test.tRectangularRoom.getNumCleanedTiles()
         print test.tRectangularRoom.cleanTiles
         test.tStandardRobot.updatePositionAndClean()
