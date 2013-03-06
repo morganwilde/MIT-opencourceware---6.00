@@ -2,7 +2,11 @@
 # Test facility for ps6.py
 #
 
+import sys
+sys.dont_write_bytecode = True # stop generating *.pyc files
+
 from ps6 import *
+reload(ps6)
 
 class testHarness(object):
     """
@@ -14,19 +18,21 @@ class testHarness(object):
             self.tPosition = Position(2.1, 2.2)
             self.tRectangularRoom = RectangularRoom(5, 5)
             self.tRobot = Robot(self.tRectangularRoom, self.speed)
+            self.tStandardRobot = StandardRobot(self.tRectangularRoom, self.speed)
         except NameError:
             print 'One or more classes are not defined'
         
     # see if the import went well
     def testType(self):
         if type(self.tPosition) == Position and type(self.tRectangularRoom) == RectangularRoom and \
-           type(self.tRobot) == Robot:
+           type(self.tRobot) == Robot and type(self.tStandardRobot) == StandardRobot:
             print 'testType: passed.'
         else:
             print 'testType: failed'
-            print 'tPosition type(' + str(type(self.tPosition)) + ')'
-            print 'tRectangularRoom type(' + str(type(self.tRectangularRoom)) + ')'
-            print 'tRobot type(' + str(type(self.tRobot)) + ')'
+            print 'tPosition type('         + str(type(self.tPosition)) + ')'
+            print 'tRectangularRoom type('  + str(type(self.tRectangularRoom)) + ')'
+            print 'tRobot type('            + str(type(self.tRobot)) + ')'
+            print 'tStandardRobot type('    + str(type(self.tStandardRobot)) + ')'
 
     # test Position methods and their output
     def testMethodsPosition(self):
@@ -40,3 +46,7 @@ if __name__ == '__main__':
     test = testHarness()
     test.testType()
     test.testMethodsPosition()
+    for i in range(0, 11):
+        print test.tRectangularRoom.getNumCleanedTiles()
+        print test.tRectangularRoom.cleanTiles
+        test.tStandardRobot.updatePositionAndClean()

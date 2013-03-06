@@ -4,6 +4,9 @@
 # Collaborators:
 # Time:
 
+import sys
+sys.dont_write_bytecode = True # stop generating *.pyc files
+
 import math
 import random
 
@@ -50,6 +53,13 @@ class Position(object):
 
     def __str__(self):
         return 'x:' + str(self.x) + ' y:' + str(self.y)
+    def __repr__(self):
+        return 'x:' + str(self.x) + ' y:' + str(self.y)
+    def __eq__(self, other):
+        if self.getX() == other.getX() and self.getY() == other.getY():
+            return True
+        else:
+            return False
 
 # === Problems 1
 
@@ -85,7 +95,10 @@ class RectangularRoom(object):
         pos: a Position
         """
         if not pos in self.cleanTiles:
-            self.cleanTiles.append((int(pos.getX()), int(pos.getY())))
+            self.cleanTiles.append(pos)
+            return True
+        else:
+            return False
 
     def isTileCleaned(self, m, n):
         """
@@ -97,7 +110,9 @@ class RectangularRoom(object):
         n: an integer
         returns: True if (m, n) is cleaned, False otherwise
         """
-        if (m, n) in self.cleanTiles:
+        position = Position(m, n)
+        print 'position in self.cleanTiles -', position in self.cleanTiles
+        if position in self.cleanTiles:
             return True
         else:
             return False
@@ -241,14 +256,19 @@ class StandardRobot(Robot):
         been cleaned.
         """
         self.room.cleanTileAtPosition(self.position)
-        positionTest = self.position.getNewPosition(self.direction, self.speed)
-        while self.room.isPositionInRoom(positionTest) != True:
-            positionTest = self.room.getNewPosition(self.direction, self.speed)
-            if self.room.isPositionInRoom(positionTest):
+        positionTest = self.position.getNewPosition(0, 0)
+        print 'positionTest.getX(), positionTest.getY() :', positionTest.getX(), positionTest.getY()
+        print 'self.room.isTileCleaned(positionTest.getX(), positionTest.getY()) -', self.room.isTileCleaned(positionTest.getX(), positionTest.getY())
+        print 'self.room.isTileCleaned(positionTest.getX(), positionTest.getY()) != False -', self.room.isTileCleaned(positionTest.getX(), positionTest.getY()) != False
+        while self.room.isTileCleaned(positionTest.getX(), positionTest.getY()) != False:
+            positionTest = self.position.getNewPosition(self.direction, self.speed)
+            print positionTest
+            if self.room.isPositionInRoom(positionTest) and self.room.isTileCleaned(positionTest.getX(), positionTest.getY()) == False:
                 self.position = positionTest
-                break
             else:
                 self.direction = random.randint(0, 360-1)
+        #self.position = positionTest
+        print 'after:', self.position
 
 # === Problem 3
 
