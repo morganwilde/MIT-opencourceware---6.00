@@ -260,15 +260,20 @@ class StandardRobot(Robot):
         been cleaned.
         """
         self.room.cleanTileAtPosition(self.position)
-        positionTest = self.position.getNewPosition(0, 0)
-        while self.room.isTileCleaned(positionTest.getX(), positionTest.getY()) != False and self.room.isPositionInRoom(positionTest) != False:
-            positionTest = self.position.getNewPosition(self.direction, self.speed)
-            #print positionTest, 'is in room', self.room.isPositionInRoom(positionTest)
-            print 'direction: ', self.direction, 'deg'
-            if self.room.isPositionInRoom(positionTest) and self.room.isTileCleaned(positionTest.getX(), positionTest.getY()) == False:
-                self.position = positionTest
-            else:
-                self.direction = random.randint(0, 360-1)
+        positionTest = self.position.getNewPosition(self.direction, self.speed)
+        # self.room.isTileCleaned(positionTest.getX(), positionTest.getY()) != False and
+        if self.room.isPositionInRoom(positionTest) == False:
+            while self.room.isPositionInRoom(positionTest) != True:
+                positionTest = self.position.getNewPosition(self.direction, self.speed)
+                #print positionTest, 'is in room', self.room.isPositionInRoom(positionTest)
+                #print 'direction: ', self.direction, 'deg'
+                if self.room.isPositionInRoom(positionTest):
+                    self.position = positionTest
+                else:
+                    print 'bumped into a wall, change direction'
+                    self.direction = random.randint(0, 360-1)
+        else:
+            self.position = positionTest
 
 # === Problem 3
 
