@@ -112,6 +112,7 @@ def makePlots(nf1, nf2, nt):
 ##L = [1,2,3,3,3,4]
 ##pylab.hist(L, bins = 6)
 ##makePlots(100, 1000, 100000)
+##pylab.ion()
 ##pylab.show()
 
 def poll(n, p):
@@ -132,4 +133,5 @@ def testErr(n = 1000, p = 46.0, numTrials = 1000):
     pylab.ylabel('Number of Polls')
 
 testErr()
+pylab.ion()
 pylab.show()
