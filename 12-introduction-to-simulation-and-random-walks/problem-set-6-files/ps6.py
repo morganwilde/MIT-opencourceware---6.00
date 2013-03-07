@@ -260,7 +260,7 @@ class StandardRobot(Robot):
         Move the robot to a new position and mark the tile it is on as having
         been cleaned.
         """
-        print self.position
+        #print self.position
         self.room.cleanTileAtPosition(self.position)
         positionTest = self.position.getNewPosition(self.direction, self.speed)
         if self.room.isPositionInRoom(positionTest) == False:
@@ -269,7 +269,7 @@ class StandardRobot(Robot):
                 if self.room.isPositionInRoom(positionTest):
                     self.position = positionTest
                 else:
-                    print 'bumped into a wall, change direction'
+                    #print 'bumped into a wall, change direction'
                     self.direction = random.randint(0, 360-1)
         else:
             self.position = positionTest
@@ -294,14 +294,37 @@ def runSimulation(num_robots, speed, width, height, min_coverage, num_trials,
     robot_type: class of robot to be instantiated (e.g. Robot or
                 RandomWalkRobot)
     """
-    room = RectangularRoom(width, height)
-    robotClass = robot_type(room, speed)
-    print room.getNumCleanedTiles()
-    print room.getNumTiles()
-    while room.getNumCleanedTiles() < room.getNumTiles():
-        print room.getNumCleanedTiles()
-        robotClass.updatePositionAndClean()
+    stepsAverage = []
+    for trial in range(num_trials):
+        room = RectangularRoom(width, height)
+        # create as many robots as needed
+        robots = []
+        for r in range(num_robots):
+            robots.append(robot_type(room, speed))
+        #print robots
+        minCleanTiles = int(room.getNumTiles() * min_coverage)
+        steps = 0
+        #print room.getNumCleanedTiles()
+        #print room.getNumTiles()
+        while room.getNumCleanedTiles() < minCleanTiles:
+            #print room.getNumCleanedTiles()
+            steps += 1
+            for robot in robots:
+                robot.updatePositionAndClean()
+        stepsAverage.append(steps)
 
+    return reduce(lambda x, y: x + y, stepsAverage) / len(stepsAverage)
+
+### Test out runSimulation
+##avg1 = runSimulation(1, 1.0, 5, 5, 1, 100, StandardRobot)
+##avg2 = runSimulation(1, 1.0, 10, 10, 0.75, 100, StandardRobot)
+##avg3 = runSimulation(1, 1.0, 10, 10, 0.9, 100, StandardRobot)
+##avg4 = runSimulation(1, 1.0, 20, 20, 1, 100, StandardRobot)
+##
+##print 'avg1: ', avg1
+##print 'avg2: ', avg2
+##print 'avg3: ', avg3
+##print 'avg4: ', avg4
 
 # === Problem 4
 #

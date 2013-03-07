@@ -6,7 +6,7 @@ import sys
 sys.dont_write_bytecode = True # stop generating *.pyc files
 
 from ps6 import *
-reload(ps6)
+#reload(ps6)
 
 class testHarness(object):
     """
@@ -18,6 +18,8 @@ class testHarness(object):
             self.tPosition = Position(2.1, 2.2)
             self.tRectangularRoom = RectangularRoom(20, 20)
             self.tRobot = Robot(self.tRectangularRoom, self.speed)
+            self.tStandardRobot2 = StandardRobot(self.tRectangularRoom, self.speed)
+            self.tStandardRobot3 = StandardRobot(self.tRectangularRoom, self.speed)
             self.tStandardRobot = StandardRobot(self.tRectangularRoom, self.speed)
         except NameError:
             print 'One or more classes are not defined'
@@ -55,10 +57,12 @@ if __name__ == '__main__':
 ##    print test.tRectangularRoom.cleanTiles
 ##    print len(test.tRectangularRoom.cleanTiles)
     test = testHarness()
-    anim = ps6_visualize.RobotVisualization(1, 20, 20)
+    anim = ps6_visualize.RobotVisualization(3, 20, 20)
     #room = RectangularRoom(5, 5)
     #rob = Robot(test.tRectangularRoom, 1)
-    robots = [test.tStandardRobot]
+    robots = [test.tStandardRobot, test.tStandardRobot2, test.tStandardRobot3]
     for i in range(0, 101):
         test.tStandardRobot.updatePositionAndClean()
+        test.tStandardRobot2.updatePositionAndClean()
+        test.tStandardRobot3.updatePositionAndClean()
         anim.update(test.tRectangularRoom, robots)
