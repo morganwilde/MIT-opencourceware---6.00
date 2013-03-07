@@ -336,14 +336,39 @@ def runSimulation(num_robots, speed, width, height, min_coverage, num_trials,
 def showPlot1():
     """
     Produces a plot showing dependence of cleaning time on number of robots.
-    """ 
-    raise NotImplementedError
+    """
+    xAxis = range(1, 11)
+    yAxis = []
+    for num_robots in xAxis:
+        meanTime = runSimulation(num_robots, 1.0, 20, 20, 0.8, 1, StandardRobot)
+        yAxis.append(meanTime)
+
+    # draw plot
+    pylab.plot(xAxis, yAxis)
+    pylab.title('Cleaning time of 20x20 room by 1-10 robots')
+    pylab.xlabel('Numbers of robots')
+    pylab.ylabel('Cleaning time (steps)')
+    pylab.ion()
+    pylab.show()
 
 def showPlot2():
     """
     Produces a plot showing dependence of cleaning time on room shape.
     """
-    raise NotImplementedError
+    rooms = [(20,20), (25,16), (40,10), (50,8), (80,5), (100,4)]
+    xAxis = [20, 25, 40, 50, 80, 100]
+    yAxis = []
+    for room in rooms:
+        meanTime = runSimulation(2, 1.0, room[0], room[1], 0.8, 10, StandardRobot)
+        yAxis.append(meanTime)
+
+    # draw plot
+    pylab.plot(xAxis, yAxis)
+    pylab.title('Cleaning time of various rooms by 2 robots')
+    pylab.xlabel('Room size (w, h)')
+    pylab.ylabel('Cleaning time (steps)')
+    pylab.ion()
+    pylab.show()
 
 # === Problem 5
 
@@ -352,8 +377,25 @@ class RandomWalkRobot(Robot):
     A RandomWalkRobot is a robot with the "random walk" movement strategy: it
     chooses a new direction at random after each time-step.
     """
-    pass
-    #raise NotImplementedError
+    def updatePositionAndClean(self):
+        """
+        Simulate the passage of a single time-step.
+        Move the robot to a new position and mark the tile it is on as having
+        been cleaned.
+        """
+        self.room.cleanTileAtPosition(self.position)
+        positionTest = self.position.getNewPosition(self.direction, self.speed)
+        if self.room.isPositionInRoom(positionTest) == False:
+            while self.room.isPositionInRoom(positionTest) != True:
+                positionTest = self.position.getNewPosition(self.direction, self.speed)
+                if self.room.isPositionInRoom(positionTest):
+                    self.position = positionTest
+                    self.direction = random.randint(0, 360-1)
+                else:
+                    self.direction = random.randint(0, 360-1)
+        else:
+            self.position = positionTest
+            self.direction = random.randint(0, 360-1)
 
 
 # === Problem 6
@@ -365,4 +407,29 @@ def showPlot3():
     """
     Produces a plot comparing the two robot strategies.
     """
-    raise NotImplementedError
+    xAxis = range(1, 11)
+    yAxis = []
+    for num_robots in xAxis:
+        meanTime = runSimulation(num_robots, 1.0, 20, 20, 0.8, 1, StandardRobot)
+        yAxis.append(meanTime)
+
+    # draw plot
+    pylab.plot(xAxis, yAxis, label='standard')
+    # plot random walk robot
+    yAxis = []
+    for num_robots in xAxis:
+        meanTime = runSimulation(num_robots, 1.0, 20, 20, 0.8, 1, RandomWalkRobot)
+        yAxis.append(meanTime)
+    pylab.plot(xAxis, yAxis, label='random walk')
+    pylab.title('Cleaning time of 20x20 room by 1-10 robots')
+    pylab.xlabel('Numbers of robots')
+    pylab.ylabel('Cleaning time (steps)')
+    pylab.legend()
+    pylab.ion()
+    pylab.show()
+
+if __name__ == '__main__':
+    #showPlot1()
+    #showPlot2()
+    #showPlot3()
+    pass

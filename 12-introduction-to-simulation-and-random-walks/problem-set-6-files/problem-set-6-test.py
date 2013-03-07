@@ -60,9 +60,9 @@ if __name__ == '__main__':
     anim = ps6_visualize.RobotVisualization(3, 20, 20)
     #room = RectangularRoom(5, 5)
     #rob = Robot(test.tRectangularRoom, 1)
-    robots = [test.tStandardRobot, test.tStandardRobot2, test.tStandardRobot3]
+    robots = [test.tStandardRobot]#, test.tStandardRobot2, test.tStandardRobot3]
     for i in range(0, 101):
         test.tStandardRobot.updatePositionAndClean()
-        test.tStandardRobot2.updatePositionAndClean()
-        test.tStandardRobot3.updatePositionAndClean()
+        #test.tStandardRobot2.updatePositionAndClean()
+        #test.tStandardRobot3.updatePositionAndClean()
         anim.update(test.tRectangularRoom, robots)
