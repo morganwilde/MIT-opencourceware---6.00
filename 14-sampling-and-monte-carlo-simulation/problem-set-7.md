@@ -1,5 +1,6 @@
-Problem Set 7: Simulating the Spread of Disease and Virus 
-Population 
+Problem Set 7: Simulating the Spread of Disease and Virus Population
+====================================================================
+ 
 Handed Out: Lecture 14. 
 Due: 11:59pm, Lecture 16. 
 Introduction 
