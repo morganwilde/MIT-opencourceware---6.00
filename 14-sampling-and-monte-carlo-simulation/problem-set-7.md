@@ -151,7 +151,7 @@ You should start by understanding the population dynamics before introducing any
 Each `SimpleVirus` instance in the viruses list should be initialized with the following parameters:
 
 * `maxBirthProb`, Maximum Reproduction Probability for a Virus Particle = 0.1 
-• `clearProb`, Maximum Clearance Probability for a Virus Particle = 0.05
+* `clearProb`, Maximum Clearance Probability for a Virus Particle = 0.05
 
 Fill in the function `simulationWithoutDrug()` that instantiates a patient, simulates changes to the virus population for 300 time steps (i.e. 300 calls to `update`), and plots the virus population as a function of time; that is, the x-axis should correspond the number of elapsed time steps, and y-axis the population of the virus in the patient. Run the simulation many times (without setting the seed). Produce a single plot that is representative of the average case as a result of running the simulation many times. Don’t forget to include axes labels, a key for the curves, and a title on your plot.
 
