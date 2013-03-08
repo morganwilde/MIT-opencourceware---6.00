@@ -289,8 +289,8 @@ if __name__ == '__main__':
 ##            sums += result
 ##        # find mean
 ##        minmaxDict[str(sample)+'-mean'] = sums/sample
-    print '1000 mean:', minmaxDict['1000-mean']
-    print 'standard deviation of 1000:', stdDev(minmaxDict['1000-list'])
+##    print '1000 mean:', minmaxDict['1000-mean']
+##    print 'standard deviation of 1000:', stdDev(minmaxDict['1000-list'])
 
     # Print results
 ##    print '1 min:', minmaxDict['1-min']
