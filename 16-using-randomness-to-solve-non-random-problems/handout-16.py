@@ -8,6 +8,7 @@ def clear(n, clearProb, steps):
 
 ##clear(1000, 0.01, 500)
 ###pylab.semilogy()
+##pylab.ion()
 ##pylab.show()
         
 def clearSim(n, clearProb, steps):
@@ -24,6 +25,7 @@ def clearSim(n, clearProb, steps):
 
 ##clear(1000, 0.01, 500)
 ##clearSim(1000, 0.01, 500)
+##pylab.ion()
 ##pylab.show()
 
 def montyChoose(guessDoor, prizeDoor):
@@ -64,12 +66,12 @@ def displayMHSim(simResults):
               labels = ['stick', 'change'], autopct = '%.2f%%')
     pylab.title('To Switch or Not to Switch')
 
-##simResults = simMontyHall(100000, montyChoose)
-##displayMHSim(simResults)
-##pylab.figure()
-##simResults = simMontyHall(100000, randomChoose)
-##displayMHSim(simResults)
-##pylab.show()
+simResults = simMontyHall(100000, montyChoose)
+displayMHSim(simResults)
+pylab.figure()
+simResults = simMontyHall(100000, randomChoose)
+displayMHSim(simResults)
+pylab.show()
 
 def stdDev(X):
     mean = sum(X)/float(len(X))
@@ -106,7 +108,7 @@ def estPi(precision = 0.01, numTrials = 20):
         numNeedles *= 2
     return curEst
 
-##estPi()
+estPi()
 
 def integrate(a, b, f, numPins):
     pinSum = 0.0
