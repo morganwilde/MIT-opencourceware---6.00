@@ -60,6 +60,7 @@ def plotData(fileName):
     pylab.ylabel('Distance (meters)')
 
 ##plotData('springData.txt')
+##pylab.ion()
 ##pylab.show()
 
 def fitData(fileName):
@@ -79,6 +80,7 @@ def fitData(fileName):
     pylab.legend(loc = 'best')
 
 ##fitData('springData.txt')
+##pylab.ion()
 ##pylab.show()
 
 def fitData1(fileName):
@@ -98,8 +100,9 @@ def fitData1(fileName):
     pylab.plot(xVals, estYVals, label = 'Cubic fit')
     pylab.legend(loc = 'best')
 
-fitData1('springData.txt')
-pylab.show()
+##fitData1('springData.txt')
+##pylab.ion()
+##pylab.show()
 
 def fitData2(fileName):
     xVals, yVals = getData(fileName)
@@ -121,6 +124,7 @@ def fitData2(fileName):
     pylab.legend(loc = 'best')
 
 ##fitData2('springData.txt')
+##pylab.ion()
 ##pylab.show()
 
 def getTrajectoryData(fileName):
@@ -160,6 +164,7 @@ def tryFits(fName):
     pylab.legend()
 
 ##tryFits('launcherData.txt')
+##pylab.ion()
 ##pylab.show()
 
 def rSquare(measured, estimated):
@@ -194,6 +199,7 @@ def tryFits1(fName):
     pylab.legend()
 
 ##tryFits1('launcherData.txt')
+##pylab.ion()
 ##pylab.show()
 
 def getXSpeed(a, b, c, minX, maxX):
@@ -226,4 +232,5 @@ def processTrajectories(fName):
     pylab.legend()
 
 ##processTrajectories('launcherData.txt')
+##pylab.ion()
 ##pylab.show()
