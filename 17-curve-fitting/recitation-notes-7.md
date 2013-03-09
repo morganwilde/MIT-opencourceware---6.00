@@ -13,6 +13,8 @@ So far we have learned these distributions:
 
 What a Monte Carlo method is? It is trying to arrive at a solution by large amounts of random sampling.
 
+#### Monty hall problem
+
 Monty hall problem - always switch and by switching you will have a 2/3 chance of winning.
 
 ```Python
@@ -37,6 +39,33 @@ def play_monty_hall(num_trials = 1000):
 ```
 
 ![monty hall 1](http://dl.dropbox.com/u/31042440/mit-ocw-600/unit-2/Monty_closed_doors.svg)
+
 ![monty hall 2](http://dl.dropbox.com/u/31042440/mit-ocw-600/unit-2/Monty_open_door_chances.svg)
 
+#### Pi
+
+The random dots thrown in a square that has a circle inside it. This is one of the ways of approximating Pi.
+
+#### Integration
+
+Using the same method, we can do **numeric integration**.
+
+`f(x) = x**2` - integrated `f(x) = x**3/3`. This is an easy function to integrate, but there are function that are much easier to integrate using the Monte Carlo method.
+
+1. Find the x-max and x-min values within a certain range
+2. Generate random points within the selected rectangle
+3. Find the integrated area by taking the relative area of the dots not inside the original function
+
+Confidence intervals and confidence levels.
+
+#### Monopoly analysis
+
+A site to go to [Project Euler](http://projecteuler.net/).
+
+What are the top 3 places you land on Monopoly?
+
 ### Regressions
+
+When having a bunch of samples taken you need to calculate the amount of error present. To do that we use regression and plot fitting. Having that function also allows to get aditional data points that we couldn't get while experimenting.
+
+Residual error. The regression is done by `numpy.polyfit()`.
