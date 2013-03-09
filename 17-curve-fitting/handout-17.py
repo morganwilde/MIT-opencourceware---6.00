@@ -65,8 +65,8 @@ def plotData(fileName):
 
 def fitData(fileName):
     xVals, yVals = getData(fileName)
-    xVals = pylab.array(xVals)
-    yVals = pylab.array(yVals)
+    xVals = pylab.array(xVals[:-6])
+    yVals = pylab.array(yVals[:-6])
     xVals = xVals*9.81
     pylab.plot(xVals, yVals, 'bo', label = 'Measured displacements')
     pylab.title('Measured Displacement of Spring')
@@ -163,9 +163,9 @@ def tryFits(fName):
                label = 'Quadratic Fit')
     pylab.legend()
 
-##tryFits('launcherData.txt')
-##pylab.ion()
-##pylab.show()
+tryFits('launcherData.txt')
+pylab.ion()
+pylab.show()
 
 def rSquare(measured, estimated):
     """measured: one dimensional array of measured values
