@@ -163,9 +163,9 @@ def tryFits(fName):
                label = 'Quadratic Fit')
     pylab.legend()
 
-tryFits('launcherData.txt')
-pylab.ion()
-pylab.show()
+##tryFits('launcherData.txt')
+##pylab.ion()
+##pylab.show()
 
 def rSquare(measured, estimated):
     """measured: one dimensional array of measured values
