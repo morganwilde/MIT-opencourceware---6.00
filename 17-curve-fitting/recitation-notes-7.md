@@ -36,4 +36,7 @@ def play_monty_hall(num_trials = 1000):
     print 'Switch wins: ', switch_wins / float(num_trials)
 ```
 
+![monty hall 1](http://dl.dropbox.com/u/31042440/mit-ocw-600/unit-2/Monty_closed_doors.svg)
+![monty hall 2](http://dl.dropbox.com/u/31042440/mit-ocw-600/unit-2/Monty_open_door_chances.svg)
+
 ### Regressions
