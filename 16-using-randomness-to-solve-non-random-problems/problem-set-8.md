@@ -252,7 +252,7 @@ def simulationTwoDrugsDelayedTreatment():
     """ 
     Runs simulations and make histograms for problem 6. 
     Runs multiple simulations to show the relationship between administration 
-    of multiple drugs and patient outcome. 
+    of multiple drugs and patient outcome.
     Histograms of final total virus populations are displayed for lag times of 
     150, 75, 0 timesteps between adding drugs (followed by an additional 150 
     timesteps of simulation).
