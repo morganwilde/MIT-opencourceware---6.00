@@ -1,8 +1,11 @@
-Problem Set 8: Simulating the Spread of Disease and Virus 
-Population (continued from Problem Set 7) 
-Handed Out: Lecture 16 
-Due: 11:59pm, Lecture 18. 
-Introduction 
+Problem Set 8: Simulating the Spread of Disease and Virus Population (continued from Problem Set 7)
+===================================================================================================
+
+*Handed Out: Lecture 16*  
+*Due: 11:59pm, Lecture 18*
+
+### Introduction
+
 In this problem set, using Python and pylab you will design and implement a stochastic 
 simulation of patient and virus population dynamics, and reach conclusions about treatment 
 regimens based on the simulation results. 
