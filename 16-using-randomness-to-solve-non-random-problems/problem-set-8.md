@@ -1,5 +1,7 @@
-Problem Set 8: Simulating the Spread of Disease and Virus Population (continued from Problem Set 7)
-===================================================================================================
+Problem Set 8: Simulating the Spread of Disease and Virus Population
+====================================================================
+
+#### (continued from Problem Set 7)
 
 *Handed Out: Lecture 16*  
 *Due: 11:59pm, Lecture 18*

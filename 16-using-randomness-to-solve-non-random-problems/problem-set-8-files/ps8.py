@@ -15,15 +15,11 @@ from ps7 import *
 # PROBLEM 1
 #
 class ResistantVirus(SimpleVirus):
-
     """
     Representation of a virus which can have drug resistance.
-    """      
-
+    """
     def __init__(self, maxBirthProb, clearProb, resistances, mutProb):
-
         """
-
         Initialize a ResistantVirus instance, saves all parameters as attributes
         of the instance.
 
@@ -37,16 +33,13 @@ class ResistantVirus(SimpleVirus):
 
         mutProb: Mutation probability for this virus particle (a float). This is
         the probability of the offspring acquiring or losing resistance to a drug.        
-
         """
-
-
-        # TODO
-
-
+        self.maxBirthProb   = maxBirthProb
+        self.clearProb      = clearProb
+        self.resistances    = resistances
+        self.mutProb        = mutProb
 
     def isResistantTo(self, drug):
-
         """
         Get the state of this virus particle's resistance to a drug. This method
         is called by getResistPop() in Patient to determine how many virus
@@ -56,12 +49,9 @@ class ResistantVirus(SimpleVirus):
         returns: True if this virus instance is resistant to the drug, False
         otherwise.
         """
-
-        # TODO
-
+        return self.resistances.get(drug, False)
 
     def reproduce(self, popDensity, activeDrugs):
-
         """
         Stochastically determines whether this virus particle reproduces at a
         time step. Called by the update() method in the Patient class.
@@ -100,17 +90,39 @@ class ResistantVirus(SimpleVirus):
         maxBirthProb and clearProb values as this virus. Raises a
         NoChildException if this virus particle does not reproduce.         
         """
-        # TODO
+        # See if its resistant to all
+        resistant = True
+        for drug in activeDrugs:
+            if self.isResistantTo(drug) == False:
+                resistant = False
 
-            
+        if resistant == True:
+            if random.random() <= self.maxBirthProb * (1 - popDensity):
+                # calculate new resistances
+                newResistances = {}
+                for drug in self.resistances:
+                    if drug == True:
+                        if random.random() <= self.mutProb:
+                            newResistances[drug] = False
+                        else:
+                            newResistances[drug] = True
+                    else:
+                        if random.random() <= self.mutProb:
+                            newResistances[drug] = True
+                        else:
+                            newResistances[drug] = False
+
+                # we have the winners, ship them
+                return ResistandVirus(self.maxBirthProb, self.clearProb, newResistances, self.mutProb))
+
+        # no babies came out
+        raise NoChildException
 
 class Patient(SimplePatient):
-
     """
     Representation of a patient. The patient is able to take drugs and his/her
     virus population can acquire resistance to the drugs he/she takes.
     """
-
     def __init__(self, viruses, maxPop):
         """
         Initialization function, saves the viruses and maxPop parameters as
@@ -126,7 +138,6 @@ class Patient(SimplePatient):
     
 
     def addPrescription(self, newDrug):
-
         """
         Administer a drug to this patient. After a prescription is added, the 
         drug acts on the virus population for all subsequent time steps. If the
@@ -141,13 +152,11 @@ class Patient(SimplePatient):
 
 
     def getPrescriptions(self):
-
         """
         Returns the drugs that are being administered to this patient.
         returns: The list of drug names (strings) being administered to this
         patient.
         """
-
         # TODO
         
 
@@ -167,7 +176,6 @@ class Patient(SimplePatient):
 
 
     def update(self):
-
         """
         Update the state of the virus population in this patient for a single
         time step. update() should execute these actions in order:
