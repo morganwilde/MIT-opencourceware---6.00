@@ -255,7 +255,7 @@ def simulationTwoDrugsDelayedTreatment():
     of multiple drugs and patient outcome. 
     Histograms of final total virus populations are displayed for lag times of 
     150, 75, 0 timesteps between adding drugs (followed by an additional 150 
-    timesteps of simulation). 
+    timesteps of simulation).
     """ 
     # TODO
 ```
