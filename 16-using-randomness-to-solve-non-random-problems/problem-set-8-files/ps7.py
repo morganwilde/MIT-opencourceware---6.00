@@ -133,7 +133,7 @@ class SimplePatient(object):
         tempViruses = newViruses[:]
         for virus in newViruses:
             try:
-                reproductionResult = virus.reproduce(newPopDensity/self.maxPop) # I made a mistake here, missing float() conversion
+                reproductionResult = virus.reproduce(newPopDensity/self.maxPop)
             except:
                 pass
             else:

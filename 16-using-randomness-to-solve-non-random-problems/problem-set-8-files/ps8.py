@@ -4,8 +4,6 @@
 # Collaborators:
 # Time:
 
-
-
 import numpy
 import random
 import pylab
@@ -97,6 +95,8 @@ class ResistantVirus(SimpleVirus):
                 resistant = False
 
         if resistant == True:
+            #print 'self.maxBirthProb', self.maxBirthProb
+            #print '(1 - popDensity)', (1 - popDensity)
             if random.random() <= self.maxBirthProb * (1 - popDensity):
                 # calculate new resistances
                 newResistances = {}
@@ -113,10 +113,12 @@ class ResistantVirus(SimpleVirus):
                             newResistances[drug] = False
 
                 # we have the winners, ship them
-                return ResistandVirus(self.maxBirthProb, self.clearProb, newResistances, self.mutProb))
-
-        # no babies came out
-        raise NoChildException
+                return ResistantVirus(self.maxBirthProb, self.clearProb, newResistances, self.mutProb)
+            else:
+                raise NoChildException
+        else:
+            # no babies came out
+            raise NoChildException
 
 class Patient(SimplePatient):
     """
@@ -134,8 +136,9 @@ class Patient(SimplePatient):
         
         maxPop: the  maximum virus population for this patient (an integer)
         """
-        # TODO
-    
+        self.viruses = viruses
+        self.maxPop = maxPop
+        self.drugs = []
 
     def addPrescription(self, newDrug):
         """
@@ -147,9 +150,8 @@ class Patient(SimplePatient):
 
         postcondition: list of drugs being administered to a patient is updated
         """
-        # TODO
-        # should not allow one drug being added to the list multiple times
-
+        if not newDrug in self.drugs:
+            self.drugs.append(newDrug)
 
     def getPrescriptions(self):
         """
@@ -157,8 +159,7 @@ class Patient(SimplePatient):
         returns: The list of drug names (strings) being administered to this
         patient.
         """
-        # TODO
-        
+        return self.drugs        
 
     def getResistPop(self, drugResist):
         """
@@ -171,10 +172,20 @@ class Patient(SimplePatient):
         returns: the population of viruses (an integer) with resistances to all
         drugs in the drugResist list.
         """
-        # TODO
-                   
+        resistantViruses = 0
+        for virus in self.viruses:
+            resistant = True
+            for drug in drugResist:
+                if virus.isResistantTo(drug) and resistant == True:
+                    pass
+                else:
+                    resistant = False
+            # resistant?
+            if resistant == True:
+                resistantViruses += 1
 
-
+        return resistantViruses
+        
     def update(self):
         """
         Update the state of the virus population in this patient for a single
@@ -192,28 +203,92 @@ class Patient(SimplePatient):
         returns: the total virus population at the end of the update (an
         integer)
         """
-        # TODO
+        # Find clearing viruses
+        newViruses = []
+        for virus in self.viruses:
+            if virus.doesClear():
+                pass
+            else:
+                newViruses.append(virus)
+                
+        # Find reproducing viruses
+        newPopDensity = len(newViruses)
+        #print 'newPopDensity', newPopDensity
+        tempViruses = newViruses[:]
+        for virus in newViruses:
+            try:
+                reproductionResult = virus.reproduce(newPopDensity/float(self.maxPop), self.getPrescriptions())
+            except:
+                pass
+            else:
+                tempViruses.append(reproductionResult)
 
-
-
+        # Update patient
+        #print 'after growth:', len(tempViruses)
+        self.viruses = tempViruses
+        return len(self.viruses)
+        
 #
 # PROBLEM 2
 #
 
-def simulationWithDrug():
-
+def simulationWithDrug(plot = True):
     """
-
     Runs simulations and plots graphs for problem 4.
     Instantiates a patient, runs a simulation for 150 timesteps, adds
     guttagonol, and runs the simulation for an additional 150 timesteps.
     total virus population vs. time and guttagonol-resistant virus population
     vs. time are plotted
     """
-    # TODO
+    # generate some viruses
+    maxBirthProb = 0.1
+    clearProb = 0.05
+    resistances = {'guttagonol': False}
+    resistancesList = ['guttagonol']
+    mutProb = 0.005
+    viruses = []
+    for i in range(100):
+        viruses.append( ResistantVirus(maxBirthProb, clearProb, resistances, mutProb) )
 
+    # generate a patient
+    maxPop = 1000
+    patient = Patient(viruses, maxPop)
+    #print patient.getPrescriptions()
+    
+    # run the simulation
+    xAxis = range(1, 301)
+    yAxis = []
+    yAxisResistant = []
+    for step in range(150):
+        updated = patient.update()
+        yAxis.append(updated)
+        yAxisResistant.append( patient.getResistPop(resistancesList) )
 
+    # introduce the drug
+    patient.addPrescription('guttagonol')
+    for step in range(150):
+        updated = patient.update()
+        yAxis.append(updated)
+        yAxisResistant.append( patient.getResistPop(resistancesList) )
 
+    if plot == True:
+        # plot it the total population
+        pylab.plot(xAxis, yAxis)
+        pylab.title('Simulating virus growth in a patient. At 150 time drug added')
+        pylab.xlabel('Time steps')
+        pylab.ylabel('Virus population')
+        pylab.ion()
+        pylab.show()
+        # plot the resistant population
+        pylab.figure()
+        pylab.plot(xAxis, yAxisResistant)
+        pylab.title('Drug resistant virus population growth')
+        pylab.xlabel('Time steps')
+        pylab.ylabel('Virus population')
+        pylab.ion()
+        pylab.show()
+        pass
+        
 #
 # PROBLEM 3
 #        
@@ -268,5 +343,5 @@ def simulationTwoDrugsVirusPopulations():
     """
     #TODO
 
-
-
+if __name__ == '__main__':
+    simulationWithDrug()
